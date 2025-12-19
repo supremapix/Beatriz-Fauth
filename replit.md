@@ -45,6 +45,14 @@ The application follows a standard React component hierarchy:
 - **Counter Animations**: "+30 anos" and "+1000 vidas" counters triggered by Intersection Observer
 - **Shimmer Button Effects**: Gradient animation on CTAs with hover transforms
 - **Scroll Indicator**: Animated mouse wheel indicator pointing to next section
+- **Cinematographic Timeline Section**: "Como funciona a primeira consulta" with:
+  - Vertical animated progress line triggered by IntersectionObserver
+  - Step markers with pulsing ring animation
+  - Cards with icon glow effects and hover 3D transforms
+  - Background gradient blobs with floating animation
+  - Staggered reveal animations for each step
+  - Decorative large numbers (01, 02, 03, 04) in each card
+  - CTA button with shimmer and ripple effects
 - WhatsApp floating button with float animation and tooltip
 - Back-to-top button that appears after scrolling
 - Section reveal animations on scroll

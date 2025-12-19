@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ArrowRight, Phone, MapPin, Clock, CheckCircle, Heart, Users, Brain, Sparkles } from 'lucide-react';
+import { ChevronRight, ArrowRight, Phone, MapPin, Clock, CheckCircle, Heart, Users, Brain, Sparkles, Calendar, Mic, HandHeart, Compass, Info } from 'lucide-react';
 import SchedulingTool from '../components/SchedulingTool';
 import { SCHEDULING_SERVICES, FAQS, BLOG_POSTS, CONTACT_INFO } from '../constants';
 
@@ -96,6 +96,8 @@ const Particles: React.FC = () => {
 
 const Home: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [timelineVisible, setTimelineVisible] = useState(false);
+  const timelineRef = useRef<HTMLDivElement>(null);
   const typewriterText = useTypewriter(['cura', 'transformação', 'acolhimento', 'autoconhecimento'], 120, 80, 2500);
   
   const counter1 = useCountUp(30, 2000);
@@ -121,6 +123,23 @@ const Home: React.FC = () => {
 
     return () => observer.disconnect();
   }, []);
+  
+  useEffect(() => {
+    const timelineObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !timelineVisible) {
+          setTimelineVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (timelineRef.current) {
+      timelineObserver.observe(timelineRef.current);
+    }
+
+    return () => timelineObserver.disconnect();
+  }, [timelineVisible]);
 
   return (
     <div className="bg-cream overflow-x-hidden">
@@ -317,50 +336,128 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* How First Session Works */}
-      <section className="py-24 bg-white section-reveal">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Como funciona a primeira consulta</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light">
+      {/* How First Session Works - Cinematographic Timeline */}
+      <section ref={timelineRef} className="py-24 md:py-32 bg-gradient-to-b from-[#FAFAFA] to-white relative overflow-hidden section-reveal">
+        {/* Background blobs */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="timeline-blob timeline-blob-1"></div>
+          <div className="timeline-blob timeline-blob-2"></div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-16 md:mb-20">
+            <span className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-[rgba(91,140,142,0.1)] border border-[rgba(91,140,142,0.2)] rounded-full text-[#4A7C7E] text-sm font-semibold uppercase tracking-wider mb-6">
+              <span className="w-2 h-2 bg-[#4A7C7E] rounded-full badge-dot-pulse"></span>
+              Processo simples e acolhedor
+            </span>
+            <h2 className="text-3xl md:text-5xl serif text-[#2C5364] mb-5 leading-tight">
+              Como funciona a primeira consulta
+            </h2>
+            <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto font-light">
               Um primeiro passo acolhedor em direção ao seu bem-estar emocional.
             </p>
           </div>
           
-          <div className="relative">
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-navy-light via-gold to-navy-light transform -translate-x-1/2"></div>
+          {/* Timeline Container */}
+          <div className="relative max-w-4xl mx-auto">
+            {/* Vertical line */}
+            <div className="hidden md:block absolute left-[60px] top-16 bottom-16 w-0.5 bg-[rgba(91,140,142,0.2)]">
+              <div className={`timeline-progress-line w-full bg-gradient-to-b from-[#4A7C7E] to-[#5B8C8E] ${timelineVisible ? 'animate' : ''}`}></div>
+            </div>
             
-            <div className="space-y-12">
+            {/* Steps */}
+            <div className="space-y-8 md:space-y-12">
               {[
-                { step: '1', title: 'Agendamento', desc: 'Entre em contato via WhatsApp ou telefone. Escolhemos juntos o melhor horário.' },
-                { step: '2', title: 'Acolhimento', desc: 'Na primeira sessão, você é acolhido em um ambiente seguro e sigiloso.' },
-                { step: '3', title: 'Escuta', desc: 'Compartilhe suas questões no seu tempo. Não há julgamentos, apenas escuta.' },
-                { step: '4', title: 'Caminho', desc: 'Juntos, traçamos um plano terapêutico personalizado para suas necessidades.' }
+                { 
+                  step: 1, 
+                  title: 'Agendamento', 
+                  desc: 'Entre em contato via WhatsApp ou telefone. Escolhemos juntos o melhor horário para você.',
+                  details: ['Resposta rápida', 'Horários flexíveis'],
+                  Icon: Calendar
+                },
+                { 
+                  step: 2, 
+                  title: 'Acolhimento', 
+                  desc: 'Na primeira sessão, você é acolhido em um ambiente seguro e sigiloso. Sem pressa, sem julgamentos.',
+                  details: ['Ambiente privado', 'Total sigilo'],
+                  Icon: Heart
+                },
+                { 
+                  step: 3, 
+                  title: 'Escuta', 
+                  desc: 'Compartilhe suas questões no seu tempo. Não há julgamentos, apenas escuta atenta e empática.',
+                  details: ['Sem pressa', 'Escuta profunda'],
+                  Icon: Mic
+                },
+                { 
+                  step: 4, 
+                  title: 'Caminho', 
+                  desc: 'Juntos, traçamos um plano terapêutico personalizado para suas necessidades e objetivos.',
+                  details: ['Plano personalizado', 'Objetivos claros'],
+                  Icon: Compass
+                }
               ].map((item, index) => (
-                <div key={index} className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-                  <div className={`w-full md:w-5/12 ${index % 2 === 1 ? 'md:text-left' : 'md:text-right'}`}>
-                    <h3 className="text-xl font-semibold text-navy mb-2 serif">{item.title}</h3>
-                    <p className="text-gray-600 font-light">{item.desc}</p>
+                <div key={index} className={`timeline-step-reveal flex items-start gap-6 md:gap-10 group ${timelineVisible ? 'visible' : ''}`} style={{ transitionDelay: `${0.2 + index * 0.2}s` }}>
+                  {/* Step Marker */}
+                  <div className="relative flex-shrink-0 w-[80px] md:w-[120px] h-[80px] md:h-[120px] flex items-center justify-center">
+                    <div className="relative w-14 md:w-20 h-14 md:h-20 bg-white rounded-full shadow-lg flex items-center justify-center group-hover:scale-110 transition-all duration-500 group-hover:shadow-xl">
+                      <div className="w-10 md:w-[60px] h-10 md:h-[60px] bg-gradient-to-br from-[#4A7C7E] to-[#5B8C8E] rounded-full flex items-center justify-center">
+                        <span className="text-white font-bold text-lg md:text-2xl">{item.step}</span>
+                      </div>
+                    </div>
+                    <div className="absolute inset-[-10px] border-2 border-[#4A7C7E] rounded-full marker-pulse-ring"></div>
                   </div>
-                  <div className="relative z-10 w-12 h-12 rounded-full bg-gradient-to-br from-navy-light to-navy flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                    {item.step}
+                  
+                  {/* Step Card */}
+                  <div className="flex-1 relative bg-white rounded-3xl p-6 md:p-10 shadow-lg group-hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 overflow-hidden card-border-reveal">
+                    {/* Icon with glow */}
+                    <div className="relative w-16 h-16 mb-6">
+                      <div className="absolute inset-[-10px] bg-[radial-gradient(circle,rgba(91,140,142,0.3)_0%,transparent_70%)] rounded-full icon-glow-pulse"></div>
+                      <div className="relative w-16 h-16 bg-[rgba(91,140,142,0.1)] rounded-2xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-[#4A7C7E] group-hover:to-[#5B8C8E] transition-all duration-300">
+                        <item.Icon className="w-8 h-8 text-[#4A7C7E] group-hover:text-white transition-colors duration-300" />
+                      </div>
+                    </div>
+                    
+                    {/* Content */}
+                    <h3 className="text-xl md:text-2xl font-bold text-[#2C5364] mb-3 serif">{item.title}</h3>
+                    <p className="text-gray-500 font-light mb-5 leading-relaxed">{item.desc}</p>
+                    
+                    {/* Details */}
+                    <div className="flex flex-wrap gap-3">
+                      {item.details.map((detail, i) => (
+                        <span key={i} className="inline-flex items-center gap-2 px-4 py-2 bg-[rgba(91,140,142,0.05)] rounded-full text-sm text-[#4A7C7E] font-medium">
+                          <CheckCircle size={16} className="text-[#4A7C7E]" />
+                          {detail}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* Decorative number */}
+                    <div className="absolute top-4 right-6 md:right-8 text-[80px] md:text-[120px] font-black text-[rgba(91,140,142,0.05)] leading-none pointer-events-none">
+                      0{item.step}
+                    </div>
                   </div>
-                  <div className="hidden md:block w-5/12"></div>
                 </div>
               ))}
             </div>
           </div>
           
-          <div className="text-center mt-16">
+          {/* CTA */}
+          <div className="text-center mt-16 md:mt-20">
             <a 
               href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=Olá! Gostaria de agendar minha primeira consulta`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-shimmer bg-gradient-to-r from-[#4A7C7E] to-[#5B8C8E] text-white font-semibold px-10 py-4 rounded-full inline-flex items-center gap-3 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+              className="btn-shimmer btn-ripple-effect inline-flex items-center gap-3 px-10 md:px-12 py-5 md:py-6 text-lg font-semibold text-white bg-gradient-to-r from-[#4A7C7E] to-[#5B8C8E] rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 mb-5"
             >
-              Agendar minha consulta
-              <ArrowRight size={18} />
+              <span>Agendar minha consulta</span>
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
+            <p className="flex items-center justify-center gap-2 text-sm text-gray-400">
+              <Info size={16} className="text-[#4A7C7E]" />
+              Primeira consulta sem compromisso de continuidade
+            </p>
           </div>
         </div>
       </section>
