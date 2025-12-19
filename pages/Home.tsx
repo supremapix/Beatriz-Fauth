@@ -142,7 +142,7 @@ const Home: React.FC = () => {
             <div className="w-full md:w-1/2 relative">
               <div className="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-32 h-32 md:w-48 md:h-48 border-l-4 border-t-4 border-gold/30 rounded-tl-3xl"></div>
               <img 
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" 
+                src="/images/logo-beatriz.jpeg" 
                 alt="Dra Beatriz Fauth" 
                 className="w-full rounded-3xl shadow-2xl relative z-10"
               />
