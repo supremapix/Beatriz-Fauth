@@ -59,9 +59,9 @@ const Services: React.FC = () => {
             <div className="w-full md:w-1/2 relative group">
               <div className="absolute inset-0 bg-gold/10 rounded-[40px] translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform"></div>
               <img 
-                src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&q=80&w=800" 
+                src="/images/terapia-individual-large.jpg" 
                 className="rounded-[40px] shadow-2xl relative z-10 w-full" 
-                alt="Consultório de Psicanálise Individual" 
+                alt="Terapia Individual" 
               />
             </div>
           </div>
@@ -90,9 +90,9 @@ const Services: React.FC = () => {
             </div>
             <div className="w-full md:w-1/2">
               <img 
-                src="https://images.unsplash.com/photo-1484981138541-3d074aa97716?auto=format&fit=crop&q=80&w=800" 
+                src="/images/terapia-casal-large.jpg" 
                 className="rounded-[40px] shadow-2xl w-full" 
-                alt="Terapia de Casal e Família" 
+                alt="Terapia de Casal" 
               />
             </div>
           </div>
@@ -119,10 +119,11 @@ const Services: React.FC = () => {
               </div>
             </div>
             <div className="w-full md:w-1/2">
-               <div className="grid grid-cols-2 gap-4">
-                  <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=400" className="rounded-2xl shadow-lg h-64 object-cover w-full" alt="Terapia de Grupo 1" />
-                  <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=400" className="rounded-2xl shadow-lg h-64 object-cover w-full mt-8" alt="Terapia de Grupo 2" />
-               </div>
+               <img 
+                 src="/images/terapia-grupo-large.jpg" 
+                 className="rounded-[40px] shadow-2xl w-full" 
+                 alt="Terapia de Grupo" 
+               />
             </div>
           </div>
         </div>

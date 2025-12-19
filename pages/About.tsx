@@ -35,7 +35,7 @@ const About: React.FC = () => {
               <div className="absolute -top-10 -left-10 w-full h-full border-2 border-gold/10 rounded-[40px] -z-10 translate-x-4 translate-y-4"></div>
               <div className="relative overflow-hidden rounded-[40px] shadow-2xl group">
                 <img 
-                  src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" 
+                  src="/images/beatriz-profile.jpg" 
                   alt="Dra Beatriz Fauth - Psicanalista" 
                   className="w-full h-auto transition-transform duration-1000 group-hover:scale-105"
                 />
