@@ -38,13 +38,15 @@ The application follows a standard React component hierarchy:
 - Reusable components in `/components`: `ContactForm`, `SchedulingTool`
 
 ### Recent Design Updates (Dec 2025)
-- Redesigned header with white background, delicate typography
-- New hero section with welcoming copy and fade-in animations
+- **Cinematographic Hero Section**: Dark gradient background (#0F2027 to #2C5364) with animated gradient orbs
+- **Typewriter Effect**: Custom React hook cycling through "cura, transformação, acolhimento, autoconhecimento"
+- **Floating Particle System**: 20 particles with precomputed positions for stable CSS animations
+- **Glass-Effect Floating Cards**: "Autoconhecimento" and "Bem-estar" cards with backdrop blur
+- **Counter Animations**: "+30 anos" and "+1000 vidas" counters triggered by Intersection Observer
+- **Shimmer Button Effects**: Gradient animation on CTAs with hover transforms
+- **Scroll Indicator**: Animated mouse wheel indicator pointing to next section
 - WhatsApp floating button with float animation and tooltip
 - Back-to-top button that appears after scrolling
-- New "Why Psychoanalysis" section with benefit cards
-- "How First Session Works" timeline section
-- Improved CTAs with gradient styling and hover effects
 - Section reveal animations on scroll
 
 ### State Management
