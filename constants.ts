@@ -18,46 +18,36 @@ export const NEIGHBORHOODS = [
 
 export const SCHEDULING_SERVICES = [
   {
-    id: "individual",
-    title: "Psicanálise Individual",
-    description: "Espaço de escuta profunda para adultos, focada em conflitos internos e sofrimento psíquico.",
-    price: "R$ 220,00",
-    duration: "0:50",
+    id: "grupo",
+    title: "Terapia de Grupo",
+    description: "A terapia de grupo tem um longo e comprovado registro como uma forma bastante efetiva e produtiva de psicoterapia.",
+    price: "R$ 150,00",
+    duration: "01:00",
+    image: "/images/terapia-grupo.jpg"
   },
   {
     id: "casal",
-    title: "Terapia de Casal",
-    description: "Mediação para reconstruir canais de comunicação e entender a dinâmica do relacionamento.",
-    price: "R$ 280,00",
-    duration: "0:50",
-  },
-  {
-    id: "familiar",
-    title: "Terapia Familiar",
-    description: "Abordagem sistêmica para harmonizar relações e lidar com crises no núcleo familiar.",
-    price: "R$ 320,00",
-    duration: "1:00",
-  },
-  {
-    id: "grupo",
-    title: "Terapia de Grupo",
-    description: "Troca de experiências em ambiente seguro, mediada pela escuta analítica.",
+    title: "Terapia casal",
+    description: "É uma modalidade de terapia que tem como objetivo ajudar o casal que está enfrentando problemas no relacionamento.",
     price: "R$ 150,00",
-    duration: "1:30",
+    duration: "01:00",
+    image: "/images/terapia-casal.jpg"
   },
   {
-    id: "jovens",
-    title: "Atendimento a Jovens",
-    description: "Suporte para as intensas transformações da adolescência e transição para a vida adulta.",
-    price: "R$ 200,00",
-    duration: "0:50",
+    id: "individual",
+    title: "Terapia individual",
+    description: "Modalidade de atendimento de um paciente através de técnicas personalizadas.",
+    price: "R$ 150,00",
+    duration: "01:00",
+    image: "/images/terapia-individual.jpg"
   },
   {
     id: "online",
-    title: "Terapia Online",
-    description: "Atendimento remoto via videoconferência com total sigilo e conveniência.",
-    price: "R$ 220,00",
-    duration: "0:50",
+    title: "Terapia online",
+    description: "É uma modalidade de terapia que permite o atendimento feito à distância.",
+    price: "R$ 150,00",
+    duration: "01:00",
+    image: "/images/terapia-online.jpg"
   }
 ];
 
