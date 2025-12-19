@@ -17,20 +17,35 @@ Preferred communication style: Simple, everyday language.
 
 ### Styling Approach
 - **Tailwind CSS** loaded via CDN for utility-first styling
-- Custom color palette matching original beatrizfauthpsicologa.com.br:
-  - `navy` (#1a5d4a): Primary green/teal color for headers, buttons
+- Delicate, welcoming color palette:
+  - `navy` (#5B8C8E): Primary teal-green color (calming)
+  - `navy-dark` (#4A7C7E): Hover states
+  - `text-navy` (#2D5759): Dark text color
   - `gold` (#c9a962): Accent color for highlights
-  - `sand` (#f8f9f8): Light background color
-  - `teal-900` (#145a48): Hover states
-- **Google Fonts**: Lora (serif) for headings, Montserrat (sans-serif) for body text
+  - `sand` (#F5F1ED): Light beige background
+  - `cream` (#FAFAFA): Off-white backgrounds
+  - `rose` (#E8D5D5): Soft pink accent
+- **Google Fonts**: Cormorant Garamond (serif) for elegant headings, Inter (sans-serif) for body text
 - Responsive design with mobile-first breakpoints
+- CSS animations: fadeInUp, float animation, gentle pulse for CTAs
+- IntersectionObserver for scroll reveal animations
 
 ### Component Structure
 The application follows a standard React component hierarchy:
 - `App.tsx` - Root component with routing configuration
-- Layout components: `Navbar`, `Footer`, `FloatingWhatsApp`
+- Layout components: `Navbar`, `Footer`, `FloatingWhatsApp`, `BackToTop`
 - Page components in `/pages`: Home, About, Services, Contact, Blog
 - Reusable components in `/components`: `ContactForm`, `SchedulingTool`
+
+### Recent Design Updates (Dec 2025)
+- Redesigned header with white background, delicate typography
+- New hero section with welcoming copy and fade-in animations
+- WhatsApp floating button with float animation and tooltip
+- Back-to-top button that appears after scrolling
+- New "Why Psychoanalysis" section with benefit cards
+- "How First Session Works" timeline section
+- Improved CTAs with gradient styling and hover effects
+- Section reveal animations on scroll
 
 ### State Management
 - Local component state using React hooks (`useState`, `useEffect`)
