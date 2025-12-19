@@ -563,6 +563,175 @@
           opacity: 0;
         }
       }
+      
+      /* ============================================
+         PREMIUM HEADER & FOOTER STYLES
+         ============================================ */
+      
+      /* Psi Symbol Animation */
+      .psi-symbol {
+        font-family: 'Times New Roman', Georgia, serif;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .psi-symbol:hover {
+        transform: scale(1.1) rotate(15deg);
+        filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));
+      }
+      
+      .psi-symbol.clicked {
+        animation: psiExplode 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      @keyframes psiExplode {
+        0% { transform: scale(1) rotate(0deg); filter: brightness(1); }
+        30% { transform: scale(1.4) rotate(180deg); filter: brightness(1.5) drop-shadow(0 0 20px rgba(255,255,255,0.8)); }
+        50% { transform: scale(0.9) rotate(360deg); filter: brightness(1.3); }
+        100% { transform: scale(1) rotate(720deg); filter: brightness(1); }
+      }
+      
+      /* Psi Particles */
+      .psi-particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .psi-particles.active .psi-particle {
+        animation: particleExplosion 1s ease-out forwards;
+      }
+      
+      @keyframes particleExplosion {
+        0% { transform: translate(0, 0); opacity: 1; }
+        100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
+      }
+      
+      /* Header glow effect */
+      .header-glow {
+        position: absolute;
+        top: -50%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 200px;
+        background: radial-gradient(ellipse, rgba(91, 140, 142, 0.15) 0%, transparent 70%);
+        filter: blur(40px);
+        pointer-events: none;
+      }
+      
+      /* Menu link underline animation */
+      .menu-link-underline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4A7C7E 0%, #5B8C8E 100%);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .menu-link:hover .menu-link-underline,
+      .menu-link.active .menu-link-underline {
+        transform: scaleX(1);
+      }
+      
+      /* Footer wave */
+      .footer-wave {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: translateY(-99%);
+      }
+      
+      .footer-wave svg {
+        width: 100%;
+        height: 120px;
+        display: block;
+      }
+      
+      /* Footer Psi wrapper animation */
+      .footer-psi-wrapper {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .footer-psi-wrapper:hover {
+        transform: translateY(-4px);
+        background: rgba(255, 255, 255, 0.15);
+      }
+      
+      /* Psi ripple effect for footer */
+      .psi-ripple {
+        position: absolute;
+        inset: 0;
+        border: 2px solid rgba(255,255,255,0.5);
+        border-radius: inherit;
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      
+      .footer-psi-wrapper:hover .psi-ripple {
+        animation: psiRipple 1s ease-out infinite;
+      }
+      
+      @keyframes psiRipple {
+        0% { transform: scale(0.8); opacity: 0.7; }
+        100% { transform: scale(1.4); opacity: 0; }
+      }
+      
+      /* Footer link hover effect */
+      .footer-link {
+        position: relative;
+        transition: all 0.3s ease;
+        padding-left: 0;
+      }
+      
+      .footer-link:hover {
+        color: #c9a962;
+        padding-left: 8px;
+      }
+      
+      .footer-link::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 0;
+        height: 2px;
+        background: #c9a962;
+        transition: width 0.3s ease;
+        transform: translateY(-50%);
+      }
+      
+      .footer-link:hover::before {
+        width: 4px;
+      }
+      
+      /* Instagram button hover */
+      .instagram-btn {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .instagram-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(201, 169, 98, 0.4);
+      }
+      
+      /* Social link hover */
+      .social-link-footer {
+        transition: all 0.3s ease;
+      }
+      
+      .social-link-footer:hover {
+        transform: translateY(-3px);
+        color: #c9a962;
+      }
     </style>
 </head>
   <body>

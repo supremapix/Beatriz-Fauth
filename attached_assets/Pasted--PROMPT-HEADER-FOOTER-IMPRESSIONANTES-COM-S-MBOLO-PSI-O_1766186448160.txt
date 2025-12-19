@@ -1,0 +1,693 @@
+# 🎯 PROMPT - HEADER & FOOTER IMPRESSIONANTES COM SÍMBOLO Ψ (PSI)
+
+## OBJETIVO
+Criar header e footer cinematográficos com o símbolo Ψ (Psi) da Psicologia como elemento central com animações interativas ao clicar e hover.
+
+---
+
+## 🎨 HEADER - DESIGN PREMIUM
+
+```html
+<header class="main-header">
+  <!-- Background com gradiente -->
+  <div class="header-background">
+    <div class="header-glow"></div>
+  </div>
+  
+  <nav class="header-container">
+    <!-- Logo com símbolo Psi -->
+    <a href="#" class="header-logo">
+      <div class="logo-wrapper">
+        <span class="psi-symbol" id="headerPsi">Ψ</span>
+        <div class="psi-particles"></div>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">Beatriz Fauth</span>
+        <span class="logo-subtitle">Psicanálise & Psiquiatria</span>
+      </div>
+    </a>
+    
+    <!-- Menu de navegação -->
+    <ul class="header-menu">
+      <li class="menu-item">
+        <a href="#inicio" class="menu-link">
+          <span class="link-text">Início</span>
+          <span class="link-underline"></span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#sobre" class="menu-link">
+          <span class="link-text">Sobre Beatriz</span>
+          <span class="link-underline"></span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#especialidades" class="menu-link">
+          <span class="link-text">Especialidades</span>
+          <span class="link-underline"></span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#blog" class="menu-link">
+          <span class="link-text">Blog & Artigos</span>
+          <span class="link-underline"></span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#duvidas" class="menu-link">
+          <span class="link-text">Dúvidas Frequentes</span>
+          <span class="link-underline"></span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#contato" class="menu-link">
+          <span class="link-text">Contato</span>
+          <span class="link-underline"></span>
+        </a>
+      </li>
+    </ul>
+    
+    <!-- CTA do header -->
+    <div class="header-cta">
+      <a href="#agendar" class="btn-header">
+        <span class="btn-text">Agendar Consulta</span>
+        <svg class="btn-icon" viewBox="0 0 24 24">
+          <path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        </svg>
+      </a>
+    </div>
+    
+    <!-- Menu mobile -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+  
+  <!-- Menu mobile overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="mobile-menu-content">
+      <div class="mobile-logo">
+        <span class="psi-symbol-mobile">Ψ</span>
+        <span class="mobile-logo-name">Beatriz Fauth</span>
+      </div>
+      
+      <ul class="mobile-nav">
+        <li><a href="#inicio" class="mobile-link">Início</a></li>
+        <li><a href="#sobre" class="mobile-link">Sobre Beatriz</a></li>
+        <li><a href="#especialidades" class="mobile-link">Especialidades</a></li>
+        <li><a href="#blog" class="mobile-link">Blog & Artigos</a></li>
+        <li><a href="#duvidas" class="mobile-link">Dúvidas Frequentes</a></li>
+        <li><a href="#contato" class="mobile-link">Contato</a></li>
+      </ul>
+      
+      <a href="#agendar" class="mobile-cta-btn">Agendar Consulta</a>
+    </div>
+  </div>
+</header>
+```
+
+### CSS HEADER
+
+```css
+/* ============================================
+   HEADER PREMIUM
+   ============================================ */
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(91, 140, 142, 0.1);
+  transition: all 0.3s ease;
+}
+
+.main-header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+}
+
+.header-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.header-glow {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(91, 140, 142, 0.15) 0%, transparent 70%);
+  filter: blur(40px);
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Logo com símbolo Psi */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.header-logo:hover {
+  transform: translateY(-2px);
+}
+
+.logo-wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4A7C7E 0%, #5B8C8E 100%);
+  border-radius: 16px;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.psi-symbol {
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  font-family: 'Times New Roman', serif;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+}
+
+/* Animação ao clicar no Psi */
+.psi-symbol.clicked {
+  animation: psiExplode 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes psiExplode {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+  30% {
+    transform: scale(1.4) rotate(180deg);
+    filter: brightness(1.5) drop-shadow(0 0 20px rgba(255,255,255,0.8));
+  }
+  50% {
+    transform: scale(0.9) rotate(360deg);
+    filter: brightness(1.3);
+  }
+  100% {
+    transform: scale(1) rotate(720deg);
+    filter: brightness(1);
+  }
+}
+
+/* Hover no Psi */
+.psi-symbol:hover {
+  transform: scale(1.1) rotate(15deg);
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));
+}
+
+/* Partículas do Psi */
+.psi-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.psi-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+/* Animação das partículas ao clicar */
+.psi-particles.active .psi-particle {
+  animation: particleExplosion 1s ease-out forwards;
+}
+
+@keyframes particleExplosion {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty));
+    opacity: 0;
+  }
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.logo-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2C5364;
+  line-height: 1;
+}
+
+.logo-subtitle {
+  font-size: 13px;
+  color: #4A7C7E;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Menu de navegação */
+.header-menu {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  position: relative;
+}
+
+.menu-link {
+  position: relative;
+  display: block;
+  padding: 10px 18px;
+  color: #2C5364;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.link-underline {
+  position: absolute;
+  bottom: 8px;
+  left: 18px;
+  right: 18px;
+  height: 2px;
+  background: linear-gradient(90deg, #4A7C7E 0%, #5B8C8E 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-link:hover {
+  color: #4A7C7E;
+}
+
+.menu-link:hover .link-underline {
+  transform: scaleX(1);
+}
+
+/* CTA do header */
+.btn-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #4A7C7E 0%, #5B8C8E 100%);
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(74, 124, 126, 0.25);
+}
+
+.btn-header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(74, 124, 126, 0.35);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  stroke: white;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.3s ease;
+}
+
+.btn-header:hover .btn-icon {
+  transform: translateX(4px);
+}
+
+/* Menu mobile button */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.hamburger-line {
+  width: 28px;
+  height: 3px;
+  background: #4A7C7E;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translateY(9px);
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translateY(-9px);
+}
+
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 85%;
+  max-width: 400px;
+  height: 100vh;
+  background: white;
+  box-shadow: -4px 0 30px rgba(0, 0, 0, 0.15);
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.mobile-menu-overlay.active {
+  right: 0;
+}
+
+.mobile-menu-content {
+  padding: 100px 40px 40px;
+}
+
+.mobile-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.psi-symbol-mobile {
+  font-size: 48px;
+  font-weight: 700;
+  color: #4A7C7E;
+  font-family: 'Times New Roman', serif;
+}
+
+.mobile-logo-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2C5364;
+}
+
+.mobile-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px;
+}
+
+.mobile-nav li {
+  margin-bottom: 8px;
+}
+
+.mobile-link {
+  display: block;
+  padding: 16px;
+  color: #2C5364;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.mobile-link:hover {
+  background: rgba(91, 140, 142, 0.1);
+  color: #4A7C7E;
+  transform: translateX(8px);
+}
+
+.mobile-cta-btn {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #4A7C7E 0%, #5B8C8E 100%);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(74, 124, 126, 0.25);
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .header-menu,
+  .header-cta {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: flex;
+  }
+}
+```
+
+---
+
+## 🎨 FOOTER - DESIGN PREMIUM
+
+```html
+<footer class="main-footer">
+  <!-- Ondas decorativas no topo -->
+  <div class="footer-waves">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,0 C150,100 350,0 600,50 C850,100 1050,0 1200,50 L1200,120 L0,120 Z" 
+            fill="url(#waveGradient)"/>
+      <defs>
+        <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#4A7C7E;stop-opacity:0.3" />
+          <stop offset="50%" style="stop-color:#5B8C8E;stop-opacity:0.5" />
+          <stop offset="100%" style="stop-color:#4A7C7E;stop-opacity:0.3" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  
+  <div class="footer-container">
+    <!-- Coluna 1: Logo e descrição -->
+    <div class="footer-column footer-brand">
+      <div class="footer-logo">
+        <div class="footer-psi-wrapper" id="footerPsi">
+          <span class="footer-psi-symbol">Ψ</span>
+          <div class="psi-ripple"></div>
+          <div class="psi-ring"></div>
+        </div>
+        <div class="footer-logo-text">
+          <span class="footer-brand-name">Beatriz Fauth</span>
+          <span class="footer-brand-subtitle">CRP 12/24037</span>
+        </div>
+      </div>
+      
+      <p class="footer-description">
+        Psicanalista clínica com mais de 30 anos de experiência, 
+        oferecendo um espaço de escuta ética e acolhedora em 
+        Balneário Camboriú.
+      </p>
+      
+      <div class="footer-social">
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Coluna 2: Explorar -->
+    <div class="footer-column">
+      <h3 class="footer-title">Explorar</h3>
+      <ul class="footer-links">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre Beatriz</a></li>
+        <li><a href="#especialidades">Especialidades</a></li>
+        <li><a href="#blog">Blog & Artigos</a></li>
+        <li><a href="#duvidas">Dúvidas Frequentes</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+    
+    <!-- Coluna 3: Contato -->
+    <div class="footer-column">
+      <h3 class="footer-title">Contato</h3>
+      <ul class="footer-contact">
+        <li class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          <span>Rua 1021, 254, sala 3<br>Balneário Camboriú - SC</span>
+        </li>
+        
+        <li class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          <span>(47) 99985-8983</span>
+        </li>
+        
+        <li class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          <span>contato@beatrizfauthpsicologa.com.br</span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Coluna 4: Redes Sociais -->
+    <div class="footer-column">
+      <h3 class="footer-title">Redes Sociais</h3>
+      <p class="footer-social-text">
+        Acompanhe reflexões diárias sobre psicanálise e saúde mental.
+      </p>
+      <a href="#" class="footer-instagram-btn">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+        </svg>
+        Ver Instagram
+      </a>
+    </div>
+  </div>
+  
+  <!-- Rodapé inferior -->
+  <div class="footer-bottom">
+    <div class="footer-container">
+      <p class="footer-copyright">
+        © 2025 Beatriz Fauth. Todos os direitos reservados.
+      </p>
+      
+      <div class="footer-credits">
+        <span>Desenvolvido com</span>
+        <svg class="heart-icon" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span>por</span>
+        <a href="https://www.supremamidia.com.br" target="_blank">Suprema Sites Express</a>
+      </div>
+    </div>
+  </div>
+</footer>
+```
+
+### CSS FOOTER
+
+```css
+/* ============================================
+   FOOTER PREMIUM
+   ============================================ */
+
+.main-footer {
+  position: relative;
+  background: linear-gradient(180deg, #2C5364 0%, #1e3840 100%);
+  color: white;
+  padding-top: 120px;
+  margin-top: 120px;
+}
+
+/* Ondas decorativas */
+.footer-waves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(-99%);
+}
+
+.footer-waves svg {
+  width: 100%;
+  height: 120px;
+  display: block;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px 60px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr;
+  gap: 60px;
+}
+
+/* Logo do footer com Psi */
+.footer-brand {
+  padding-right: 40px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.footer-psi-wrapper {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-psi-wrapper:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.footer-psi-symbol {
+  font-size: 42px;
+  font-weight: 700;
+  color:
