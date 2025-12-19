@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a professional website for Beatriz Fauth, a psychoanalyst and psychologist based in Balneário Camboriú, Brazil. The site serves as a digital presence showcasing her 30+ years of clinical experience, therapy services, and providing appointment scheduling functionality. Built as a single-page application with React, it features a modern, elegant design targeting potential therapy clients in the region.
+This is a professional website for Beatriz Fauth, a psychoanalyst and psychologist based in Balneário Camboriú, Brazil (CRP 12/00649). The site serves as a digital presence showcasing her 30+ years of clinical experience, therapy services, and providing appointment scheduling functionality. Built as a single-page application with React, it features a modern, elegant design targeting potential therapy clients in the region. The content and images have been migrated from the original site at beatrizfauthpsicologa.com.br.
 
 ## User Preferences
 
