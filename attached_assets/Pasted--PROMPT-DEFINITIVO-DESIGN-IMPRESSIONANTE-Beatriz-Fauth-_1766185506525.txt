@@ -1,0 +1,877 @@
+# 🎯 PROMPT DEFINITIVO - DESIGN IMPRESSIONANTE | Beatriz Fauth
+
+## ⚡ OBJETIVO PRINCIPAL
+Transformar o site https://beatriz-fauth--supremapix.replit.app/ em uma experiência visual **IMPRESSIONANTE** e memorável, que faça as pessoas pensarem "UAU!" ao abrir, mantendo a elegância e profissionalismo de uma psicanalista.
+
+---
+
+## 🎨 HERO SECTION - DESIGN DE IMPACTO MÁXIMO
+
+### Conceito Visual: "Portal Emocional"
+Uma hero section **cinematográfica** que combina modernidade, movimento e profundidade emocional.
+
+### Layout Hero (Código Completo)
+
+```html
+<section class="hero-section">
+  <!-- Background com gradiente animado -->
+  <div class="hero-background">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+  </div>
+  
+  <!-- Partículas flutuantes -->
+  <div class="particles-container" id="particles"></div>
+  
+  <!-- Conteúdo principal -->
+  <div class="hero-content">
+    <div class="hero-text">
+      <!-- Badge superior animado -->
+      <div class="hero-badge">
+        <span class="badge-icon">✨</span>
+        <span class="badge-text">+30 anos transformando vidas</span>
+      </div>
+      
+      <!-- Título com efeito de máquina de escrever -->
+      <h1 class="hero-title">
+        <span class="title-line-1">Seu espaço de</span>
+        <span class="title-line-2 typewriter" id="typewriter"></span>
+      </h1>
+      
+      <!-- Subtítulo com fade-in sequencial -->
+      <p class="hero-subtitle">
+        <span class="subtitle-word">Psicanálise</span>
+        <span class="subtitle-word">e</span>
+        <span class="subtitle-word">Psiquiatria</span>
+        <span class="subtitle-word">com</span>
+        <span class="subtitle-word">escuta</span>
+        <span class="subtitle-word">profunda</span>
+      </p>
+      
+      <!-- Descrição com efeito de blur reveal -->
+      <p class="hero-description blur-reveal">
+        Um ambiente acolhedor onde cada palavra importa. 
+        Juntos, exploraremos caminhos para o seu bem-estar emocional 
+        e autoconhecimento profundo.
+      </p>
+      
+      <!-- CTAs com efeito magnético -->
+      <div class="hero-ctas">
+        <button class="cta-primary magnetic-btn">
+          <span class="btn-text">Agendar Primeira Consulta</span>
+          <span class="btn-icon">→</span>
+          <span class="btn-shimmer"></span>
+        </button>
+        
+        <button class="cta-secondary glass-btn">
+          <span class="btn-text">Conhecer Minha Abordagem</span>
+          <span class="btn-icon">↓</span>
+        </button>
+      </div>
+      
+      <!-- Indicadores de confiança -->
+      <div class="trust-indicators">
+        <div class="trust-item fade-in-up">
+          <span class="trust-number counter" data-target="30">0</span>
+          <span class="trust-label">Anos de Experiência</span>
+        </div>
+        <div class="trust-item fade-in-up">
+          <span class="trust-number counter" data-target="1000">0</span>
+          <span class="trust-label">Vidas Transformadas</span>
+        </div>
+        <div class="trust-item fade-in-up">
+          <span class="trust-icon">⭐⭐⭐⭐⭐</span>
+          <span class="trust-label">Avaliação dos Pacientes</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Imagem com efeitos 3D -->
+    <div class="hero-image-container">
+      <div class="image-frame parallax-element" data-speed="2">
+        <div class="image-glow"></div>
+        <img src="beatriz-photo.jpg" alt="Beatriz Fauth" class="hero-image">
+        <div class="image-overlay"></div>
+      </div>
+      
+      <!-- Cards flutuantes decorativos -->
+      <div class="floating-card card-1 parallax-element" data-speed="3">
+        <span class="card-icon">🧠</span>
+        <span class="card-text">Autoconhecimento</span>
+      </div>
+      <div class="floating-card card-2 parallax-element" data-speed="4">
+        <span class="card-icon">💚</span>
+        <span class="card-text">Bem-estar</span>
+      </div>
+      <div class="floating-card card-3 parallax-element" data-speed="2.5">
+        <span class="card-icon">🌟</span>
+        <span class="card-text">Transformação</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll indicator animado -->
+  <div class="scroll-indicator">
+    <div class="mouse">
+      <div class="wheel"></div>
+    </div>
+    <span class="scroll-text">Role para descobrir</span>
+  </div>
+</section>
+```
+
+### CSS Hero - Estilo Impressionante
+
+```css
+/* ============================================
+   HERO SECTION - DESIGN CINEMATOGRÁFICO
+   ============================================ */
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
+}
+
+/* Background com gradientes animados (orbs) */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+  animation: float 20s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #4A7C7E 0%, transparent 70%);
+  top: -200px;
+  right: -100px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #E8D5D5 0%, transparent 70%);
+  bottom: -150px;
+  left: -100px;
+  animation-delay: 7s;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #5B8C8E 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 14s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(50px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-50px, 50px) scale(0.9);
+  }
+}
+
+/* Partículas flutuantes */
+.particles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: particleFloat 15s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* Conteúdo Hero */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Badge Superior */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 32px;
+  animation: fadeInDown 1s ease-out 0.2s both;
+}
+
+.badge-icon {
+  font-size: 18px;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
+}
+
+/* Título com efeito máquina de escrever */
+.hero-title {
+  font-size: clamp(48px, 7vw, 86px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  color: white;
+}
+
+.title-line-1 {
+  display: block;
+  font-weight: 300;
+  font-size: 0.5em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  animation: fadeInLeft 0.8s ease-out 0.4s both;
+}
+
+.title-line-2 {
+  display: block;
+  background: linear-gradient(135deg, #ffffff 0%, #4A7C7E 50%, #E8D5D5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+/* Efeito máquina de escrever */
+.typewriter::after {
+  content: '|';
+  position: absolute;
+  right: -10px;
+  animation: blink 0.7s infinite;
+  color: #4A7C7E;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Subtítulo com palavras animadas */
+.hero-subtitle {
+  font-size: clamp(20px, 3vw, 28px);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+.subtitle-word {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.subtitle-word:nth-child(1) { animation-delay: 1.5s; }
+.subtitle-word:nth-child(2) { animation-delay: 1.7s; }
+.subtitle-word:nth-child(3) { animation-delay: 1.9s; }
+.subtitle-word:nth-child(4) { animation-delay: 2.1s; }
+.subtitle-word:nth-child(5) { animation-delay: 2.3s; }
+.subtitle-word:nth-child(6) { animation-delay: 2.5s; }
+
+/* Descrição com blur reveal */
+.hero-description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 540px;
+  margin-bottom: 40px;
+}
+
+.blur-reveal {
+  filter: blur(10px);
+  opacity: 0;
+  animation: blurReveal 1s ease-out 2.8s both;
+}
+
+@keyframes blurReveal {
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* CTAs com efeito magnético */
+.hero-ctas {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 60px;
+  animation: fadeInUp 1s ease-out 3.2s both;
+}
+
+.cta-primary {
+  position: relative;
+  padding: 20px 48px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #4A7C7E 0%, #5B8C8E 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 10px 40px rgba(74, 124, 126, 0.3);
+}
+
+.cta-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(74, 124, 126, 0.5);
+}
+
+.btn-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.7s;
+}
+
+.cta-primary:hover .btn-shimmer {
+  left: 100%;
+}
+
+.btn-icon {
+  display: inline-block;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.cta-primary:hover .btn-icon {
+  transform: translateX(5px);
+}
+
+/* Botão secundário glassmorphism */
+.cta-secondary {
+  padding: 20px 40px;
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Indicadores de confiança */
+.trust-indicators {
+  display: flex;
+  gap: 40px;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+}
+
+.trust-item:nth-child(1) { animation: fadeInUp 0.8s ease-out 3.6s both; }
+.trust-item:nth-child(2) { animation: fadeInUp 0.8s ease-out 3.8s both; }
+.trust-item:nth-child(3) { animation: fadeInUp 0.8s ease-out 4.0s both; }
+
+.trust-number {
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.trust-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.trust-icon {
+  font-size: 20px;
+}
+
+/* Container da imagem com efeitos 3D */
+.hero-image-container {
+  position: relative;
+  perspective: 1000px;
+}
+
+.image-frame {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  animation: fadeInRight 1s ease-out 0.6s both;
+}
+
+.image-glow {
+  position: absolute;
+  inset: -20px;
+  background: linear-gradient(135deg, #4A7C7E, #E8D5D5);
+  border-radius: 30px;
+  filter: blur(40px);
+  opacity: 0.5;
+  z-index: -1;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+  display: block;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.image-frame:hover .hero-image {
+  transform: scale(1.02);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(74, 124, 126, 0.2) 0%,
+    transparent 50%,
+    rgba(232, 213, 213, 0.2) 100%
+  );
+  border-radius: 30px;
+  pointer-events: none;
+}
+
+/* Cards flutuantes */
+.floating-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+.card-1 {
+  top: 10%;
+  right: -10%;
+  animation-delay: 0s;
+}
+
+.card-2 {
+  bottom: 20%;
+  right: -15%;
+  animation-delay: 2s;
+}
+
+.card-3 {
+  top: 50%;
+  left: -10%;
+  animation-delay: 4s;
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+.card-icon {
+  font-size: 24px;
+}
+
+.card-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2C5364;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  animation: fadeInUp 1s ease-out 4.5s both;
+}
+
+.mouse {
+  width: 26px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  position: relative;
+}
+
+.wheel {
+  width: 4px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll 2s infinite;
+}
+
+@keyframes scroll {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px);
+  }
+}
+
+.scroll-text {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Animações base */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+  }
+  
+  .hero-text {
+    order: 1;
+  }
+  
+  .hero-image-container {
+    order: 2;
+  }
+  
+  .hero-badge,
+  .hero-ctas,
+  .trust-indicators {
+    justify-content: center;
+  }
+  
+  .floating-card {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .cta-primary,
+  .cta-secondary {
+    width: 100%;
+  }
+  
+  .trust-indicators {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+```
+
+### JavaScript - Efeito Máquina de Escrever e Interações
+
+```javascript
+// ============================================
+// EFEITO MÁQUINA DE ESCREVER
+// ============================================
+
+const words = [
+  "acolhimento",
+  "transformação",
+  "autoconhecimento",
+  "cura emocional",
+  "renovação"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typewriterElement = document.getElementById('typewriter');
+
+function typeWriter() {
+  const currentWord = words[wordIndex];
+  
+  if (isDeleting) {
+    typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+    charIndex++;
+  }
+  
+  let typeSpeed = isDeleting ? 50 : 100;
+  
+  if (!isDeleting && charIndex === currentWord.length) {
+    typeSpeed = 2000; // Pausa no final da palavra
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    wordIndex = (wordIndex + 1) % words.length;
+    typeSpeed = 500; // Pausa antes de começar nova palavra
+  }
+  
+  setTimeout(typeWriter, typeSpeed);
+}
+
+// Iniciar após 1 segundo
+setTimeout(() => {
+  typeWriter();
+}, 1000);
+
+// ============================================
+// CONTADOR ANIMADO DOS NÚMEROS
+// ============================================
+
+function animateCounter(element) {
+  const target = parseInt(element.getAttribute('data-target'));
+  const duration = 2000;
+  const increment = target / (duration / 16);
+  let current = 0;
+  
+  const updateCounter = () => {
+    current += increment;
+    if (current < target) {
+      element.textContent = Math.floor(current) + '+';
+      requestAnimationFrame(updateCounter);
+    } else {
+      element.textContent = target + '+';
+    }
+  };
+  
+  updateCounter();
+}
+
+// Observar quando os contadores entram na tela
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.counter').forEach(counter => {
+  counterObserver.observe(counter);
+});
+
+// ============================================
+// PARTÍCULAS FLUTUANTES
+// ============================================
+
+function createParticles() {
+  const container = document.getElementById('particles');
+  const particleCount = 50;
+  
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 15 + 's';
+    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+    container.appendChild(particle);
+  }
+}
+
+createParticles();
+
+// ============================================
+// EFEITO PARALLAX NOS ELEMENTOS
+// ============================================
+
+document.addEventListener('mousemove', (e) => {
+  const parallaxElements = document.querySelectorAll('.parallax-element');
+  const mouseX = e.clientX / window.innerWidth;
+  const mouseY = e.clientY / window.innerHeight;
+  
+  parallaxElements.forEach(element => {
+    const speed = element.getAttribute('data-speed') || 2;
+    const x = (mouseX - 0.5) * speed * 20;
+    const y = (mouseY - 0.5) * speed * 20;
+    
+    element.style.transform = `translate(${x}px, ${y}px)`;
+  });
+});
+
+// ============================================
+// EFEITO MAGNÉTICO NOS BOTÕES
+// ============================================
+
+document.querySelectorAll('.magnetic-btn').forEach(button => {
+  button.addEventListener('mousemove', (e) => {
+    const rect = button.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    button.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+  });
+  
+  button.addEventListener('mouseleave', () => {
+    button.style.transform = 'translate(0, 0)';
+  });
+});
+
+// ============================================
+// SCROLL SUAVE PARA BOTÃO SECUNDÁRIO
+// ============================================
+
+document.querySelector('.cta-secondary').addEventListener('click', () => {
+  const nextSection = document.querySelector('.hero-section').nextElementSibling;
+  nextSection.scrollIntoView({ behavior: 'smooth' });
+});
+```
+
+---
+
+## 🚀 BOTÕES FLUTUANTES DE CONTATO - VERSÃO PREMIUM
+
+```html
+<!-- WhatsApp flutuante com tooltip -->
+<a href="https://api.whatsapp.com/send?phone=5547999858983" 
+   class="float-contact whatsapp-float"
+   data-tooltip="Fale comigo no WhatsApp">
+  <svg class="contact-icon" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>

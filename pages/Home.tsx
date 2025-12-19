@@ -1,12 +1,105 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, ArrowRight, Phone, MapPin, Clock, CheckCircle, Heart, Users, Brain, Sparkles } from 'lucide-react';
 import SchedulingTool from '../components/SchedulingTool';
 import { SCHEDULING_SERVICES, FAQS, BLOG_POSTS, CONTACT_INFO } from '../constants';
 
+const useTypewriter = (words: string[], typingSpeed = 100, deletingSpeed = 50, pauseTime = 2000) => {
+  const [text, setText] = useState('');
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        setText(currentWord.substring(0, text.length + 1));
+        if (text === currentWord) {
+          setTimeout(() => setIsDeleting(true), pauseTime);
+        }
+      } else {
+        setText(currentWord.substring(0, text.length - 1));
+        if (text === '') {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }
+      }
+    }, isDeleting ? deletingSpeed : typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseTime]);
+
+  return text;
+};
+
+const useCountUp = (end: number, duration = 2000, start = 0) => {
+  const [count, setCount] = useState(start);
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isInView) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [isInView]);
+
+  useEffect(() => {
+    if (!isInView) return;
+    
+    let startTime: number;
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      setCount(Math.floor(progress * (end - start) + start));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [isInView, end, start, duration]);
+
+  return { count, ref };
+};
+
+const particleData = Array.from({ length: 20 }, (_, i) => ({
+  id: i,
+  left: Math.random() * 100,
+  delay: Math.random() * 15,
+  duration: 12 + Math.random() * 8,
+}));
+
+const Particles: React.FC = () => {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {particleData.map((particle) => (
+        <div
+          key={particle.id}
+          className="particle"
+          style={{
+            left: `${particle.left}%`,
+            animationDelay: `${particle.delay}s`,
+            animationDuration: `${particle.duration}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 const Home: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const typewriterText = useTypewriter(['cura', 'transformação', 'acolhimento', 'autoconhecimento'], 120, 80, 2500);
+  
+  const counter1 = useCountUp(30, 2000);
+  const counter2 = useCountUp(1000, 2500);
 
   useEffect(() => {
     const observerOptions = {
@@ -31,53 +124,126 @@ const Home: React.FC = () => {
 
   return (
     <div className="bg-cream overflow-x-hidden">
-      {/* Hero Section - Delicate & Welcoming */}
-      <section className="relative min-h-[65vh] flex items-center overflow-hidden pt-32 pb-20 hero-pattern bg-gradient-to-b from-white to-sand">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-            {/* Image Side */}
-            <div className="w-full lg:w-5/12 animate-fade-in-up">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-br from-rose/50 to-navy/10 rounded-3xl blur-2xl opacity-50"></div>
-                <img 
-                  src="/images/logo-beatriz.jpeg" 
-                  alt="Beatriz Fauth - Psicóloga e Psicanalista"
-                  className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl object-cover mx-auto shadow-2xl border-4 border-white"
-                  style={{ borderRadius: '20px' }}
-                />
+      {/* CINEMATIC HERO SECTION */}
+      <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: 'linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%)' }}>
+        {/* Animated Gradient Orbs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="gradient-orb orb-1"></div>
+          <div className="gradient-orb orb-2"></div>
+          <div className="gradient-orb orb-3"></div>
+        </div>
+        
+        {/* Floating Particles */}
+        <Particles />
+        
+        {/* Main Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-24 pt-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Text Side */}
+            <div className="text-center lg:text-left order-2 lg:order-1">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-3 px-6 py-3 glass-effect rounded-full text-white text-sm font-medium mb-8 animate-fade-in-up">
+                <span className="animate-sparkle text-lg">✨</span>
+                <span>+30 anos transformando vidas</span>
+              </div>
+              
+              {/* Title with Typewriter */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
+                <span className="block text-white/80 text-lg md:text-xl font-light tracking-widest uppercase mb-4 animate-fade-in-up-delay-1">
+                  Seu espaço de
+                </span>
+                <span className="block gradient-text serif animate-fade-in-up-delay-2">
+                  {typewriterText}
+                  <span className="typewriter-cursor"></span>
+                </span>
+              </h1>
+              
+              {/* Subtitle with Word Animation */}
+              <p className="text-xl md:text-2xl text-white/80 font-light mb-6 animate-fade-in-up-delay-3">
+                Psicanálise e Psiquiatria com escuta profunda
+              </p>
+              
+              {/* Description with Blur Reveal */}
+              <p className="text-lg text-white/60 font-light mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed blur-reveal" style={{ animationDelay: '1.5s' }}>
+                Um ambiente acolhedor onde cada palavra importa. Juntos, exploraremos caminhos para o seu bem-estar emocional e autoconhecimento profundo.
+              </p>
+              
+              {/* CTAs with Shimmer Effect */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12 animate-fade-in-up-delay-4">
+                <a 
+                  href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=Olá! Gostaria de agendar minha primeira consulta`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-shimmer group bg-gradient-to-r from-[#4A7C7E] to-[#5B8C8E] text-white font-semibold px-10 py-5 rounded-full flex items-center justify-center gap-3 shadow-2xl hover:shadow-[0_20px_60px_rgba(74,124,126,0.5)] transition-all duration-500 hover:-translate-y-1"
+                >
+                  <span>Agendar Primeira Consulta</span>
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </a>
+                <Link 
+                  to="/sobre"
+                  className="glass-effect text-white font-medium px-8 py-5 rounded-full flex items-center justify-center gap-3 hover:bg-white/20 transition-all duration-300"
+                >
+                  <span>Conhecer Minha Abordagem</span>
+                  <ChevronRight size={18} />
+                </Link>
+              </div>
+              
+              {/* Trust Indicators */}
+              <div className="flex flex-wrap justify-center lg:justify-start gap-8">
+                <div ref={counter1.ref} className="text-center animate-fade-in-up" style={{ animationDelay: '2s' }}>
+                  <div className="text-4xl font-bold text-white mb-1">{counter1.count}+</div>
+                  <div className="text-sm text-white/60 uppercase tracking-wider">Anos de Experiência</div>
+                </div>
+                <div ref={counter2.ref} className="text-center animate-fade-in-up" style={{ animationDelay: '2.2s' }}>
+                  <div className="text-4xl font-bold text-white mb-1">{counter2.count}+</div>
+                  <div className="text-sm text-white/60 uppercase tracking-wider">Vidas Transformadas</div>
+                </div>
+                <div className="text-center animate-fade-in-up" style={{ animationDelay: '2.4s' }}>
+                  <div className="text-2xl text-gold mb-1">⭐⭐⭐⭐⭐</div>
+                  <div className="text-sm text-white/60 uppercase tracking-wider">Avaliação dos Pacientes</div>
+                </div>
               </div>
             </div>
             
-            {/* Text Side */}
-            <div className="w-full lg:w-7/12 text-center lg:text-left">
-              <p className="text-navy-light text-sm font-medium tracking-wide mb-4 animate-fade-in-up-delay-1">
-                Psicanálise e Psiquiatria em Balneário Camboriú
-              </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold serif text-navy mb-6 leading-tight animate-fade-in-up-delay-2" style={{ lineHeight: '1.2' }}>
-                Um espaço seguro para seu cuidado emocional
-              </h1>
-              <p className="text-lg md:text-xl text-gray-600 font-light mb-8 leading-relaxed animate-fade-in-up-delay-3" style={{ lineHeight: '1.7' }}>
-                Há mais de 30 anos, acolho pessoas em sua jornada de autoconhecimento e bem-estar emocional. Meu compromisso é oferecer um ambiente de confiança, onde você possa se expressar livremente e encontrar caminhos para uma vida mais plena.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up-delay-4">
-                <a 
-                  href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=Olá! Gostaria de agendar uma consulta`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary text-white font-semibold px-10 py-4 rounded-full text-center flex items-center justify-center gap-3 animate-gentle-pulse"
-                >
-                  Agende sua primeira consulta
-                  <ArrowRight size={18} />
-                </a>
-                <Link 
-                  to="/sobre" 
-                  className="btn-secondary border-2 border-navy text-navy font-semibold px-8 py-4 rounded-full text-center hover:bg-navy hover:text-white"
-                >
-                  Conheça minha abordagem
-                </Link>
+            {/* Image Side with 3D Effects */}
+            <div className="relative order-1 lg:order-2 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+              <div className="relative max-w-md mx-auto">
+                {/* Image with Glow */}
+                <div className="relative tilt-3d">
+                  <div className="absolute -inset-4 bg-gradient-to-br from-[#4A7C7E] to-[#E8D5D5] rounded-3xl filter blur-xl opacity-50 image-glow-pulse"></div>
+                  <img 
+                    src="/images/logo-beatriz.jpeg" 
+                    alt="Beatriz Fauth - Psicóloga e Psicanalista"
+                    className="relative w-full rounded-3xl shadow-2xl border-2 border-white/20"
+                  />
+                </div>
+                
+                {/* Floating Cards */}
+                <div className="absolute -top-4 -left-4 md:-left-12 glass-effect rounded-2xl px-4 py-3 floating-card floating-card-1 hidden md:flex items-center gap-3 shadow-xl">
+                  <span className="text-2xl">🧠</span>
+                  <span className="text-white font-medium text-sm">Autoconhecimento</span>
+                </div>
+                
+                <div className="absolute top-1/2 -right-4 md:-right-16 glass-effect rounded-2xl px-4 py-3 floating-card floating-card-2 hidden md:flex items-center gap-3 shadow-xl">
+                  <span className="text-2xl">💚</span>
+                  <span className="text-white font-medium text-sm">Bem-estar</span>
+                </div>
+                
+                <div className="absolute -bottom-4 left-1/4 glass-effect rounded-2xl px-4 py-3 floating-card floating-card-3 hidden md:flex items-center gap-3 shadow-xl">
+                  <span className="text-2xl">🌟</span>
+                  <span className="text-white font-medium text-sm">Transformação</span>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3 animate-fade-in-up" style={{ animationDelay: '3s' }}>
+          <div className="scroll-indicator-mouse">
+            <div className="scroll-indicator-wheel"></div>
+          </div>
+          <span className="text-white/50 text-sm tracking-widest uppercase">Role para descobrir</span>
         </div>
       </section>
 
@@ -98,7 +264,7 @@ const Home: React.FC = () => {
               { icon: Users, title: 'Melhores Relacionamentos', desc: 'Desenvolva conexões mais saudáveis e autênticas.' },
               { icon: Sparkles, title: 'Vida Plena', desc: 'Construa uma existência mais autêntica e significativa.' }
             ].map((item, index) => (
-              <div key={index} className="text-center p-8 rounded-2xl bg-sand hover:bg-rose/30 transition-all duration-300 group">
+              <div key={index} className="text-center p-8 rounded-2xl bg-sand hover:bg-rose/30 transition-all duration-300 group hover:-translate-y-2 hover:shadow-xl">
                 <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-white flex items-center justify-center text-navy-light group-hover:bg-navy group-hover:text-white transition-all duration-300 shadow-md">
                   <item.icon size={28} />
                 </div>
@@ -162,7 +328,6 @@ const Home: React.FC = () => {
           </div>
           
           <div className="relative">
-            {/* Timeline Line */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-navy-light via-gold to-navy-light transform -translate-x-1/2"></div>
             
             <div className="space-y-12">
@@ -191,7 +356,7 @@ const Home: React.FC = () => {
               href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=Olá! Gostaria de agendar minha primeira consulta`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary text-white font-semibold px-10 py-4 rounded-full inline-flex items-center gap-3"
+              className="btn-shimmer bg-gradient-to-r from-[#4A7C7E] to-[#5B8C8E] text-white font-semibold px-10 py-4 rounded-full inline-flex items-center gap-3 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
             >
               Agendar minha consulta
               <ArrowRight size={18} />
@@ -206,7 +371,7 @@ const Home: React.FC = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Agende sua sessão</h2>
             <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light">
-              Realizo atendimento psicológico online e presencial para pessoas acima de 8 anos com sintomas de depressão, angústia, ansiedade, dificuldades de relacionamento, entre outras questões.
+              Realizo atendimento psicológico online e presencial para pessoas acima de 8 anos.
             </p>
           </div>
           <SchedulingTool />
@@ -259,7 +424,7 @@ const Home: React.FC = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Perguntas Frequentes</h2>
             <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light">
-              Tire suas dúvidas sobre o processo terapêutico. Caso não encontre sua resposta, entre em contato.
+              Tire suas dúvidas sobre o processo terapêutico.
             </p>
           </div>
 
@@ -303,10 +468,10 @@ const Home: React.FC = () => {
       </section>
 
       {/* Contact CTA Section */}
-      <section className="py-24 bg-navy text-white section-reveal">
+      <section className="py-24 section-reveal" style={{ background: 'linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:w-1/2 text-white">
               <p className="text-gold text-sm font-medium tracking-wide mb-4">Psicóloga e Psicanalista</p>
               <h2 className="text-3xl md:text-4xl serif text-white mb-6">Beatriz Fauth</h2>
               <p className="text-white/70 mb-6 leading-relaxed text-lg font-light">
@@ -331,14 +496,14 @@ const Home: React.FC = () => {
               </div>
             </div>
             <div className="w-full lg:w-1/2">
-              <div className="bg-white/5 rounded-2xl p-8 border border-white/10 backdrop-blur-sm">
+              <div className="glass-effect rounded-2xl p-8">
                 <h3 className="text-xl font-semibold text-gold mb-6 serif">Informações de Contato</h3>
                 <div className="space-y-5">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
                       <MapPin size={18} className="text-gold" />
                     </div>
-                    <div>
+                    <div className="text-white">
                       <p className="font-medium mb-1">Localização</p>
                       <p className="text-white/60 font-light">Rua 1021, 254, sala 3, em Balneário Camboriú.</p>
                     </div>
@@ -347,7 +512,7 @@ const Home: React.FC = () => {
                     <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
                       <Clock size={18} className="text-gold" />
                     </div>
-                    <div>
+                    <div className="text-white">
                       <p className="font-medium mb-1">Horário de Atendimento</p>
                       <p className="text-white/60 font-light">Segunda à sexta de 08:00 às 18:00<br/>Sábados de 08:00 às 12:00</p>
                     </div>
@@ -356,7 +521,7 @@ const Home: React.FC = () => {
                     <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
                       <Phone size={18} className="text-gold" />
                     </div>
-                    <div>
+                    <div className="text-white">
                       <p className="font-medium mb-1">WhatsApp</p>
                       <p className="text-white/60 font-light">{CONTACT_INFO.phone}</p>
                     </div>
