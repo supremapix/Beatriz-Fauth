@@ -24,80 +24,83 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Beatriz Psicóloga', path: '/sobre' },
+    { name: 'Sobre Mim', path: '/sobre' },
     { name: 'Terapias', path: '/servicos' },
     { name: 'Dúvidas', path: '/blog#duvidas' },
-    { name: 'Agendar Sessão', path: '/contato' },
     { name: 'Contato', path: '/contato' },
   ];
 
   return (
-    <header className="fixed w-full z-50 transition-all duration-300">
+    <header className="fixed w-full z-50 transition-all duration-500">
       {/* Top Contact Bar - Hidden on Mobile */}
-      <div className={`hidden lg:block transition-all duration-300 ${scrolled ? 'h-0 opacity-0 overflow-hidden' : 'bg-navy text-sand/60 py-2 border-b border-white/5'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-[10px] tracking-[0.2em] uppercase font-bold">
-          <div className="flex items-center space-x-8">
-            <a href={`https://wa.me/${CONTACT_INFO.phoneRaw}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-gold transition-colors">
-              <Phone size={12} className="text-gold" /> {CONTACT_INFO.phone}
+      <div className={`hidden lg:block transition-all duration-300 ${scrolled ? 'h-0 opacity-0 overflow-hidden' : 'bg-white/80 backdrop-blur-sm text-gray-600 py-2 border-b border-gray-100'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs font-medium">
+          <div className="flex items-center space-x-6">
+            <a href={`https://wa.me/${CONTACT_INFO.phoneRaw}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-navy-light transition-colors">
+              <Phone size={14} className="text-navy-light" /> {CONTACT_INFO.phone}
             </a>
-            <span className="opacity-20">|</span>
-            <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-2 hover:text-gold transition-colors lowercase tracking-normal">
-              <Mail size={12} className="text-gold" /> {CONTACT_INFO.email}
+            <span className="text-gray-300">|</span>
+            <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-2 hover:text-navy-light transition-colors">
+              <Mail size={14} className="text-navy-light" /> {CONTACT_INFO.email}
             </a>
           </div>
           <div className="flex items-center space-x-5">
-            <span className="text-gold/50">{CONTACT_INFO.crp}</span>
-            <span className="opacity-20">|</span>
-            <div className="flex items-center space-x-4">
-              <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors"><Instagram size={14} /></a>
-              <a href={CONTACT_INFO.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors"><Facebook size={14} /></a>
+            <span className="text-navy-light font-semibold">{CONTACT_INFO.crp}</span>
+            <span className="text-gray-300">|</span>
+            <div className="flex items-center space-x-3">
+              <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-navy-light transition-colors"><Instagram size={16} /></a>
+              <a href={CONTACT_INFO.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-navy-light transition-colors"><Facebook size={16} /></a>
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Navigation */}
-      <nav className={`transition-all duration-300 shadow-xl ${scrolled ? 'bg-navy/95 backdrop-blur-md py-3 border-b border-gold/10' : 'bg-navy py-4 md:py-5'}`}>
+      <nav className={`transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md py-3 shadow-sm' : 'bg-white py-4 md:py-5'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-4 group">
               <div className="flex flex-col">
-                <span className="text-xl md:text-3xl font-bold serif text-white group-hover:text-gold transition-colors tracking-tight">Beatriz <span className="text-gold">Fauth</span></span>
-                <span className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] text-white/50 font-bold">Psicóloga & Psicanalista</span>
+                <span className="text-2xl md:text-3xl font-semibold serif text-navy group-hover:text-navy-light transition-colors tracking-tight">
+                  Beatriz <span className="text-gold">Fauth</span>
+                </span>
+                <span className="text-[10px] md:text-xs text-gray-500 font-medium tracking-wide">
+                  Psicóloga & Psicanalista
+                </span>
               </div>
             </Link>
 
             {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <div className="hidden lg:flex items-center space-x-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`text-[11px] xl:text-xs font-black uppercase tracking-widest hover:text-gold transition-all duration-300 relative group py-2 ${location.pathname + location.hash === link.path ? 'text-gold' : 'text-white'}`}
+                  className={`text-sm font-medium hover:text-navy-light transition-all duration-300 relative group py-2 ${location.pathname + location.hash === link.path ? 'text-navy-light' : 'text-gray-600'}`}
                 >
                   {link.name}
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gold transform transition-transform duration-300 ${location.pathname + location.hash === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-navy-light transform transition-transform duration-300 origin-left ${location.pathname + location.hash === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                 </Link>
               ))}
               <a 
-                href={`https://wa.me/${CONTACT_INFO.phoneRaw}`} 
+                href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=Olá! Gostaria de agendar uma consulta`} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-gold text-navy px-6 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105 active:scale-95"
+                className="btn-primary text-white px-6 py-3 rounded-full text-sm font-semibold hover:shadow-lg"
               >
-                Consulta Online
+                Agendar Consulta
               </a>
             </div>
 
             {/* Mobile Menu Button */}
             <div className="lg:hidden flex items-center gap-3">
-              <a href={`https://wa.me/${CONTACT_INFO.phoneRaw}`} className="w-9 h-9 bg-gold text-navy rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
-                <Phone size={16} />
+              <a href={`https://wa.me/${CONTACT_INFO.phoneRaw}`} className="w-10 h-10 bg-navy text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+                <Phone size={18} />
               </a>
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 text-white hover:text-gold transition-colors"
+                className="p-2 text-gray-600 hover:text-navy-light transition-colors"
                 aria-label="Menu principal"
               >
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -107,27 +110,42 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Menu Overlay */}
-        <div className={`lg:hidden fixed inset-0 top-[68px] z-40 bg-navy transition-all duration-500 ease-in-out ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
-          <div className="flex flex-col h-full px-8 py-8 space-y-6 overflow-y-auto">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`text-2xl font-serif border-b border-white/5 pb-3 ${location.pathname + location.hash === link.path ? 'text-gold' : 'text-white'}`}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="pt-6 flex flex-col space-y-6">
-              <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-black">Entre em contato</p>
-              <div className="flex space-x-6 text-white">
-                <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors"><Instagram size={28} /></a>
-                <a href={CONTACT_INFO.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors"><Facebook size={28} /></a>
-                <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-gold transition-colors"><Mail size={28} /></a>
+        <div 
+          className={`lg:hidden fixed inset-0 bg-black/50 z-40 transition-opacity duration-400 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          onClick={() => setIsOpen(false)}
+        />
+        
+        {/* Mobile Menu Panel */}
+        <div className={`lg:hidden fixed top-0 right-0 w-4/5 max-w-sm h-full z-50 bg-white shadow-2xl transition-transform duration-400 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className="flex flex-col h-full px-8 py-8 overflow-y-auto">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-6 right-6 p-2 text-gray-500 hover:text-navy-light transition-colors"
+              aria-label="Fechar menu"
+            >
+              <X size={24} />
+            </button>
+            
+            <div className="mt-12 space-y-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`block text-lg font-medium py-3 border-b border-gray-100 transition-colors ${location.pathname + location.hash === link.path ? 'text-navy-light' : 'text-gray-700 hover:text-navy-light'}`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+            
+            <div className="mt-auto pt-8">
+              <p className="text-sm text-gray-500 mb-4">Entre em contato</p>
+              <div className="flex space-x-4 text-gray-600 mb-6">
+                <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-navy-light transition-colors"><Instagram size={24} /></a>
+                <a href={CONTACT_INFO.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-navy-light transition-colors"><Facebook size={24} /></a>
+                <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-navy-light transition-colors"><Mail size={24} /></a>
               </div>
-              <div className="mt-4 text-white/40 text-[10px] uppercase tracking-widest">
-                {CONTACT_INFO.crp}
-              </div>
+              <p className="text-sm text-navy-light font-semibold">{CONTACT_INFO.crp}</p>
             </div>
           </div>
         </div>

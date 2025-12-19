@@ -46,14 +46,85 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
       body {
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Inter', 'Montserrat', sans-serif;
+        font-weight: 400;
       }
       h1, h2, h3, h4, .serif {
-        font-family: 'Lora', serif;
+        font-family: 'Cormorant Garamond', 'Lora', serif;
+        font-weight: 600;
       }
       
+      /* New Delicate Color Palette */
+      .bg-navy { background-color: #5B8C8E; }
+      .bg-navy-dark { background-color: #4A7C7E; }
+      .text-navy { color: #2D5759; }
+      .text-navy-light { color: #5B8C8E; }
+      .bg-sand { background-color: #F5F1ED; }
+      .text-sand { color: #F5F1ED; }
+      .bg-cream { background-color: #FAFAFA; }
+      .border-gold { border-color: #c9a962; }
+      .text-gold { color: #c9a962; }
+      .bg-gold { background-color: #c9a962; }
+      .bg-rose { background-color: #E8D5D5; }
+      .text-rose { color: #E8D5D5; }
+      .bg-teal-900 { background-color: #2D5759; }
+      
+      /* Fade In Up Animation */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out both;
+      }
+      
+      .animate-fade-in-up-delay-1 {
+        animation: fadeInUp 1s ease-out 0.2s both;
+      }
+      
+      .animate-fade-in-up-delay-2 {
+        animation: fadeInUp 1s ease-out 0.4s both;
+      }
+      
+      .animate-fade-in-up-delay-3 {
+        animation: fadeInUp 1s ease-out 0.6s both;
+      }
+      
+      .animate-fade-in-up-delay-4 {
+        animation: fadeInUp 1s ease-out 0.8s both;
+      }
+      
+      /* Float Animation for WhatsApp */
+      @keyframes floatAnimation {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      
+      .animate-float {
+        animation: floatAnimation 3s ease-in-out infinite;
+      }
+      
+      /* Gentle Pulse for CTAs */
+      @keyframes gentlePulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.02); }
+      }
+      
+      .animate-gentle-pulse {
+        animation: gentlePulse 3s ease-in-out infinite;
+      }
+      
+      /* Heartbeat Animation */
       @keyframes heartbeat {
         0% { transform: scale(1); }
         10% { transform: scale(1.2); }
@@ -68,24 +139,48 @@
         display: inline-block;
       }
 
-      .animate-pulse-slow {
-        animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      /* Section Reveal Animation */
+      .section-reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       }
-      @keyframes pulse {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: .7; transform: scale(1.1); }
+      
+      .section-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
-      .bg-navy { background-color: #1a5d4a; }
-      .text-navy { color: #1a5d4a; }
-      .bg-sand { background-color: #f8f9f8; }
-      .text-sand { color: #f8f9f8; }
-      .border-gold { border-color: #c9a962; }
-      .text-gold { color: #c9a962; }
-      .bg-teal-900 { background-color: #145a48; }
+      
+      /* Button Hover Effects */
+      .btn-primary {
+        background: linear-gradient(135deg, #5B8C8E 0%, #4A7C7E 100%);
+        box-shadow: 0 4px 15px rgba(91, 140, 142, 0.2);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(91, 140, 142, 0.35);
+      }
+      
+      .btn-secondary {
+        transition: all 0.3s ease;
+      }
+      
+      .btn-secondary:hover {
+        transform: translateX(5px);
+      }
       
       /* Global Smooth Scroll */
       html {
         scroll-behavior: smooth;
+      }
+      
+      /* Hero Background Pattern */
+      .hero-pattern {
+        background-image: 
+          radial-gradient(circle at 20% 80%, rgba(91, 140, 142, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(232, 213, 213, 0.08) 0%, transparent 50%);
       }
     </style>
 </head>

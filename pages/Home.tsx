@@ -1,87 +1,148 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, ArrowRight, Phone, MapPin, Clock, CheckCircle } from 'lucide-react';
+import { ChevronRight, ArrowRight, Phone, MapPin, Clock, CheckCircle, Heart, Users, Brain, Sparkles } from 'lucide-react';
 import SchedulingTool from '../components/SchedulingTool';
 import { SCHEDULING_SERVICES, FAQS, BLOG_POSTS, CONTACT_INFO } from '../constants';
 
 const Home: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section-reveal').forEach(section => {
+      observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="bg-sand overflow-x-hidden">
-      <section className="relative min-h-[100dvh] flex items-center overflow-hidden pt-24">
-        <div className="absolute inset-0 z-0 bg-navy"></div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="w-full lg:w-1/2">
-              <img 
-                src="/images/logo-beatriz.jpeg" 
-                alt="Beatriz Fauth - Psicóloga e Psicanalista"
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover mx-auto border-4 border-gold/30 shadow-2xl"
-              />
+    <div className="bg-cream overflow-x-hidden">
+      {/* Hero Section - Delicate & Welcoming */}
+      <section className="relative min-h-[65vh] flex items-center overflow-hidden pt-32 pb-20 hero-pattern bg-gradient-to-b from-white to-sand">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            {/* Image Side */}
+            <div className="w-full lg:w-5/12 animate-fade-in-up">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-br from-rose/50 to-navy/10 rounded-3xl blur-2xl opacity-50"></div>
+                <img 
+                  src="/images/logo-beatriz.jpeg" 
+                  alt="Beatriz Fauth - Psicóloga e Psicanalista"
+                  className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl object-cover mx-auto shadow-2xl border-4 border-white"
+                  style={{ borderRadius: '20px' }}
+                />
+              </div>
             </div>
-            <div className="w-full lg:w-1/2 text-center lg:text-left">
-              <p className="text-gold text-sm uppercase tracking-widest mb-4">Beatriz Fauth Psicologia e Psicanálise</p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold serif text-white mb-6 leading-tight">
-                Terapias para uma vida melhor
-              </h1>
-              <p className="text-lg md:text-xl text-sand/80 font-light mb-8 leading-relaxed">
-                Por meio de experiência pessoal e estudos na área da psicologia, ajudarei você a alcançar bem-estar emocional e mental. Ofereço um ambiente acolhedor e seguro para explorar suas preocupações e trabalhar em conjunto para superar desafios.
+            
+            {/* Text Side */}
+            <div className="w-full lg:w-7/12 text-center lg:text-left">
+              <p className="text-navy-light text-sm font-medium tracking-wide mb-4 animate-fade-in-up-delay-1">
+                Psicanálise e Psiquiatria em Balneário Camboriú
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link 
-                  to="/contato" 
-                  className="bg-gold hover:bg-gold/90 text-navy font-black px-8 py-4 rounded-lg transition-all transform hover:-translate-y-1 text-center flex items-center justify-center gap-3"
-                >
-                  AGENDAR CONSULTA
-                  <ArrowRight size={18} />
-                </Link>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold serif text-navy mb-6 leading-tight animate-fade-in-up-delay-2" style={{ lineHeight: '1.2' }}>
+                Um espaço seguro para seu cuidado emocional
+              </h1>
+              <p className="text-lg md:text-xl text-gray-600 font-light mb-8 leading-relaxed animate-fade-in-up-delay-3" style={{ lineHeight: '1.7' }}>
+                Há mais de 30 anos, acolho pessoas em sua jornada de autoconhecimento e bem-estar emocional. Meu compromisso é oferecer um ambiente de confiança, onde você possa se expressar livremente e encontrar caminhos para uma vida mais plena.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up-delay-4">
                 <a 
-                  href={`https://wa.me/${CONTACT_INFO.phoneRaw}`}
+                  href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=Olá! Gostaria de agendar uma consulta`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border-2 border-white/30 hover:border-gold text-white hover:text-gold font-bold px-8 py-4 rounded-lg transition-all text-center"
+                  className="btn-primary text-white font-semibold px-10 py-4 rounded-full text-center flex items-center justify-center gap-3 animate-gentle-pulse"
                 >
-                  FALE COMIGO
+                  Agende sua primeira consulta
+                  <ArrowRight size={18} />
                 </a>
+                <Link 
+                  to="/sobre" 
+                  className="btn-secondary border-2 border-navy text-navy font-semibold px-8 py-4 rounded-full text-center hover:bg-navy hover:text-white"
+                >
+                  Conheça minha abordagem
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      {/* Why Psychoanalysis Section */}
+      <section className="py-24 bg-white section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Nossas Terapias</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
-              Oferecemos diferentes modalidades de atendimento adaptadas às necessidades específicas de cada fase da vida.
+            <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Por que escolher a psicanálise?</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light">
+              A psicanálise oferece um caminho profundo para o autoconhecimento e transformação pessoal.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { icon: Brain, title: 'Autoconhecimento', desc: 'Descubra suas motivações inconscientes e padrões de comportamento.' },
+              { icon: Heart, title: 'Alívio de Sintomas', desc: 'Trabalhe as causas profundas da ansiedade, depressão e angústias.' },
+              { icon: Users, title: 'Melhores Relacionamentos', desc: 'Desenvolva conexões mais saudáveis e autênticas.' },
+              { icon: Sparkles, title: 'Vida Plena', desc: 'Construa uma existência mais autêntica e significativa.' }
+            ].map((item, index) => (
+              <div key={index} className="text-center p-8 rounded-2xl bg-sand hover:bg-rose/30 transition-all duration-300 group">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-white flex items-center justify-center text-navy-light group-hover:bg-navy group-hover:text-white transition-all duration-300 shadow-md">
+                  <item.icon size={28} />
+                </div>
+                <h3 className="text-xl font-semibold text-navy mb-3 serif">{item.title}</h3>
+                <p className="text-gray-600 font-light">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-24 bg-sand section-reveal">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Modalidades de Atendimento</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light">
+              Oferecemos diferentes modalidades adaptadas às necessidades específicas de cada fase da vida.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {SCHEDULING_SERVICES.map((service) => (
-              <div key={service.id} className="group bg-sand rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                <div className="relative h-48 overflow-hidden">
+              <div key={service.id} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="relative h-52 overflow-hidden">
                   <img 
                     src={service.id === 'grupo' ? '/images/terapia-grupo-large.jpg' : 
                          service.id === 'casal' ? '/images/terapia-casal-large.jpg' : 
                          service.id === 'individual' ? '/images/terapia-individual-large.jpg' : 
                          service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-navy mb-2 serif">{service.title}</h3>
-                  <p className="text-gray-500 text-sm mb-4 line-clamp-3">{service.description}</p>
+                  <h3 className="text-xl font-semibold text-navy mb-2 serif">{service.title}</h3>
+                  <p className="text-gray-500 text-sm mb-4 line-clamp-3 font-light">{service.description}</p>
                   <Link 
                     to={`/servicos#${service.id}`}
-                    className="inline-flex items-center gap-2 text-navy font-bold hover:text-gold transition-colors"
+                    className="inline-flex items-center gap-2 text-navy-light font-medium hover:text-navy transition-colors group/link"
                   >
-                    Saiba mais <ChevronRight size={16} />
+                    Saiba mais 
+                    <ChevronRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
@@ -90,48 +151,100 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-sand" id="agendar">
+      {/* How First Session Works */}
+      <section className="py-24 bg-white section-reveal">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Como funciona a primeira consulta</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light">
+              Um primeiro passo acolhedor em direção ao seu bem-estar emocional.
+            </p>
+          </div>
+          
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-navy-light via-gold to-navy-light transform -translate-x-1/2"></div>
+            
+            <div className="space-y-12">
+              {[
+                { step: '1', title: 'Agendamento', desc: 'Entre em contato via WhatsApp ou telefone. Escolhemos juntos o melhor horário.' },
+                { step: '2', title: 'Acolhimento', desc: 'Na primeira sessão, você é acolhido em um ambiente seguro e sigiloso.' },
+                { step: '3', title: 'Escuta', desc: 'Compartilhe suas questões no seu tempo. Não há julgamentos, apenas escuta.' },
+                { step: '4', title: 'Caminho', desc: 'Juntos, traçamos um plano terapêutico personalizado para suas necessidades.' }
+              ].map((item, index) => (
+                <div key={index} className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+                  <div className={`w-full md:w-5/12 ${index % 2 === 1 ? 'md:text-left' : 'md:text-right'}`}>
+                    <h3 className="text-xl font-semibold text-navy mb-2 serif">{item.title}</h3>
+                    <p className="text-gray-600 font-light">{item.desc}</p>
+                  </div>
+                  <div className="relative z-10 w-12 h-12 rounded-full bg-gradient-to-br from-navy-light to-navy flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    {item.step}
+                  </div>
+                  <div className="hidden md:block w-5/12"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="text-center mt-16">
+            <a 
+              href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=Olá! Gostaria de agendar minha primeira consulta`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-white font-semibold px-10 py-4 rounded-full inline-flex items-center gap-3"
+            >
+              Agendar minha consulta
+              <ArrowRight size={18} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Scheduling Section */}
+      <section className="py-24 bg-sand section-reveal" id="agendar">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Agendar sessão!</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
-              Realizo atendimento psicológico online às pessoas de idade superior a 8 anos com sintomas de depressão, angústia, ansiedade, tristeza, dificuldades no relacionamento, entre outras situações que estejam lhe incomodando.
+            <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Agende sua sessão</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light">
+              Realizo atendimento psicológico online e presencial para pessoas acima de 8 anos com sintomas de depressão, angústia, ansiedade, dificuldades de relacionamento, entre outras questões.
             </p>
           </div>
           <SchedulingTool />
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      {/* Blog Section */}
+      <section className="py-24 bg-white section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Blog Mente Saudável</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
-              Artigos sobre Psicologia. Se mantenha informado com dicas, sugestões, notícias e artigos, para viver uma vida mental, psicológica e emocional mais equilibrada.
+            <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light">
+              Artigos sobre Psicologia para ajudar você a viver uma vida emocional mais equilibrada.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {BLOG_POSTS.map((post) => (
-              <div key={post.id} className="group bg-sand rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div key={post.id} className="group bg-sand rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-navy text-white text-xs px-3 py-1 rounded-full">{post.category}</span>
+                    <span className="bg-navy text-white text-xs px-3 py-1 rounded-full font-medium">{post.category}</span>
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-bold text-navy mb-2 serif line-clamp-2">{post.title}</h3>
-                  <p className="text-gray-500 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
+                  <h3 className="text-lg font-semibold text-navy mb-2 serif line-clamp-2">{post.title}</h3>
+                  <p className="text-gray-500 text-sm mb-4 line-clamp-3 font-light">{post.excerpt}</p>
                   <Link 
                     to="/blog"
-                    className="inline-flex items-center gap-2 text-navy font-bold hover:text-gold transition-colors"
+                    className="inline-flex items-center gap-2 text-navy-light font-medium hover:text-navy transition-colors group/link"
                   >
-                    Leia mais <ChevronRight size={16} />
+                    Leia mais 
+                    <ChevronRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
@@ -140,12 +253,13 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-sand">
+      {/* FAQ Section */}
+      <section className="py-24 bg-sand section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Perguntas Frequentes</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
-              Abaixo você tem acesso as dúvidas mais frequentes, relatadas pelos meus pacientes, caso não encontre a sua resposta, por favor, entre em contato comigo.
+            <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light">
+              Tire suas dúvidas sobre o processo terapêutico. Caso não encontre sua resposta, entre em contato.
             </p>
           </div>
 
@@ -153,105 +267,110 @@ const Home: React.FC = () => {
             {FAQS.map((faq, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-xl overflow-hidden shadow-md"
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
               >
                 <button
                   onClick={() => setActiveFaq(activeFaq === index ? null : index)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between text-navy font-bold hover:bg-gray-50 transition-colors"
+                  className="w-full px-6 py-5 text-left flex items-center justify-between text-navy font-medium hover:bg-gray-50 transition-colors"
                 >
                   <span>{faq.question}</span>
                   <ChevronRight 
                     size={20} 
-                    className={`transform transition-transform ${activeFaq === index ? 'rotate-90' : ''}`}
+                    className={`transform transition-transform duration-300 text-navy-light ${activeFaq === index ? 'rotate-90' : ''}`}
                   />
                 </button>
-                {activeFaq === index && (
-                  <div className="px-6 pb-4 text-gray-600">
+                <div className={`overflow-hidden transition-all duration-300 ${activeFaq === index ? 'max-h-40' : 'max-h-0'}`}>
+                  <div className="px-6 pb-5 text-gray-600 font-light">
                     {faq.answer}
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-10">
             <a 
-              href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Olá! Estou no site *Beatriz Fauth: Psicologia e Psicanálise* e preciso de informações. Pode me ajudar?')}`}
+              href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Olá! Tenho uma dúvida sobre o atendimento.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-4 rounded-xl transition-all"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:opacity-90 text-white font-semibold px-8 py-4 rounded-full transition-all shadow-lg hover:shadow-xl"
             >
-              Com dúvidas? Fale comigo!
+              <Phone size={20} />
+              Tire suas dúvidas comigo
             </a>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-navy text-white">
+      {/* Contact CTA Section */}
+      <section className="py-24 bg-navy text-white section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="w-full lg:w-1/2">
-              <p className="text-gold text-sm uppercase tracking-widest mb-4">Psicóloga e Psicanalista</p>
+              <p className="text-gold text-sm font-medium tracking-wide mb-4">Psicóloga e Psicanalista</p>
               <h2 className="text-3xl md:text-4xl serif text-white mb-6">Beatriz Fauth</h2>
-              <p className="text-sand/80 mb-6 leading-relaxed">
+              <p className="text-white/70 mb-6 leading-relaxed text-lg font-light">
                 Está buscando um caminho para o autoconhecimento, bem-estar e realização pessoal? A psicóloga e psicanalista Beatriz Fauth, {CONTACT_INFO.crp}, te convida a embarcar nessa jornada.
               </p>
-              <p className="text-sand/80 mb-8 leading-relaxed">
-                <strong>Com experiência na área, por meio de vivência, formação e estudo em mais de 3 décadas</strong>, Beatriz oferece um espaço acolhedor e seguro para você explorar suas emoções, pensamentos e comportamentos, buscando entender suas raízes e construir uma vida mais plena e autêntica.
+              <p className="text-white/70 mb-8 leading-relaxed font-light">
+                <strong className="text-white">Com experiência na área, por meio de vivência, formação e estudo em mais de 3 décadas</strong>, Beatriz oferece um espaço acolhedor e seguro para você explorar suas emoções, pensamentos e comportamentos.
               </p>
               
               <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <CheckCircle size={20} className="text-gold" />
-                  <span>Consultório bem localizado para os pacientes presenciais</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <CheckCircle size={20} className="text-gold" />
-                  <span>Atendo online, tornando mais fácil e prática a terapia ao paciente</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <CheckCircle size={20} className="text-gold" />
-                  <span>Especializado em diferentes áreas</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <CheckCircle size={20} className="text-gold" />
-                  <span>Mais de duas décadas de atendimentos psicológicos</span>
-                </div>
+                {[
+                  'Consultório bem localizado em Balneário Camboriú',
+                  'Atendimento online para maior comodidade',
+                  'Especialização em diversas áreas da psicanálise',
+                  'Mais de três décadas de experiência clínica'
+                ].map((item, index) => (
+                  <div key={index} className="flex items-center gap-4">
+                    <CheckCircle size={20} className="text-gold flex-shrink-0" />
+                    <span className="text-white/80 font-light">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="w-full lg:w-1/2">
-              <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
-                <h3 className="text-xl font-bold text-gold mb-6">Informações de Contato</h3>
-                <div className="space-y-4">
+              <div className="bg-white/5 rounded-2xl p-8 border border-white/10 backdrop-blur-sm">
+                <h3 className="text-xl font-semibold text-gold mb-6 serif">Informações de Contato</h3>
+                <div className="space-y-5">
                   <div className="flex items-start gap-4">
-                    <MapPin size={20} className="text-gold mt-1" />
+                    <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
+                      <MapPin size={18} className="text-gold" />
+                    </div>
                     <div>
-                      <p className="font-bold">Localização</p>
-                      <p className="text-sand/70">Rua 1021, 254, sala 3, em Balneário Camboriú.</p>
+                      <p className="font-medium mb-1">Localização</p>
+                      <p className="text-white/60 font-light">Rua 1021, 254, sala 3, em Balneário Camboriú.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <Clock size={20} className="text-gold mt-1" />
+                    <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
+                      <Clock size={18} className="text-gold" />
+                    </div>
                     <div>
-                      <p className="font-bold">Horário de Atendimento</p>
-                      <p className="text-sand/70">Segunda à sexta de 08:00 às 18:00.<br/>Aos sábados de 08:00 às 12:00</p>
+                      <p className="font-medium mb-1">Horário de Atendimento</p>
+                      <p className="text-white/60 font-light">Segunda à sexta de 08:00 às 18:00<br/>Sábados de 08:00 às 12:00</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <Phone size={20} className="text-gold mt-1" />
+                    <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
+                      <Phone size={18} className="text-gold" />
+                    </div>
                     <div>
-                      <p className="font-bold">WhatsApp</p>
-                      <p className="text-sand/70">{CONTACT_INFO.phone}</p>
+                      <p className="font-medium mb-1">WhatsApp</p>
+                      <p className="text-white/60 font-light">{CONTACT_INFO.phone}</p>
                     </div>
                   </div>
                 </div>
-                <Link 
-                  to="/contato"
-                  className="mt-8 w-full bg-gold hover:bg-gold/90 text-navy font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all"
+                <a 
+                  href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=Olá! Gostaria de agendar uma consulta`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-8 w-full bg-gold hover:bg-gold/90 text-navy font-semibold py-4 rounded-xl flex items-center justify-center gap-3 transition-all shadow-lg hover:shadow-xl"
                 >
-                  Agende uma Consulta Agora
+                  Agendar minha consulta agora
                   <ArrowRight size={18} />
-                </Link>
+                </a>
               </div>
             </div>
           </div>

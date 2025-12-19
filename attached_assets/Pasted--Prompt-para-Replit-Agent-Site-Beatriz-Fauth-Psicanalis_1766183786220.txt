@@ -1,0 +1,560 @@
+# Prompt para Replit Agent - Site Beatriz Fauth Psicanalista
+
+## CONTEXTO DO PROJETO
+Melhorar visualmente o site https://beatriz-fauth--supremapix.replit.app/ de uma psicanalista e psiquiatra, criando uma experiência mais delicada, acolhedora e profissional, inspirando-se no site antigo https://beatrizfauthpsicologa.com.br/
+
+---
+
+## 1. MELHORIAS NO HEADER E HERO DA HOME
+
+### Header (Navegação Superior)
+**Objetivo:** Criar um header mais delicado e minimalista
+
+- **Design do Header:**
+  - Reduzir altura do header para 70-80px com fundo branco puro ou off-white suave (#FAFAFA)
+  - Logo ou nome "Beatriz Fauth" em fonte serifada elegante (como Playfair Display, Cormorant Garamond ou Libre Baskerville) em tom de verde-azulado suave (#4A7C7E ou #5B8C8E)
+  - Navegação com espaçamento generoso, fonte sans-serif leve (Inter, Montserrat ou Poppins weight 300-400)
+  - Itens do menu em cinza médio (#666666) com hover suave para o verde-azulado principal
+  - Adicionar sombra sutil no scroll: `box-shadow: 0 2px 12px rgba(0,0,0,0.04)`
+
+- **Navegação Responsiva:**
+  - Menu hamburguer em mobile com animação suave de fade-in
+  - Overlay translúcido ao abrir menu mobile
+
+### Hero Section (Seção Principal)
+**Objetivo:** Criar impacto emocional delicado e acolhedor
+
+- **Layout e Estrutura:**
+  - Hero em altura média (65vh) com padding generoso (80px vertical)
+  - Duas colunas: texto à esquerda (55%) e imagem/elemento visual à direita (45%)
+  - Foto da Beatriz com borda arredondada suave (border-radius: 20px) e sombra delicada
+  - Aplicar filtro levemente mais claro na foto para criar atmosfera acolhedora
+
+- **Tipografia Hero:**
+  - **Título principal:** "Cuidado emocional com escuta profunda"
+  - Fonte serifada grande (48-54px desktop, 32-36px mobile)
+  - Cor: verde-azulado profundo (#2D5759)
+  - Line-height: 1.2 para elegância
+  
+  - **Subtítulo:** "Psicanálise e psiquiatria em Balneário Camboriú"
+  - Fonte sans-serif leve (18-20px)
+  - Cor: cinza médio (#5A5A5A)
+  - Espaçamento de 16px abaixo do título
+
+- **Cores e Paleta:**
+  - **Principal:** Verde-azulado suave #5B8C8E (traz calma e confiança)
+  - **Secundária:** Rosa pó suave #E8D5D5 (acolhimento feminino)
+  - **Terciária:** Bege claro #F5F1ED (neutralidade elegante)
+  - **Texto:** Cinza escuro #333333 / Cinza médio #666666
+  - **Fundo:** Branco puro #FFFFFF / Off-white #FAFAFA
+
+- **Background Hero:**
+  - Gradiente sutil de off-white para bege clarinho
+  - Ou: padrão geométrico minimalista ultra discreto com opacidade 0.03
+  - Ou: formas orgânicas abstratas suaves em verde-azulado com opacidade 0.04
+
+---
+
+## 2. ANIMAÇÕES PARA TEXTOS E BOTÕES
+
+### Animações de Texto no Hero
+```css
+/* Título com fade-in e slide up */
+.hero-title {
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Subtítulo com delay */
+.hero-subtitle {
+  animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+/* Descrição com delay maior */
+.hero-description {
+  animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+```
+
+### Animações de Botões de Ação (CTAs)
+```css
+/* Botão primário com hover elevado */
+.btn-primary {
+  background: linear-gradient(135deg, #5B8C8E 0%, #4A7C7E 100%);
+  color: white;
+  padding: 16px 40px;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  box-shadow: 0 4px 15px rgba(91, 140, 142, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 1s ease-out 1.1s both;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(91, 140, 142, 0.35);
+}
+
+/* Botão secundário com borda */
+.btn-secondary {
+  background: transparent;
+  color: #5B8C8E;
+  padding: 16px 40px;
+  border: 2px solid #5B8C8E;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #5B8C8E;
+  color: white;
+  transform: translateX(5px);
+}
+
+/* Micro-animação de pulso sutil para chamar atenção */
+@keyframes gentlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.btn-primary {
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+```
+
+### Animações para Seções ao Scroll
+```javascript
+// Intersection Observer para animações ao scroll
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate-in');
+    }
+  });
+}, observerOptions);
+
+// Aplicar em todas as seções
+document.querySelectorAll('section').forEach(section => {
+  observer.observe(section);
+});
+```
+
+```css
+/* Classe para elementos antes de animar */
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+```
+
+---
+
+## 3. BOTÕES DE CONTATO FLUTUANTES
+
+### WhatsApp Flutuante
+```html
+<a href="https://api.whatsapp.com/send?phone=5547999858983&text=Olá! Gostaria de agendar uma consulta" 
+   class="float-whatsapp" 
+   aria-label="Contato via WhatsApp"
+   target="_blank">
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
+    <!-- Ícone WhatsApp SVG -->
+  </svg>
+</a>
+```
+
+```css
+.float-whatsapp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+.float-whatsapp:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+}
+
+@keyframes floatAnimation {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .float-whatsapp {
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+  }
+}
+```
+
+### Botão de Telefone Flutuante (Opcional)
+```css
+.float-phone {
+  position: fixed;
+  bottom: 110px; /* Acima do WhatsApp */
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #5B8C8E 0%, #4A7C7E 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(91, 140, 142, 0.3);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+```
+
+---
+
+## 4. BOTÃO VOLTAR AO TOPO
+
+```html
+<button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <path d="M18 15l-6-6-6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+```
+
+```css
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 48px;
+  height: 48px;
+  background: white;
+  border: 2px solid #5B8C8E;
+  border-radius: 50%;
+  color: #5B8C8E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 998;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #5B8C8E;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(91, 140, 142, 0.3);
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    left: 20px;
+    bottom: 90px;
+    width: 44px;
+    height: 44px;
+  }
+}
+```
+
+```javascript
+// JavaScript para mostrar/ocultar botão
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    backToTopBtn.classList.add('visible');
+  } else {
+    backToTopBtn.classList.remove('visible');
+  }
+});
+
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+```
+
+---
+
+## 5. MELHORIAS NOS CTAs DO SITE INTEIRO
+
+### Hierarquia de CTAs
+**Primário:** "Agendar Consulta" (mais proeminente)
+**Secundário:** "Conhecer Terapias", "Saber Mais"
+**Terciário:** Links de navegação e informativos
+
+### Textos de CTA Melhorados
+
+**Hero Section:**
+- ❌ Evitar: "Clique aqui" ou "Saiba mais"
+- ✅ Usar: "Agende sua primeira consulta" (primário)
+- ✅ Usar: "Conheça minha abordagem" (secundário)
+
+**Seção Sobre:**
+- "Entenda como posso ajudar você"
+- "Conheça mais sobre minha jornada"
+
+**Seção Serviços:**
+- "Agendar sessão de [tipo de terapia]"
+- "Saiba como funciona esta terapia"
+
+**Seção FAQ:**
+- "Tire suas dúvidas comigo" (com ícone WhatsApp)
+- "Enviar minha pergunta"
+
+**Seção Contato:**
+- "Agendar minha consulta agora"
+- "Iniciar conversa no WhatsApp"
+
+**Blog (se houver):**
+- "Ler artigo completo"
+- "Explorar mais conteúdos"
+
+### Posicionamento Estratégico de CTAs
+```
+1. Hero: 1 CTA primário + 1 secundário
+2. Após Seção Sobre: 1 CTA para agendamento
+3. Entre Serviços: 1 CTA para cada serviço
+4. Antes do Footer: CTA final forte
+5. Flutuantes: WhatsApp sempre visível
+```
+
+---
+
+## 6. MELHORIAS DE UX/NAVEGAÇÃO
+
+### Melhorias Gerais
+1. **Espaçamento e Respiração:**
+   - Aumentar padding das seções (100-120px vertical)
+   - Espaçamento entre elementos (24-32px)
+   - Max-width do conteúdo: 1200px com margens laterais generosas
+
+2. **Tipografia Melhorada:**
+   - Títulos de seção: 36-42px (mobile: 28-32px)
+   - Subtítulos: 24-28px
+   - Texto corpo: 16-18px com line-height: 1.7
+   - Hierarquia clara com pesos variados (300, 400, 600)
+
+3. **Estados Interativos:**
+   - Todos os links com hover suave
+   - Botões com estados :hover, :active, :focus bem definidos
+   - Transições de 0.3s em cubic-bezier para elegância
+
+4. **Feedback Visual:**
+   - Loading states em formulários
+   - Mensagens de sucesso/erro com cores apropriadas
+   - Indicadores de campo obrigatório claros
+
+5. **Acessibilidade:**
+   - Contraste adequado (WCAG AA mínimo)
+   - Aria-labels em todos os botões de ícone
+   - Foco visível em navegação por teclado
+   - Alt text descritivo em todas as imagens
+
+### Navegação Mobile
+```css
+/* Menu mobile melhorado */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 400px;
+  height: 100vh;
+  background: white;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999;
+  padding: 80px 30px 30px;
+  overflow-y: auto;
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  z-index: 9998;
+}
+
+.mobile-menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+```
+
+---
+
+## 7. SEÇÕES ADICIONAIS SUGERIDAS
+
+### Seção "Por que escolher a psicanálise?"
+- Cards com benefícios (autoconhecimento, alívio de sintomas, etc.)
+- Ícones delicados ilustrando cada benefício
+- Texto breve e objetivo
+
+### Seção "Como funciona a primeira consulta"
+- Timeline visual (3-4 etapas)
+- Tom acolhedor explicando o processo
+- CTA para agendar ao final
+
+### Seção Depoimentos (se disponível)
+- Cards com aspas estilizadas
+- Nome + iniciais (sem foto para privacidade)
+- Carrossel suave se houver múltiplos
+
+### Seção Localização
+- Endereço com mapa embed do Google Maps
+- Informações de estacionamento/acesso
+- Horários de atendimento
+
+---
+
+## 8. CONTEÚDO SUGERIDO PARA HERO
+
+### Opção 1 (Mais Pessoal):
+**Título:** "Um espaço seguro para seu cuidado emocional"
+**Subtítulo:** "Psicanálise e psiquiatria com escuta atenta em Balneário Camboriú"
+**Descrição:** "Há mais de 30 anos, acolho pessoas em sua jornada de autoconhecimento e bem-estar emocional. Meu compromisso é oferecer um ambiente de confiança, onde você possa se expressar livremente e encontrar caminhos para uma vida mais plena."
+
+### Opção 2 (Mais Objetiva):
+**Título:** "Cuidado profundo com sua saúde mental"
+**Subtítulo:** "Beatriz Fauth | CRP 12/24037 | Psicanálise e Psiquiatria"
+**Descrição:** "Atendimento individualizado para ansiedade, depressão, conflitos relacionais e outros desafios emocionais. Terapia presencial e online com mais de três décadas de experiência."
+
+### Opção 3 (Mais Acolhedora):
+**Título:** "Você não precisa enfrentar tudo sozinho"
+**Subtítulo:** "Juntos, encontraremos novos caminhos para seu bem-estar"
+**Descrição:** "Com empatia e profissionalismo, ofereço um espaço onde suas emoções são acolhidas e compreendidas. Vamos trabalhar juntos para que você possa viver com mais leveza e autenticidade."
+
+---
+
+## 9. ESTRUTURA DE CORES FINAL
+
+```css
+:root {
+  /* Cores principais */
+  --primary: #5B8C8E;
+  --primary-dark: #4A7C7E;
+  --primary-light: #7EAAAC;
+  
+  /* Cores secundárias */
+  --secondary: #E8D5D5;
+  --secondary-dark: #D4B8B8;
+  
+  /* Cores neutras */
+  --beige: #F5F1ED;
+  --beige-light: #FAF8F6;
+  --white: #FFFFFF;
+  --off-white: #FAFAFA;
+  
+  /* Cores de texto */
+  --text-dark: #333333;
+  --text-medium: #666666;
+  --text-light: #999999;
+  
+  /* Cores de estado */
+  --success: #6BBF84;
+  --error: #D97777;
+  --warning: #E8B563;
+  --info: var(--primary);
+  
+  /* Sombras */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+}
+```
+
+---
+
+## 10. CHECKLIST DE IMPLEMENTAÇÃO
+
+### Prioridade Alta:
+- [ ] Redesign do header com cores e tipografia definidas
+- [ ] Hero section com novo layout e animações
+- [ ] Botão WhatsApp flutuante funcional
+- [ ] Botão voltar ao topo com scroll detection
+- [ ] CTAs principais com novos textos e estilos
+- [ ] Paleta de cores aplicada em todo site
+
+### Prioridade Média:
+- [ ] Animações ao scroll nas seções
+- [ ] Micro-animações nos botões
+- [ ] Menu mobile melhorado
+- [ ] Seção sobre com novo conteúdo
+- [ ] Cards de serviços redesenhados
+- [ ] Formulário de contato estilizado
+
+### Prioridade Baixa:
+- [ ] Seção depoimentos (se houver)
+- [ ] Blog com cards de artigos
+- [ ] Newsletter signup
+- [ ] Animações avançadas (parallax, etc.)
+
+---
+
+## INSTRUÇÕES FINAIS PARA O REPLIT AGENT
+
+Por favor, implemente estas melhorias mantendo:
+1. **Delicadeza visual** - cores suaves, transições suaves, sem elementos agressivos
+2. **Profissionalismo** - credibilidade de uma profissional com 30+ anos de experiência
+3. **Acolhimento** - o site deve transmitir segurança e empatia
+4. **Performance** - animações devem ser leves e não impactar carregamento
+5. **Responsividade** - todos os elementos devem funcionar perfeitamente em mobile
+6. **Acessibilidade** - seguir boas práticas de a11y
+
+Priorize as seções Hero, Header e CTAs principais primeiro, depois as melhorias de UX e animações complementares.
