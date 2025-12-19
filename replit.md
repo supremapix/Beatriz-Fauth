@@ -38,6 +38,18 @@ The application follows a standard React component hierarchy:
 - Reusable components in `/components`: `ContactForm`, `SchedulingTool`
 
 ### Recent Design Updates (Dec 2025)
+- **Premium Header with Ψ (Psi) Symbol**:
+  - Psi logo in gradient box with click-triggered particle explosion animation
+  - Scroll-reactive glass effect and contact bar that collapses on scroll
+  - Navigation menu with gradient underline animations
+  - Mobile menu with slide-in overlay and body scroll lock
+  - "Agendar Consulta" CTA with arrow icon and hover effects
+- **Premium Footer with Wave Decoration**:
+  - SVG wave decoration at the top
+  - Psi symbol with ripple hover effect
+  - Glass-effect social card section
+  - Animated link hover effects
+  - Contact icons in gradient boxes
 - **Cinematographic Hero Section**: Dark gradient background (#0F2027 to #2C5364) with animated gradient orbs
 - **Typewriter Effect**: Custom React hook cycling through "cura, transformação, acolhimento, autoconhecimento"
 - **Floating Particle System**: 20 particles with precomputed positions for stable CSS animations
