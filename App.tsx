@@ -10,6 +10,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
+import Neighborhood from './pages/Neighborhood';
 
 const App: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
             <Route path="/servicos" element={<Services />} />
             <Route path="/contato" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/bairro/:slug" element={<Neighborhood />} />
           </Routes>
         </main>
         <Footer />

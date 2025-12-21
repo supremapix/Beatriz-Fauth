@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, ArrowRight, Phone, MapPin, Clock, CheckCircle, Heart, Users, Brain, Sparkles, Calendar, Mic, HandHeart, Compass, Info } from 'lucide-react';
 import SchedulingTool from '../components/SchedulingTool';
-import { SCHEDULING_SERVICES, FAQS, BLOG_POSTS, CONTACT_INFO } from '../constants';
+import { SCHEDULING_SERVICES, FAQS, BLOG_POSTS, CONTACT_INFO, NEIGHBORHOODS_DATA } from '../constants';
 
 const useTypewriter = (words: string[], typingSpeed = 100, deletingSpeed = 50, pauseTime = 2000) => {
   const [text, setText] = useState('');
@@ -458,6 +458,55 @@ const Home: React.FC = () => {
               <Info size={16} className="text-[#4A7C7E]" />
               Primeira consulta sem compromisso de continuidade
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Neighborhoods Section */}
+      <section className="py-24 bg-white section-reveal">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-[rgba(91,140,142,0.1)] border border-[rgba(91,140,142,0.2)] rounded-full text-[#4A7C7E] text-sm font-semibold uppercase tracking-wider mb-6">
+              <MapPin size={16} />
+              Atendimento Local
+            </span>
+            <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Atendimento em todos os bairros de Balneário Camboriú</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light">
+              Oferecemos atendimento psicológico e psiquiátrico para moradores de todos os bairros de Balneário Camboriú. Encontre informações específicas sobre atendimento no seu bairro.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            {NEIGHBORHOODS_DATA.map((neighborhood) => (
+              <Link
+                key={neighborhood.slug}
+                to={`/bairro/${neighborhood.slug}`}
+                className="group bg-sand rounded-xl p-6 hover:bg-rose/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl text-center"
+              >
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-white flex items-center justify-center shadow-md group-hover:bg-navy group-hover:text-white transition-all duration-300">
+                  <MapPin size={20} className="text-[#4A7C7E] group-hover:text-white" />
+                </div>
+                <h3 className="text-sm font-semibold text-navy group-hover:text-[#4A7C7E] transition-colors">
+                  {neighborhood.name}
+                </h3>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-gray-600 mb-6 font-light">
+              Clique em qualquer bairro para saber mais sobre nosso atendimento na sua região
+            </p>
+            <a
+              href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Olá! Gostaria de saber mais sobre o atendimento no meu bairro.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#4A7C7E] to-[#5B8C8E] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            >
+              <Phone size={20} />
+              Não encontrou seu bairro? Fale conosco
+              <ArrowRight size={20} />
+            </a>
           </div>
         </div>
       </section>

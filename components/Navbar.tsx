@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Instagram, Facebook, Mail, Phone, ArrowRight } from 'lucide-react';
-import { CONTACT_INFO } from '../constants';
+import { Menu, X, Instagram, Facebook, Mail, Phone, ArrowRight, ChevronDown, MapPin } from 'lucide-react';
+import { CONTACT_INFO, NEIGHBORHOODS_DATA } from '../constants';
 
 const PsiLogo: React.FC<{ onClick?: () => void }> = ({ onClick }) => {
   const [isClicked, setIsClicked] = useState(false);
@@ -47,6 +47,7 @@ const PsiLogo: React.FC<{ onClick?: () => void }> = ({ onClick }) => {
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -75,6 +76,7 @@ const Navbar: React.FC = () => {
     { name: 'Home', path: '/' },
     { name: 'Sobre Mim', path: '/sobre' },
     { name: 'Terapias', path: '/servicos' },
+    { name: 'Bairros', path: '#', hasDropdown: true },
     { name: 'Dúvidas', path: '/blog#duvidas' },
     { name: 'Contato', path: '/contato' },
   ];
@@ -126,14 +128,51 @@ const Navbar: React.FC = () => {
 
             <div className="hidden lg:flex items-center space-x-2">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className={`menu-link relative px-4 py-2 text-sm font-medium transition-colors ${isActive(link.path) ? 'text-[#4A7C7E]' : 'text-[#2C5364] hover:text-[#4A7C7E]'}`}
-                >
-                  <span>{link.name}</span>
-                  <span className={`menu-link-underline ${isActive(link.path) ? 'transform scale-x-100' : ''}`}></span>
-                </Link>
+                link.hasDropdown ? (
+                  <div
+                    key={link.name}
+                    className="relative"
+                    onMouseEnter={() => setDropdownOpen(true)}
+                    onMouseLeave={() => setDropdownOpen(false)}
+                  >
+                    <button
+                      className="menu-link relative px-4 py-2 text-sm font-medium transition-colors text-[#2C5364] hover:text-[#4A7C7E] flex items-center gap-1"
+                    >
+                      <span>{link.name}</span>
+                      <ChevronDown size={16} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                      <span className="menu-link-underline"></span>
+                    </button>
+                    {dropdownOpen && (
+                      <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 py-3 z-50 max-h-96 overflow-y-auto">
+                        <div className="px-4 py-2 border-b border-gray-100">
+                          <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider">Atendimento por Bairro</p>
+                        </div>
+                        <div className="grid grid-cols-1 gap-1 p-2">
+                          {NEIGHBORHOODS_DATA.map((neighborhood) => (
+                            <Link
+                              key={neighborhood.slug}
+                              to={`/bairro/${neighborhood.slug}`}
+                              className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[rgba(91,140,142,0.1)] transition-colors group"
+                              onClick={() => setDropdownOpen(false)}
+                            >
+                              <MapPin size={14} className="text-[#4A7C7E] flex-shrink-0" />
+                              <span className="text-sm text-gray-700 group-hover:text-[#4A7C7E] transition-colors">{neighborhood.name}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className={`menu-link relative px-4 py-2 text-sm font-medium transition-colors ${isActive(link.path) ? 'text-[#4A7C7E]' : 'text-[#2C5364] hover:text-[#4A7C7E]'}`}
+                  >
+                    <span>{link.name}</span>
+                    <span className={`menu-link-underline ${isActive(link.path) ? 'transform scale-x-100' : ''}`}></span>
+                  </Link>
+                )
               ))}
               <a 
                 href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=Olá! Gostaria de agendar uma consulta`} 
@@ -187,13 +226,39 @@ const Navbar: React.FC = () => {
             
             <div className="space-y-1">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className={`block text-lg font-medium py-4 px-4 rounded-xl transition-all ${isActive(link.path) ? 'bg-[rgba(91,140,142,0.1)] text-[#4A7C7E]' : 'text-[#2C5364] hover:bg-[rgba(91,140,142,0.05)] hover:text-[#4A7C7E] hover:translate-x-2'}`}
-                >
-                  {link.name}
-                </Link>
+                link.hasDropdown ? (
+                  <div key={link.name} className="space-y-1">
+                    <div className="text-lg font-medium py-4 px-4 text-[#2C5364]">
+                      {link.name}
+                    </div>
+                    <div className="pl-4 space-y-1">
+                      {NEIGHBORHOODS_DATA.slice(0, 8).map((neighborhood) => (
+                        <Link
+                          key={neighborhood.slug}
+                          to={`/bairro/${neighborhood.slug}`}
+                          className="flex items-center gap-2 text-sm font-medium py-2 px-4 rounded-lg text-gray-600 hover:bg-[rgba(91,140,142,0.05)] hover:text-[#4A7C7E] hover:translate-x-2 transition-all"
+                        >
+                          <MapPin size={14} className="text-[#4A7C7E]" />
+                          {neighborhood.name}
+                        </Link>
+                      ))}
+                      <Link
+                        to="/bairro/centro"
+                        className="text-sm text-[#4A7C7E] py-2 px-4 block hover:underline"
+                      >
+                        Ver todos os bairros →
+                      </Link>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className={`block text-lg font-medium py-4 px-4 rounded-xl transition-all ${isActive(link.path) ? 'bg-[rgba(91,140,142,0.1)] text-[#4A7C7E]' : 'text-[#2C5364] hover:bg-[rgba(91,140,142,0.05)] hover:text-[#4A7C7E] hover:translate-x-2'}`}
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
             </div>
             

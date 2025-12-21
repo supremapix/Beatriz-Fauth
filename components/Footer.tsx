@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Instagram, Facebook, MapPin, Phone, Mail } from 'lucide-react';
-import { CONTACT_INFO } from '../constants';
+import { CONTACT_INFO, NEIGHBORHOODS_DATA } from '../constants';
 
 const FooterPsi: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -41,6 +41,21 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-16">
+          <h4 className="text-gold font-bold uppercase tracking-wider text-xs mb-6 text-center">Atendimento em Balneário Camboriú</h4>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-12">
+            {NEIGHBORHOODS_DATA.map((neighborhood) => (
+              <Link
+                key={neighborhood.slug}
+                to={`/bairro/${neighborhood.slug}`}
+                className="footer-link text-white/60 hover:text-gold transition-colors text-sm text-center py-2 px-3 bg-white/5 rounded-lg hover:bg-white/10"
+              >
+                {neighborhood.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="lg:col-span-1">
             <div className="flex items-center gap-4 mb-6">
