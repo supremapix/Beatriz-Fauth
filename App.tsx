@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -11,6 +11,7 @@ import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import Neighborhood from './pages/Neighborhood';
+import NotFound from './pages/NotFound';
 
 const App: React.FC = () => {
   return (
@@ -25,6 +26,7 @@ const App: React.FC = () => {
             <Route path="/contato" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/bairro/:slug" element={<Neighborhood />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />

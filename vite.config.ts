@@ -10,6 +10,10 @@ export default defineConfig(({ mode }) => {
         host: '0.0.0.0',
         allowedHosts: true,
       },
+      preview: {
+        port: 4173,
+        host: '0.0.0.0',
+      },
       plugins: [react()],
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
@@ -19,6 +23,15 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
-      }
+      },
+      build: {
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              vendor: ['react', 'react-dom', 'react-router-dom'],
+            },
+          },
+        },
+      },
     };
 });
