@@ -153,7 +153,7 @@ const SchedulingTool: React.FC = () => {
     <div className="w-full max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
       <div className="bg-navy p-6 md:p-8 text-white">
         <h3 className="text-2xl md:text-3xl serif mb-2 text-gold">Agendar Sessão</h3>
-        <p className="text-sand/70 text-sm">Complete as etapas abaixo para agendar sua consulta.</p>
+        <p className="text-sand/70 text-sm">Envie sua preferência pelo WhatsApp. Data, horário e valores dependem da confirmação da profissional.</p>
         
         <div className="flex items-center gap-2 mt-6 overflow-x-auto pb-2">
           {steps.map((step, idx) => (

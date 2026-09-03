@@ -77,6 +77,7 @@ const Navbar: React.FC = () => {
     { name: 'Sobre Mim', path: '/sobre' },
     { name: 'Terapias', path: '/servicos' },
     { name: 'Bairros', path: '#', hasDropdown: true },
+    { name: 'Região', path: '/regiao' },
     { name: 'Dúvidas', path: '/blog#duvidas' },
     { name: 'Contato', path: '/contato' },
   ];
@@ -121,7 +122,7 @@ const Navbar: React.FC = () => {
                   Beatriz <span className="text-gold">Fauth</span>
                 </span>
                 <span className="text-[10px] md:text-xs text-[#4A7C7E] font-medium tracking-wide">
-                  Psicanálise & Psiquiatria
+                  Psicologia & Psicanálise
                 </span>
               </div>
             </Link>

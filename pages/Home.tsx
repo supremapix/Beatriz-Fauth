@@ -1,73 +1,9 @@
 
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, ArrowRight, Phone, MapPin, Clock, CheckCircle, Heart, Users, Brain, Sparkles, Calendar, Mic, HandHeart, Compass, Info } from 'lucide-react';
 import SchedulingTool from '../components/SchedulingTool';
 import { SCHEDULING_SERVICES, FAQS, BLOG_POSTS, CONTACT_INFO, NEIGHBORHOODS_DATA } from '../constants';
-
-const useTypewriter = (words: string[], typingSpeed = 100, deletingSpeed = 50, pauseTime = 2000) => {
-  const [text, setText] = useState('');
-  const [wordIndex, setWordIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentWord = words[wordIndex];
-    
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        setText(currentWord.substring(0, text.length + 1));
-        if (text === currentWord) {
-          setTimeout(() => setIsDeleting(true), pauseTime);
-        }
-      } else {
-        setText(currentWord.substring(0, text.length - 1));
-        if (text === '') {
-          setIsDeleting(false);
-          setWordIndex((prev) => (prev + 1) % words.length);
-        }
-      }
-    }, isDeleting ? deletingSpeed : typingSpeed);
-
-    return () => clearTimeout(timeout);
-  }, [text, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseTime]);
-
-  return text;
-};
-
-const useCountUp = (end: number, duration = 2000, start = 0) => {
-  const [count, setCount] = useState(start);
-  const [isInView, setIsInView] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isInView) {
-          setIsInView(true);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [isInView]);
-
-  useEffect(() => {
-    if (!isInView) return;
-    
-    let startTime: number;
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      setCount(Math.floor(progress * (end - start) + start));
-      if (progress < 1) requestAnimationFrame(animate);
-    };
-    requestAnimationFrame(animate);
-  }, [isInView, end, start, duration]);
-
-  return { count, ref };
-};
 
 const particleData = Array.from({ length: 20 }, (_, i) => ({
   id: i,
@@ -95,13 +31,9 @@ const Particles: React.FC = () => {
 };
 
 const Home: React.FC = () => {
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [timelineVisible, setTimelineVisible] = useState(false);
   const timelineRef = useRef<HTMLDivElement>(null);
-  const typewriterText = useTypewriter(['cura', 'transformação', 'acolhimento', 'autoconhecimento'], 120, 80, 2500);
   
-  const counter1 = useCountUp(30, 2000);
-  const counter2 = useCountUp(1000, 2500);
 
   useEffect(() => {
     const observerOptions = {
@@ -167,24 +99,16 @@ const Home: React.FC = () => {
               </div>
               
               {/* Title with Typewriter */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
-                <span className="block text-white/80 text-lg md:text-xl font-light tracking-widest uppercase mb-4 animate-fade-in-up-delay-1">
-                  Seu espaço de
-                </span>
-                <span className="block gradient-text serif animate-fade-in-up-delay-2">
-                  {typewriterText}
-                  <span className="typewriter-cursor"></span>
-                </span>
-              </h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white serif">Psicóloga em <span className="text-gold">Balneário Camboriú</span></h1>
               
               {/* Subtitle with Word Animation */}
               <p className="text-xl md:text-2xl text-white/80 font-light mb-6 animate-fade-in-up-delay-3">
-                Psicanálise e Psiquiatria com escuta profunda
+                Psicologia e psicanálise com escuta acolhedora
               </p>
               
               {/* Description with Blur Reveal */}
               <p className="text-lg text-white/60 font-light mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed blur-reveal" style={{ animationDelay: '1.5s' }}>
-                Um ambiente acolhedor onde cada palavra importa. Juntos, exploraremos caminhos para o seu bem-estar emocional e autoconhecimento profundo.
+                Beatriz Fauth, psicóloga e psicanalista, CRP 12/00649. Atendimento presencial no Centro de Balneário Camboriú e online, mediante agendamento.
               </p>
               
               {/* CTAs with Shimmer Effect */}
@@ -209,17 +133,17 @@ const Home: React.FC = () => {
               
               {/* Trust Indicators */}
               <div className="flex flex-wrap justify-center lg:justify-start gap-8">
-                <div ref={counter1.ref} className="text-center animate-fade-in-up" style={{ animationDelay: '2s' }}>
-                  <div className="text-4xl font-bold text-white mb-1">{counter1.count}+</div>
+                <div className="text-center animate-fade-in-up" style={{ animationDelay: '2s' }}>
+                  <div className="text-4xl font-bold text-white mb-1">30+</div>
                   <div className="text-sm text-white/60 uppercase tracking-wider">Anos de Experiência</div>
                 </div>
-                <div ref={counter2.ref} className="text-center animate-fade-in-up" style={{ animationDelay: '2.2s' }}>
-                  <div className="text-4xl font-bold text-white mb-1">{counter2.count}+</div>
-                  <div className="text-sm text-white/60 uppercase tracking-wider">Vidas Transformadas</div>
+                <div className="text-center animate-fade-in-up" style={{ animationDelay: '2.2s' }}>
+                  <div className="text-2xl font-bold text-white mb-1">Presencial</div>
+                  <div className="text-sm text-white/60 uppercase tracking-wider">Centro de Balneário Camboriú</div>
                 </div>
                 <div className="text-center animate-fade-in-up" style={{ animationDelay: '2.4s' }}>
-                  <div className="text-2xl text-gold mb-1">⭐⭐⭐⭐⭐</div>
-                  <div className="text-sm text-white/60 uppercase tracking-wider">Avaliação dos Pacientes</div>
+                  <div className="text-2xl text-gold mb-1">Online</div>
+                  <div className="text-sm text-white/60 uppercase tracking-wider">Consulte a modalidade</div>
                 </div>
               </div>
             </div>
@@ -470,9 +394,9 @@ const Home: React.FC = () => {
               <MapPin size={16} />
               Atendimento Local
             </span>
-            <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Atendimento em todos os bairros de Balneário Camboriú</h2>
+            <h2 className="text-3xl md:text-4xl serif text-navy mb-4">Atendimento para Balneário Camboriú e região</h2>
             <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light">
-              Oferecemos atendimento psicológico e psiquiátrico para moradores de todos os bairros de Balneário Camboriú. Encontre informações específicas sobre atendimento no seu bairro.
+              O consultório fica no Centro, na Rua 1021, 254, sala 3. Moradores de outros bairros e cidades da região podem consultar a disponibilidade presencial ou online.
             </p>
           </div>
 
@@ -495,7 +419,7 @@ const Home: React.FC = () => {
 
           <div className="text-center mt-12">
             <p className="text-gray-600 mb-6 font-light">
-              Clique em qualquer bairro para saber mais sobre nosso atendimento na sua região
+              O atendimento presencial acontece no endereço do Centro. Consulte as opções para sua região.
             </p>
             <a
               href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Olá! Gostaria de saber mais sobre o atendimento no meu bairro.')}`}
@@ -551,7 +475,7 @@ const Home: React.FC = () => {
                   <h3 className="text-lg font-semibold text-navy mb-2 serif line-clamp-2">{post.title}</h3>
                   <p className="text-gray-500 text-sm mb-4 line-clamp-3 font-light">{post.excerpt}</p>
                   <Link 
-                    to="/blog"
+                    to={`/blog/${post.slug}`}
                     className="inline-flex items-center gap-2 text-navy-light font-medium hover:text-navy transition-colors group/link"
                   >
                     Leia mais 
@@ -564,6 +488,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      <div className="text-center py-8 bg-white"><Link to="/regiao" className="text-navy underline font-semibold">Como consultar morando em Balneário Camboriú e região</Link></div>
       {/* FAQ Section */}
       <section className="py-24 bg-sand section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -580,21 +505,10 @@ const Home: React.FC = () => {
                 key={index}
                 className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
               >
-                <button
-                  onClick={() => setActiveFaq(activeFaq === index ? null : index)}
-                  className="w-full px-6 py-5 text-left flex items-center justify-between text-navy font-medium hover:bg-gray-50 transition-colors"
-                >
-                  <span>{faq.question}</span>
-                  <ChevronRight 
-                    size={20} 
-                    className={`transform transition-transform duration-300 text-navy-light ${activeFaq === index ? 'rotate-90' : ''}`}
-                  />
-                </button>
-                <div className={`overflow-hidden transition-all duration-300 ${activeFaq === index ? 'max-h-40' : 'max-h-0'}`}>
-                  <div className="px-6 pb-5 text-gray-600 font-light">
-                    {faq.answer}
-                  </div>
-                </div>
+                <details className="p-6 text-navy">
+                  <summary className="cursor-pointer font-semibold">{faq.question}</summary>
+                  <p className="pt-4 text-gray-600 leading-relaxed">{faq.answer}</p>
+                </details>
               </div>
             ))}
           </div>

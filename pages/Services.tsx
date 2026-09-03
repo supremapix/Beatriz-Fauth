@@ -70,6 +70,7 @@ const Services: React.FC = () => {
 
       {/* Familiar & Casal */}
       <section id="familiar" className="py-24 bg-sand scroll-mt-24 relative overflow-hidden">
+        <span id="casal" className="absolute top-0 scroll-mt-24" aria-hidden="true" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row-reverse gap-16 items-center">
             <div className="w-full md:w-1/2">
@@ -156,7 +157,7 @@ const Services: React.FC = () => {
               </div>
               <h3 className="text-3xl md:text-4xl serif text-white">Terapia Online</h3>
               <p className="text-sand/60 text-lg leading-relaxed font-light">
-                Utilizando plataformas seguras de videoconferência, levamos a escuta analítica a pacientes de qualquer lugar do mundo. Esta modalidade oferece a mesma qualidade e rigor ético do presencial, com a conveniência do seu ambiente doméstico.
+                O atendimento online permite conversar com a profissional por videoconferência, em um ambiente reservado. A adequação dessa modalidade, a plataforma e as condições da sessão são combinadas antes do atendimento.
               </p>
               <ul className="space-y-3 text-sm text-sand/80">
                 <li className="flex items-center gap-3"><Sparkles size={14} className="text-gold" /> Plataformas Criptografadas</li>

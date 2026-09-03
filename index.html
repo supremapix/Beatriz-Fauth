@@ -4,44 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beatriz Fauth | Psicanalista em Balneário Camboriú</title>
-    <meta name="description" content="Psicanalista e Psicóloga Beatriz Fauth em Balneário Camboriú. Mais de 30 anos de experiência em psicanálise, terapia familiar e de casal. Agende sua consulta." />
-    <meta name="keywords" content="psicóloga balneário camboriú, psicanalista balneário camboriú, terapia de casal bc, terapia familiar bc, beatriz fauth" />
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Beatriz Fauth | Psicanalista em Balneário Camboriú" />
-    <meta property="og:description" content="Espaço de escuta ética e acolhedora com mais de 30 anos de experiência clínica." />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" />
-
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Psychologist",
-        "name": "Beatriz Fauth",
-        "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
-        "description": "Psicanalista e Psicóloga com mais de 30 anos de experiência clínica em Balneário Camboriú.",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Rua 1021, 254, sala 3",
-          "addressLocality": "Balneário Camboriú",
-          "addressRegion": "SC",
-          "postalCode": "88330-675",
-          "addressCountry": "BR"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": -26.9911463,
-          "longitude": -48.6369062
-        },
-        "url": "https://beatrizfauthpsicologa.com.br",
-        "telephone": "+5547999858983",
-        "email": "contato@beatrizfauthpsicologa.com.br",
-        "priceRange": "$$"
-      }
-    </script>
-
+    <!--seo-head-->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -732,10 +695,12 @@
         transform: translateY(-3px);
         color: #c9a962;
       }
+    .section-reveal, .timeline-step-reveal { opacity: 1; transform: none; }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } .blur-reveal, .word-fade { opacity: 1; filter: none; } }
     </style>
 </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app-html--></div>
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>

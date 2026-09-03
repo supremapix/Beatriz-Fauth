@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { CheckCircle, MapPin, Phone, ArrowRight, Clock, Heart, Users, Brain, Sparkles } from 'lucide-react';
+import NotFound from './NotFound';
 import { NEIGHBORHOODS_DATA, CONTACT_INFO } from '../constants';
 
 const Neighborhood: React.FC = () => {
@@ -11,63 +12,10 @@ const Neighborhood: React.FC = () => {
     window.scrollTo(0, 0);
   }, [slug]);
 
-  useEffect(() => {
-    if (neighborhood) {
-      document.title = neighborhood.title;
 
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) {
-        metaDescription.setAttribute('content', neighborhood.description);
-      } else {
-        const meta = document.createElement('meta');
-        meta.name = 'description';
-        meta.content = neighborhood.description;
-        document.head.appendChild(meta);
-      }
-
-      const metaKeywords = document.querySelector('meta[name="keywords"]');
-      if (metaKeywords) {
-        metaKeywords.setAttribute('content', neighborhood.keywords);
-      } else {
-        const meta = document.createElement('meta');
-        meta.name = 'keywords';
-        meta.content = neighborhood.keywords;
-        document.head.appendChild(meta);
-      }
-
-      let schemaScript = document.querySelector('script[type="application/ld+json"]');
-      if (!schemaScript) {
-        schemaScript = document.createElement('script');
-        schemaScript.type = 'application/ld+json';
-        document.head.appendChild(schemaScript);
-      }
-
-      const schemaData = {
-        "@context": "https://schema.org",
-        "@type": "Psychologist",
-        "name": "Beatriz Fauth",
-        "description": neighborhood.description,
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Balneário Camboriú",
-          "addressRegion": "SC",
-          "addressCountry": "BR",
-          "streetAddress": CONTACT_INFO.address
-        },
-        "telephone": CONTACT_INFO.phone,
-        "email": CONTACT_INFO.email,
-        "areaServed": neighborhood.name,
-        "priceRange": "$$",
-        "image": `${window.location.origin}/images/beatriz-profile.jpg`,
-        "url": window.location.href
-      };
-
-      schemaScript.textContent = JSON.stringify(schemaData);
-    }
-  }, [neighborhood]);
 
   if (!neighborhood) {
-    return <Navigate to="/" replace />;
+    return <NotFound />;
   }
 
   return (
@@ -81,11 +29,11 @@ const Neighborhood: React.FC = () => {
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 glass-effect rounded-full text-white text-sm font-medium mb-6">
             <MapPin size={16} className="text-gold" />
-            <span>Atendimento em {neighborhood.name}</span>
+            <span>Para moradores de {neighborhood.name}</span>
           </div>
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight serif">
-            Psicóloga e Psicanalista no {neighborhood.name}
+            Psicóloga para moradores de {neighborhood.name}
           </h1>
 
           <p className="text-lg md:text-xl text-white/80 font-light mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -116,7 +64,7 @@ const Neighborhood: React.FC = () => {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
             <h2 className="text-2xl md:text-3xl font-bold text-navy mb-6 serif">
-              Por que escolher atendimento no {neighborhood.name}?
+              Como consultar morando em {neighborhood.name}?
             </h2>
             <p className="text-gray-600 leading-relaxed text-lg font-light mb-8">
               {neighborhood.intro}
@@ -124,7 +72,7 @@ const Neighborhood: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
               {[
-                { icon: CheckCircle, text: 'Localização próxima e acessível' },
+                { icon: CheckCircle, text: 'Consultório no Centro de Balneário Camboriú' },
                 { icon: Heart, text: 'Consultório confortável e sigiloso' },
                 { icon: Users, text: 'Atendimento presencial e online' },
                 { icon: Clock, text: 'Mais de 30 anos transformando vidas' }
@@ -139,7 +87,7 @@ const Neighborhood: React.FC = () => {
             </div>
 
             <h3 className="text-xl md:text-2xl font-semibold text-navy mb-4 mt-12 serif">
-              Principais queixas dos moradores do {neighborhood.name}
+              Questões que você pode conversar no atendimento
             </h3>
             <ul className="space-y-3 mb-10">
               {[
@@ -203,11 +151,11 @@ const Neighborhood: React.FC = () => {
                 <Heart size={24} className="text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-navy mb-2 serif">Depoimento de paciente do {neighborhood.name}</h3>
+                <h3 className="text-xl font-semibold text-navy mb-2 serif">Local do atendimento presencial</h3>
                 <p className="text-gray-700 italic leading-relaxed font-light">
-                  "{neighborhood.testimonial}"
+                  {CONTACT_INFO.address}
                 </p>
-                <p className="text-gray-500 text-sm mt-3">- Paciente anônimo</p>
+                <p className="text-gray-500 text-sm mt-3">Consulte a disponibilidade e confirme seu horário pelo WhatsApp.</p>
               </div>
             </div>
           </div>
@@ -217,7 +165,7 @@ const Neighborhood: React.FC = () => {
       <section className="py-16 bg-sand">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 serif">
-            Agende sua consulta no {neighborhood.name}
+            Agende sua consulta em Balneário Camboriú
           </h2>
           <p className="text-gray-600 text-lg font-light mb-8 max-w-2xl mx-auto">
             Dê o primeiro passo em direção ao seu bem-estar emocional. Entre em contato e agende sua primeira consulta.

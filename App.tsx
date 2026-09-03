@@ -11,11 +11,15 @@ import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import Neighborhood from './pages/Neighborhood';
+import Seo from './components/Seo';
+import Region from './pages/Region';
+import Article from './pages/Article';
 import NotFound from './pages/NotFound';
 
-const App: React.FC = () => {
+export const AppContent: React.FC = () => {
   return (
-    <Router>
+    <>
+      <Seo />
       <div className="flex flex-col min-h-screen bg-cream selection:bg-gold/20">
         <Navbar />
         <main className="flex-grow">
@@ -25,6 +29,8 @@ const App: React.FC = () => {
             <Route path="/servicos" element={<Services />} />
             <Route path="/contato" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<Article />} />
+            <Route path="/regiao" element={<Region />} />
             <Route path="/bairro/:slug" element={<Neighborhood />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -33,8 +39,9 @@ const App: React.FC = () => {
         <FloatingWhatsApp />
         <BackToTop />
       </div>
-    </Router>
+    </>
   );
 };
 
+const App: React.FC = () => <Router><AppContent /></Router>;
 export default App;

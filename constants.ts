@@ -18,159 +18,79 @@ export const NEIGHBORHOODS = [
 
 export const NEIGHBORHOODS_DATA = [
   {
-    slug: "centro",
-    name: "Centro",
-    title: "Psicóloga no Centro de Balneário Camboriú | Beatriz Fauth CRP 12/00649",
-    description: "Atendimento psicológico e psicanálise no Centro de Balneário Camboriú. +30 anos de experiência. Agende sua consulta: (47) 99985-8983",
-    keywords: "psicóloga centro balneário camboriú, psicanálise centro bc, psiquiatra centro balneário camboriú",
-    intro: "No coração de Balneário Camboriú, o Centro é onde tudo acontece. Se você trabalha ou mora nesta região movimentada, sabe como o ritmo acelerado pode impactar sua saúde mental. Oferecemos atendimento estrategicamente localizado para facilitar suas consultas entre compromissos.",
-    testimonial: "Encontrei na Dra. Beatriz não apenas uma profissional competente, mas um verdadeiro espaço de transformação. A proximidade com o Centro facilitou muito minha rotina de terapia."
+    "slug": "centro",
+    "name": "Centro"
   },
   {
-    slug: "barra",
-    name: "Barra",
-    title: "Psicanalista na Barra Balneário Camboriú | Consultório Beatriz Fauth",
-    description: "Terapia de qualidade na Barra Norte e Sul, Balneário Camboriú. Psicóloga especializada em psicanálise. Agende: (47) 99985-8983",
-    keywords: "psicóloga barra bc, terapia barra norte, psicanálise barra sul balneário camboriú",
-    intro: "A Barra, com sua praia tranquila e qualidade de vida diferenciada, atrai moradores que valorizam bem-estar. Se você busca equilíbrio emocional em um dos bairros mais charmosos de BC, nosso consultório oferece o ambiente perfeito para sua jornada de autoconhecimento.",
-    testimonial: "A Dra. Beatriz me ajudou a superar momentos difíceis com uma escuta acolhedora. Ter um consultório tão próximo da Barra foi fundamental para manter a constância nas sessões."
+    "slug": "barra",
+    "name": "Barra"
   },
   {
-    slug: "praia-dos-amores",
-    name: "Praia dos Amores",
-    title: "Terapia na Praia dos Amores BC | Psicóloga Beatriz Fauth",
-    description: "Psicóloga na Praia dos Amores. Terapia individual, de casal e online. CRP 12/00649. Mais de 30 anos transformando vidas.",
-    keywords: "psicóloga praia dos amores, terapia de casal bc, psicanálise praia dos amores",
-    intro: "A Praia dos Amores é sinônimo de romantismo e tranquilidade. Se você mora neste bairro sereno e busca superar dificuldades em relacionamentos, ansiedade ou busca autoconhecimento, oferecemos terapia especializada próxima à sua casa.",
-    testimonial: "A terapia com a Dra. Beatriz transformou meu relacionamento. Sua abordagem me ajudou a entender melhor meus sentimentos e a me comunicar de forma mais saudável."
+    "slug": "praia-dos-amores",
+    "name": "Praia dos Amores"
   },
   {
-    slug: "nacoes",
-    name: "Nações",
-    title: "Psiquiatra e Psicóloga no Bairro Nações | Atendimento Especializado",
-    description: "Consultório psicológico no bairro Nações, Balneário Camboriú. Atendimento para crianças, adolescentes e adultos. CRP 12/00649",
-    keywords: "psicóloga bairro nações, psiquiatra balneário camboriú nações, terapia nações bc",
-    intro: "O bairro Nações, com sua localização privilegiada próxima à praia central, é lar de famílias que valorizam qualidade de vida. Oferecemos atendimento psicológico e psiquiátrico para crianças, adolescentes e adultos.",
-    testimonial: "Encontrei na Dra. Beatriz uma profissional ética e dedicada. Suas técnicas me ajudaram a lidar melhor com a ansiedade do dia a dia."
+    "slug": "nacoes",
+    "name": "Nações"
   },
   {
-    slug: "estados",
-    name: "Estados",
-    title: "Consultório de Psicologia no Bairro Estados | Dra. Beatriz Fauth",
-    description: "Psicanálise no bairro Estados, BC. Atendimento presencial e online. +30 anos de experiência clínica. Agende: (47) 99985-8983",
-    keywords: "psicóloga estados balneário camboriú, consultório psicológico estados bc",
-    intro: "O bairro Estados combina tranquilidade residencial com proximidade do centro. Para moradores que buscam equilíbrio entre vida pessoal e profissional, oferecemos suporte terapêutico especializado.",
-    testimonial: "A Dra. Beatriz é uma profissional excepcional. Seu consultório no Estados é acolhedor e ela realmente se importa com o progresso de seus pacientes."
+    "slug": "estados",
+    "name": "Estados"
   },
   {
-    slug: "pioneiros",
-    name: "Pioneiros",
-    title: "Psicóloga no Bairro Pioneiros BC | Atendimento Presencial e Online",
-    description: "Atendimento psicológico no Pioneiros, Balneário Camboriú. Terapia familiar, individual e de casal. CRP 12/00649",
-    keywords: "psicóloga pioneiros bc, terapia familiar pioneiros, psicanálise pioneiros",
-    intro: "Pioneiros é um bairro tradicional e familiar de Balneário Camboriú. Aqui atendemos famílias que buscam superar desafios emocionais, melhorar relacionamentos e encontrar bem-estar mental.",
-    testimonial: "A terapia familiar com a Dra. Beatriz foi transformadora para nossa família. Ela nos ajudou a nos reconectar e a entender melhor uns aos outros."
+    "slug": "pioneiros",
+    "name": "Pioneiros"
   },
   {
-    slug: "vila-real",
-    name: "Vila Real",
-    title: "Atendimento Psicológico na Vila Real | Psicanalista Beatriz Fauth",
-    description: "Psicóloga na Vila Real, BC. Tratamento para ansiedade, depressão e autoconhecimento. CRP 12/00649. Agende sua consulta.",
-    keywords: "psicóloga vila real bc, terapia vila real balneário camboriú",
-    intro: "Vila Real é conhecida por sua comunidade acolhedora. Se você mora neste bairro e enfrenta ansiedade, depressão ou busca autoconhecimento, oferecemos um espaço seguro e profissional.",
-    testimonial: "Depois de meses de terapia com a Dra. Beatriz, finalmente consegui superar minha depressão. Sou eternamente grato pelo seu apoio."
+    "slug": "vila-real",
+    "name": "Vila Real"
   },
   {
-    slug: "nova-esperanca",
-    name: "Nova Esperança",
-    title: "Psicóloga Nova Esperança BC | Transforme sua Vida com Terapia",
-    description: "Consultório psicológico no Nova Esperança. Psicanálise e psiquiatria. +30 anos transformando vidas. Agende: (47) 99985-8983",
-    keywords: "psicóloga nova esperança bc, terapia nova esperança balneário camboriú",
-    intro: "Como o próprio nome sugere, Nova Esperança representa recomeços. Se você busca transformação emocional e um novo capítulo em sua vida, nosso consultório oferece suporte especializado.",
-    testimonial: "A Dra. Beatriz me deu esperança quando eu mais precisava. Seu atendimento humanizado fez toda diferença em minha jornada de autoconhecimento."
+    "slug": "nova-esperanca",
+    "name": "Nova Esperança"
   },
   {
-    slug: "aririba",
-    name: "Ariribá",
-    title: "Psicanalista no Ariribá Balneário Camboriú | CRP 12/00649",
-    description: "Atendimento psicológico no Ariribá, BC. Terapia para ansiedade, depressão e desenvolvimento pessoal. Agende sua consulta.",
-    keywords: "psicóloga ariribá bc, consultório psicológico ariribá",
-    intro: "Ariribá é um bairro em crescimento, com perfil familiar e residencial. Atendemos moradores da região com terapia personalizada para ansiedade, depressão e desenvolvimento pessoal.",
-    testimonial: "A terapia com a Dra. Beatriz me ajudou a entender melhor minhas emoções e a tomar decisões mais conscientes em minha vida."
+    "slug": "aririba",
+    "name": "Ariribá"
   },
   {
-    slug: "jardim-iate-clube",
-    name: "Jardim Iate Clube",
-    title: "Psicóloga Jardim Iate Clube | Consultório Beatriz Fauth BC",
-    description: "Psicanálise de excelência no Jardim Iate Clube. Atendimento especializado. CRP 12/00649. +30 anos de experiência.",
-    keywords: "psicóloga jardim iate clube, terapia iate clube bc",
-    intro: "O Jardim Iate Clube é um bairro sofisticado que valoriza qualidade de vida. Oferecemos atendimento psicológico de excelência para moradores que buscam equilíbrio emocional.",
-    testimonial: "Profissional excepcional! A Dra. Beatriz me ajudou a superar traumas antigos e a construir uma vida mais plena e feliz."
+    "slug": "jardim-iate-clube",
+    "name": "Jardim Iate Clube"
   },
   {
-    slug: "municipios",
-    name: "Municípios",
-    title: "Atendimento Psicológico no Bairro Municípios | Dra. Beatriz Fauth",
-    description: "Psicóloga no bairro Municípios, BC. Psicanálise e psiquiatria com mais de 30 anos de experiência. Agende: (47) 99985-8983",
-    keywords: "psicóloga municípios bc, terapia municípios balneário camboriú",
-    intro: "O bairro Municípios é estrategicamente localizado e oferece fácil acesso. Atendemos moradores da região com psicanálise e psiquiatria há mais de 30 anos.",
-    testimonial: "A Dra. Beatriz é uma profissional dedicada que realmente se importa com seus pacientes. Recomendo de olhos fechados!"
+    "slug": "municipios",
+    "name": "Municípios"
   },
   {
-    slug: "sao-judas-tadeu",
-    name: "São Judas Tadeu",
-    title: "Psicóloga São Judas Tadeu BC | Cuidado com sua Saúde Mental",
-    description: "Consultório psicológico no São Judas Tadeu. Atendimento próximo à sua casa. CRP 12/00649. Agende sua primeira consulta.",
-    keywords: "psicóloga são judas tadeu bc, terapia são judas tadeu",
-    intro: "São Judas Tadeu é um bairro residencial e tranquilo. Oferecemos atendimento psicológico próximo à sua casa para facilitar sua jornada de cuidado mental.",
-    testimonial: "Ter um consultório tão perto de casa facilitou muito manter a frequência nas sessões. A Dra. Beatriz é uma excelente profissional."
+    "slug": "sao-judas-tadeu",
+    "name": "São Judas Tadeu"
   },
   {
-    slug: "estaleiro",
-    name: "Estaleiro",
-    title: "Psicanalista no Estaleiro BC | Atendimento Especializado",
-    description: "Psicóloga no Estaleiro, Balneário Camboriú. Terapia especializada em meio à natureza. CRP 12/00649. +30 anos de experiência.",
-    keywords: "psicóloga estaleiro bc, psicanálise estaleiro balneário camboriú",
-    intro: "O Estaleiro, reconhecido recentemente como bairro oficial, combina natureza e modernidade. Para moradores que buscam paz interior em meio à beleza natural, oferecemos terapia especializada.",
-    testimonial: "A combinação da terapia com a Dra. Beatriz e a tranquilidade do Estaleiro foi perfeita para minha recuperação emocional."
+    "slug": "estaleiro",
+    "name": "Estaleiro"
   },
   {
-    slug: "estaleirinho",
-    name: "Estaleirinho",
-    title: "Psicóloga Estaleirinho Balneário Camboriú | Beatriz Fauth",
-    description: "Atendimento psicológico no Estaleirinho. Conexão com a natureza e equilíbrio emocional. Agende: (47) 99985-8983",
-    keywords: "psicóloga estaleirinho bc, terapia estaleirinho",
-    intro: "O Estaleirinho, com sua praia paradisíaca, atrai pessoas que valorizam conexão com a natureza. Se você mora nesta região e busca equilíbrio emocional, estamos próximos.",
-    testimonial: "A Dra. Beatriz me ajudou a encontrar paz interior. Suas técnicas terapêuticas são realmente eficazes e transformadoras."
+    "slug": "estaleirinho",
+    "name": "Estaleirinho"
   },
   {
-    slug: "taquaras",
-    name: "Taquaras",
-    title: "Atendimento Psicológico em Taquaras BC | Consultório Beatriz Fauth",
-    description: "Psicóloga em Taquaras, Balneário Camboriú. Atendimento moderno e acolhedor. CRP 12/00649. Agende sua consulta.",
-    keywords: "psicóloga taquaras bc, terapia taquaras balneário camboriú",
-    intro: "Taquaras é um bairro novo e em desenvolvimento. Oferecemos atendimento psicológico moderno e acolhedor para os novos moradores da região.",
-    testimonial: "Mudei recentemente para Taquaras e encontrei na Dra. Beatriz o suporte que precisava para me adaptar às mudanças em minha vida."
+    "slug": "taquaras",
+    "name": "Taquaras"
   },
   {
-    slug: "laranjeiras",
-    name: "Laranjeiras",
-    title: "Psicóloga Laranjeiras Balneário Camboriú | Transforme sua Vida",
-    description: "Terapia em Laranjeiras, BC. Ansiedade, depressão e autoconhecimento. +30 anos transformando vidas. CRP 12/00649",
-    keywords: "psicóloga laranjeiras bc, consultório psicológico laranjeiras",
-    intro: "Laranjeiras é um bairro que combina tranquilidade e acessibilidade. Atendemos moradores com terapia focada em ansiedade, depressão e autoconhecimento.",
-    testimonial: "A Dra. Beatriz é uma profissional incrível. Sua empatia e conhecimento técnico fazem toda diferença no processo terapêutico."
+    "slug": "laranjeiras",
+    "name": "Laranjeiras"
   },
   {
-    slug: "area-rural",
-    name: "Área Rural",
-    title: "Psicóloga para Moradores da Área Rural BC | Atendimento Online",
-    description: "Atendimento psicológico online para área rural de Balneário Camboriú. Qualidade e privacidade. Agende: (47) 99985-8983",
-    keywords: "psicóloga online balneário camboriú, terapia online bc, psicanálise área rural",
-    intro: "Para moradores da área rural de Balneário Camboriú, oferecemos atendimento online de qualidade. Não importa a distância, você pode cuidar da sua saúde mental com segurança e privacidade.",
-    testimonial: "Moro na área rural e o atendimento online da Dra. Beatriz é perfeito. Consigo fazer terapia de qualidade sem sair de casa."
+    "slug": "area-rural",
+    "name": "Área Rural"
   }
-];
+].map(place => ({
+  ...place,
+  title: 'Psicóloga para moradores de ' + place.name + ' | Beatriz Fauth',
+  description: 'Mora em ' + place.name + '? Conheça o atendimento de Beatriz Fauth no Centro de Balneário Camboriú e a modalidade online. Agendamento pelo WhatsApp.',
+  intro: 'Para quem mora em ' + place.name + ', o atendimento presencial acontece na Rua 1021, 254, sala 3, no Centro de Balneário Camboriú. Considere o deslocamento até esse endereço ao escolher seu horário. Você também pode conversar sobre a possibilidade de atendimento online, conforme sua necessidade e a avaliação da profissional.'
+}));
 
 export const SCHEDULING_SERVICES = [
   {
@@ -227,59 +147,113 @@ export const SPECIALTIES = [
 
 export const FAQS = [
   {
-    question: "Convênios são aceitos?",
-    answer: "Sim, após o final da sessão e o pagamento dela, o paciente encaminha o recibo para o convênio médico, sendo assim reembolsado pelo valor pago."
+    "question": "Onde fica o consultório de Beatriz Fauth?",
+    "answer": "O endereço informado é Rua 1021, 254, sala 3, no Centro de Balneário Camboriú, Santa Catarina. Confirme o horário pelo WhatsApp (47) 99985-8983 antes de se deslocar."
   },
   {
-    question: "Qual tempo de duração de cada sessão?",
-    answer: "As sessões duram, em geral, de 50 minutos a 1 hora. Isso porque é tempo médio em que os pacientes se sentem confortáveis."
+    "question": "Quem mora em outras cidades pode consultar?",
+    "answer": "Quem mora na região pode agendar atendimento presencial no consultório em Balneário Camboriú ou conversar sobre a modalidade online. Não há outros endereços de atendimento informados neste site."
   },
   {
-    question: "Qual tempo de duração do tratamento?",
-    answer: "Não há um tempo fixo de duração do tratamento, vai depender da queixa e do engajamento do paciente com relação à terapia."
+    "question": "Como solicitar a primeira consulta?",
+    "answer": "Entre em contato pelo WhatsApp (47) 99985-8983 e informe se prefere atendimento presencial ou online. O envio de uma solicitação pelo site não confirma uma reserva: aguarde a confirmação da profissional."
   },
   {
-    question: "A terapia online funciona?",
-    answer: "Sim, inclusive é reconhecida pelo Conselho de Psicologia. Ela é realizada através de um meio eletrônico, como as plataformas de vídeo chamadas (Skype ou Zoom)."
+    "question": "Como funciona a primeira conversa?",
+    "answer": "É um momento para apresentar o que motivou a busca por atendimento, tirar dúvidas sobre a abordagem e conversar sobre a continuidade. Você não precisa preparar um relato perfeito; pode começar pelas questões que deseja compartilhar."
   },
   {
-    question: "Como marcar uma consulta?",
-    answer: "Aqui pelo meu site você consegue fazer o agendamento da sua primeira consulta. As próximas, agendamos após o encerramento de cada sessão."
+    "question": "Como consultar valores e reembolso pelo plano?",
+    "answer": "Confirme valores e formas de pagamento diretamente com a profissional. Se seu plano oferecer reembolso, consulte a operadora sobre cobertura, limites e documentos exigidos. A emissão de recibo não garante reembolso."
   },
   {
-    question: "Como sei que preciso de algum tratamento?",
-    answer: "As terapias não servem só para resolver problemas, mas também para ajudar no desenvolvimento. Em caso de dúvida, estou no WhatsApp."
+    "question": "Quanto tempo dura a sessão e o acompanhamento?",
+    "answer": "O site informa sessões de aproximadamente 50 minutos a uma hora. Confirme a duração da modalidade escolhida no agendamento. A frequência e a duração do acompanhamento são combinadas conforme cada situação."
+  },
+  {
+    "question": "O que preciso para uma sessão online?",
+    "answer": "Um ambiente reservado, conexão estável e um dispositivo com câmera e microfone. A plataforma e a adequação dessa modalidade ao seu caso devem ser combinadas com a profissional antes da consulta."
   }
 ];
 
 export const BLOG_POSTS = [
   {
-    id: "1",
-    title: "Terapia de casal em Balneário Camboriú",
-    excerpt: "Descubra como funciona a terapia de casal com Beatriz Fauth em Balneário Camboriú. Melhore o diálogo, supere conflitos e fortaleça seu relacionamento.",
-    image: "/images/blog-terapia-casal-1.jpg",
-    category: "Terapia de Casal"
+    "id": "1",
+    "slug": "primeira-consulta-balneario-camboriu",
+    "title": "Primeira consulta em Balneário Camboriú: como se organizar",
+    "excerpt": "Endereço, contato e dúvidas para organizar o primeiro atendimento presencial ou online.",
+    "image": "/images/blog-psicologia.jpg",
+    "category": "Primeira consulta",
+    "sections": [
+      {
+        "heading": "Por onde começar",
+        "text": "Para solicitar uma consulta com Beatriz Fauth, entre em contato pelo WhatsApp (47) 99985-8983. Informe se procura atendimento individual, de casal ou outra modalidade e se prefere conversar presencialmente ou online. A disponibilidade precisa ser confirmada pela profissional."
+      },
+      {
+        "heading": "Antes de ir ao consultório",
+        "text": "O consultório fica na Rua 1021, 254, sala 3, no Centro de Balneário Camboriú. Confirme o endereço e o horário antes de sair. Se você vem de outro bairro ou cidade, reserve tempo para o deslocamento e consulte seu aplicativo de mapas no dia da sessão."
+      },
+      {
+        "heading": "O que perguntar no agendamento",
+        "text": "Você pode perguntar sobre duração, valores, formas de pagamento e como avisar caso precise remarcar. Se pretende solicitar reembolso, verifique previamente as condições do plano e quais documentos são necessários."
+      },
+      {
+        "heading": "O que levar para a conversa",
+        "text": "Não é necessário preparar uma apresentação. Você pode anotar as questões que deseja conversar e as dúvidas sobre o acompanhamento. A primeira conversa também serve para conhecer a forma de trabalho e combinar os próximos passos."
+      }
+    ]
   },
   {
-    id: "2",
-    title: "O Que é Terapia de Casal?",
-    excerpt: "Transforme seu relacionamento com a ajuda da terapia de casal. Beatriz Fauth Psicologia e Psicanálise está aqui para guiar você nessa jornada de crescimento e reconexão.",
-    image: "/images/blog-terapia-casal-2.jpg",
-    category: "Terapia de Casal"
+    "id": "2",
+    "slug": "terapia-casal-balneario-camboriu",
+    "title": "Terapia de casal em Balneário Camboriú: dúvidas antes de agendar",
+    "excerpt": "Saiba quais informações confirmar ao solicitar atendimento para o casal com Beatriz Fauth.",
+    "image": "/images/blog-terapia-casal-1.jpg",
+    "category": "Terapia de casal",
+    "sections": [
+      {
+        "heading": "Como solicitar atendimento para o casal",
+        "text": "Ao entrar em contato, informe que a solicitação é para terapia de casal. Beatriz Fauth apresenta essa modalidade entre os serviços do consultório em Balneário Camboriú. Pergunte sobre os horários disponíveis e a organização do primeiro encontro."
+      },
+      {
+        "heading": "O que combinar antes da primeira sessão",
+        "text": "Confirme quem deve participar do primeiro encontro, a duração prevista, o valor e as condições para remarcar. Se os participantes têm rotinas diferentes ou moram em cidades distintas, informe isso no contato inicial para conversar sobre as possibilidades."
+      },
+      {
+        "heading": "Como apresentar o motivo da procura",
+        "text": "O casal pode levar dúvidas sobre convivência, comunicação ou mudanças na relação. Não é preciso chegar com uma conclusão sobre o que acontece. Os objetivos e a forma de condução são conversados com a profissional, de acordo com a situação apresentada."
+      },
+      {
+        "heading": "Presencial ou online",
+        "text": "O endereço presencial informado é Rua 1021, 254, sala 3, Centro, Balneário Camboriú. Para saber se o atendimento online está disponível e é adequado para o casal, consulte a profissional antes de agendar."
+      }
+    ]
   },
   {
-    id: "3",
-    title: "Diferenças entre Psicologia, Psicanálise e Psiquiatria",
-    excerpt: "Consultar um profissional de saúde mental é crucial para um diagnóstico preciso e tratamento adequado. Objetivo: compreender conflitos internos, traumas e padrões inconscientes.",
-    image: "/images/blog-psicologia.jpg",
-    category: "Psicologia"
-  },
-  {
-    id: "4",
-    title: "Beatriz Fauth | Psicóloga em Balneário Camboriú",
-    excerpt: "Dificuldades no relacionamento? A psicóloga Beatriz Fauth oferece terapia de casal em Balneário Camboriú para melhorar a comunicação e fortalecer os vínculos.",
-    image: "/images/beatriz-profile.jpg",
-    category: "Sobre"
+    "id": "3",
+    "slug": "atendimento-online-regiao",
+    "title": "Atendimento online para quem mora em Balneário Camboriú e região",
+    "excerpt": "Privacidade, conexão e confirmação: veja o que organizar antes de uma consulta online.",
+    "image": "/images/terapia-online.jpg",
+    "category": "Atendimento online",
+    "sections": [
+      {
+        "heading": "Converse sobre a modalidade",
+        "text": "O atendimento online faz parte das modalidades apresentadas por Beatriz Fauth. Ao solicitar uma consulta, informe sua preferência para que a profissional avalie a possibilidade e combine como será o encontro. A solicitação pelo site depende de confirmação."
+      },
+      {
+        "heading": "Prepare um espaço reservado",
+        "text": "Escolha um local onde possa conversar com privacidade e avise, se necessário, que estará em uma chamada. Confira câmera, microfone e conexão antes do horário combinado. Fones de ouvido podem ajudar a preservar a conversa."
+      },
+      {
+        "heading": "Combine a plataforma e os imprevistos",
+        "text": "Pergunte qual plataforma será utilizada, como receber o acesso e o que fazer se a conexão cair. Confirme também duração, pagamento e remarcação. Evite compartilhar informações pessoais em ambientes públicos."
+      },
+      {
+        "heading": "Para quem está na região",
+        "text": "Se o deslocamento de seu bairro ou cidade até o Centro de Balneário Camboriú dificulta a organização da agenda, você pode perguntar sobre a modalidade online. A escolha depende da conversa com a profissional e das condições de privacidade para o atendimento."
+      }
+    ]
   }
 ];
 
@@ -317,7 +291,7 @@ A terapia individual transpessoal cria um espaço seguro onde cada pessoa pode e
   online: {
     title: "Terapia Online",
     subtitle: "É uma modalidade de terapia que permite o atendimento feito à distância.",
-    description: `A terapia online permite que você receba atendimento psicológico de qualquer lugar, utilizando plataformas seguras de videoconferência como Skype ou Zoom.
+    description: `A terapia online permite que você receba atendimento psicológico de qualquer lugar, utilizando plataformas seguras de videoconferência como a plataforma combinada com a profissional.
 
 Esta modalidade é reconhecida pelo Conselho de Psicologia e oferece a mesma qualidade e rigor ético do atendimento presencial.
 

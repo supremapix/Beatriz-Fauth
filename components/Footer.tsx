@@ -97,6 +97,7 @@ const Footer: React.FC = () => {
               <li><Link to="/sobre" className="footer-link text-white/70 hover:text-gold transition-colors">Sobre Beatriz</Link></li>
               <li><Link to="/servicos" className="footer-link text-white/70 hover:text-gold transition-colors">Especialidades</Link></li>
               <li><Link to="/blog" className="footer-link text-white/70 hover:text-gold transition-colors">Blog & Artigos</Link></li>
+              <li><Link to="/regiao" className="footer-link text-white/70 hover:text-gold transition-colors">Balneário Camboriú e região</Link></li>
               <li><Link to="/blog#duvidas" className="footer-link text-white/70 hover:text-gold transition-colors">Dúvidas Frequentes</Link></li>
               <li><Link to="/contato" className="footer-link text-white/70 hover:text-gold transition-colors">Contato</Link></li>
             </ul>

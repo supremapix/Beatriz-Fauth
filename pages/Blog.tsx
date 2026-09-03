@@ -1,11 +1,10 @@
 
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { ChevronRight, ChevronDown } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { ChevronRight } from 'lucide-react';
 import { FAQS, BLOG_POSTS, CONTACT_INFO } from '../constants';
 
 const Blog: React.FC = () => {
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -48,9 +47,9 @@ const Blog: React.FC = () => {
                 <div className="p-6">
                   <h2 className="text-xl font-bold text-navy mb-3 serif">{post.title}</h2>
                   <p className="text-gray-500 text-sm mb-4 leading-relaxed">{post.excerpt}</p>
-                  <button className="inline-flex items-center gap-2 text-navy font-bold hover:text-gold transition-colors">
+                  <Link to={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-navy font-bold hover:text-gold transition-colors">
                     Leia mais <ChevronRight size={16} />
-                  </button>
+                  </Link>
                 </div>
               </article>
             ))}
@@ -73,21 +72,7 @@ const Blog: React.FC = () => {
                 key={index}
                 className="bg-sand rounded-xl overflow-hidden shadow-md"
               >
-                <button
-                  onClick={() => setActiveFaq(activeFaq === index ? null : index)}
-                  className="w-full px-6 py-5 text-left flex items-center justify-between text-navy font-bold hover:bg-sand/80 transition-colors"
-                >
-                  <span className="text-lg">{faq.question}</span>
-                  <ChevronDown 
-                    size={24} 
-                    className={`transform transition-transform text-gold ${activeFaq === index ? 'rotate-180' : ''}`}
-                  />
-                </button>
-                {activeFaq === index && (
-                  <div className="px-6 pb-5 text-gray-600 leading-relaxed">
-                    {faq.answer}
-                  </div>
-                )}
+                <details className="p-6 text-navy"><summary className="cursor-pointer font-semibold">{faq.question}</summary><p className="pt-4 text-gray-600 leading-relaxed">{faq.answer}</p></details>
               </div>
             ))}
           </div>

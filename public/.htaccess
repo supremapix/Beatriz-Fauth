@@ -7,9 +7,10 @@
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-l
 
-  # Rewrite everything else to index.html
-  RewriteRule ^ index.html [QSA,L]
+  # Unknown URLs must return a real 404, not the home page.
+  RewriteRule ^ - [R=404,L]
 </IfModule>
+ErrorDocument 404 /404.html
 
 # Security Headers
 <IfModule mod_headers.c>
