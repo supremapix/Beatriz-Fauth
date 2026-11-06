@@ -1,0 +1,226 @@
+[
+  {
+    "id": "inteligencia-artificial-e-terapia",
+    "title": "Inteligência artificial e terapia: possibilidades, limites e cuidados",
+    "excerpt": "Respostas acolhedoras de um chatbot podem parecer convincentes. Entenda por que informações sobre saúde exigem verificação e cuidado com a privacidade.",
+    "category": "Tecnologia e saúde mental",
+    "sections": [
+      {
+        "heading": "Uma conversa convincente pode conter erros",
+        "text": "Ferramentas de inteligência artificial produzem respostas a partir de padrões de dados. A OMS alerta que elas podem apresentar informações incorretas com aparência de autoridade. Uma explicação bem escrita não confirma um diagnóstico, a segurança de uma conduta ou a adequação de um tratamento para você."
+      },
+      {
+        "heading": "O que vale levar para uma consulta",
+        "text": "Se uma conversa com IA despertou dúvidas, você pode anotar as perguntas e discuti-las com um profissional. Diferencie uma informação geral de uma orientação clínica individual. Antes de seguir uma recomendação sobre saúde, confira sua origem e peça esclarecimentos a quem acompanha seu cuidado."
+      },
+      {
+        "heading": "Informações íntimas merecem proteção",
+        "text": "Não presuma que conversar com um aplicativo oferece o mesmo sigilo de um atendimento psicológico. Leia as regras sobre armazenamento, compartilhamento e uso das mensagens. Evite inserir laudos, documentos, nomes de outras pessoas ou detalhes íntimos que não sejam necessários."
+      },
+      {
+        "heading": "O cuidado continua sendo individual",
+        "text": "A OMS recomenda avaliação rigorosa, supervisão e proteção da autonomia no uso de IA em saúde. Para o leitor, a consequência prática é simples: não trocar acompanhamento profissional nem alterar tratamentos com base apenas nas respostas de um chatbot. Este texto é informativo e não avalia ferramentas específicas."
+      }
+    ],
+    "questions": [
+      {
+        "question": "Um chatbot pode confirmar que tenho um transtorno?",
+        "answer": "Uma resposta de chatbot não constitui avaliação clínica. Leve a dúvida a um profissional habilitado, que poderá considerar sua história e seu contexto."
+      },
+      {
+        "question": "Posso levar uma conversa com IA à terapia?",
+        "answer": "Sim, você pode conversar sobre o que leu, como se sentiu e quais dúvidas surgiram, sem precisar expor dados de terceiros."
+      }
+    ],
+    "sources": [
+      {
+        "title": "OMS: cuidados para um uso seguro e ético de IA na saúde",
+        "url": "https://www.who.int/news/item/16-05-2023-who-calls-for-safe-and-ethical-ai-for-health"
+      },
+      {
+        "title": "OMS: ética e governança de modelos multimodais em saúde",
+        "url": "https://www.who.int/publications/i/item/9789240084759"
+      }
+    ]
+  },
+  {
+    "id": "autodiagnostico-nas-redes-sociais",
+    "title": "Autodiagnóstico nas redes sociais: quando a identificação vira certeza",
+    "excerpt": "Reconhecer uma experiência em um vídeo pode abrir uma pergunta importante. Isso, por si só, não permite concluir um diagnóstico.",
+    "category": "Saúde mental nas redes",
+    "sections": [
+      {
+        "heading": "Identificar-se é um ponto de partida",
+        "text": "Um relato pode ajudar a dar nome a algo difícil de explicar. Ainda assim, experiências parecidas não significam necessariamente a mesma condição. Conteúdos breves não acompanham sua história, as circunstâncias em que uma dificuldade aparece ou seus efeitos na vida cotidiana."
+      },
+      {
+        "heading": "O que uma avaliação considera",
+        "text": "O CFP descreve a avaliação psicológica como um processo estruturado, com métodos e fontes de informação adequados à demanda. A escolha dos procedimentos depende da finalidade e do contexto. Uma lista de sinais ou um questionário isolado na internet não substitui esse processo."
+      },
+      {
+        "heading": "Como levar a dúvida ao atendimento",
+        "text": "Em vez de tentar provar um rótulo, anote exemplos concretos: o que acontece, quando começou, em quais situações aparece e o que tem dificultado. Leve também suas perguntas sobre o conteúdo visto. Essas observações podem ajudar a conversar, sem que você precise chegar com uma conclusão pronta."
+      },
+      {
+        "heading": "Como ler com mais cuidado",
+        "text": "Confira quem publicou, quais fontes utiliza e se reconhece limites. Desconfie de diagnósticos rápidos e de mensagens que apresentam uma única explicação para experiências muito diferentes. Orientações diagnósticas da OMS destinam-se ao uso clínico por profissionais qualificados, com atenção à idade e ao contexto cultural."
+      }
+    ],
+    "questions": [
+      {
+        "question": "Me identifiquei com um vídeo. Devo ignorar isso?",
+        "answer": "Não é preciso ignorar a experiência. Você pode tratá-la como uma dúvida a investigar, em vez de uma conclusão sobre sua saúde."
+      },
+      {
+        "question": "Preciso ter diagnóstico para procurar terapia?",
+        "answer": "Você pode procurar atendimento para conversar sobre sofrimento, relações ou dificuldades do cotidiano, mesmo sem diagnóstico definido."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CFP: Cartilha de Avaliação Psicológica",
+        "url": "https://site.cfp.org.br/publicacao/cartilha-avaliacao-psicologica-2022/"
+      },
+      {
+        "title": "CFP/SATEPSI: perguntas frequentes sobre avaliação e testes",
+        "url": "https://satepsi.cfp.org.br/faq.cfm"
+      },
+      {
+        "title": "OMS: orientações clínicas para o diagnóstico na CID-11",
+        "url": "https://www.who.int/publications/i/item/9789240077263/"
+      }
+    ]
+  },
+  {
+    "id": "narcisismo-e-rotulos-nas-relacoes",
+    "title": "Narcisismo nas relações: como conversar sem diagnosticar o outro",
+    "excerpt": "O uso popular de termos clínicos pode simplificar histórias complexas. É possível reconhecer sofrimento e discutir limites sem concluir um diagnóstico sobre alguém.",
+    "category": "Relações e linguagem",
+    "sections": [
+      {
+        "heading": "Uma palavra pode esconder diferenças",
+        "text": "Nas conversas cotidianas, “narcisista” pode funcionar como uma forma de expressar mágoa ou descrever atitudes percebidas como egoístas. Usar essa palavra não estabelece um diagnóstico. A avaliação clínica da personalidade envolve critérios, história e contexto, e não se resolve por uma postagem ou pelo relato de um conflito."
+      },
+      {
+        "heading": "Descrever o que acontece ajuda a conversar",
+        "text": "Em vez de procurar uma lista que classifique a outra pessoa, tente descrever a situação: o que foi dito ou feito, como você foi afetado e quais limites foram ultrapassados. Essa mudança de foco pode tornar suas perguntas mais claras numa conversa com um profissional."
+      },
+      {
+        "heading": "Seu sofrimento não depende de um rótulo",
+        "text": "Você não precisa demonstrar que alguém tem um transtorno para falar sobre medo, desrespeito ou sofrimento numa relação. Ao mesmo tempo, um diagnóstico não deve ser usado como sinônimo de violência nem como justificativa para ela. Cuidados com segurança e respeito merecem atenção independentemente de classificações."
+      },
+      {
+        "heading": "O que levar para a terapia",
+        "text": "Uma pergunta possível é: “O que esta relação tem provocado em mim e de que apoio preciso?”. O atendimento pode ser um espaço para explorar experiências e escolhas. Este conteúdo não oferece uma avaliação de parceiros, familiares ou pessoas públicas e não orienta decisões sobre uma relação específica."
+      }
+    ],
+    "questions": [
+      {
+        "question": "Uma lista de sinais permite diagnosticar meu parceiro?",
+        "answer": "Não. Uma lista ou um relato indireto não fornece os elementos necessários para uma avaliação clínica daquela pessoa."
+      },
+      {
+        "question": "Preciso provar um diagnóstico para estabelecer limites?",
+        "answer": "Você pode reconhecer o que lhe causa sofrimento e buscar apoio para discutir seus limites sem atribuir um diagnóstico ao outro."
+      }
+    ],
+    "sources": [
+      {
+        "title": "OMS: diagnóstico e abordagem dimensional dos transtornos de personalidade na CID-11",
+        "url": "https://www.who.int/news/item/08-03-2024-new-manual-released-to-support-diagnosis-of-mental--behavioural-and-neurodevelopmental-disorders-added-in-icd-11"
+      },
+      {
+        "title": "CFP: Cartilha de Avaliação Psicológica",
+        "url": "https://site.cfp.org.br/publicacao/cartilha-avaliacao-psicologica-2022/"
+      }
+    ]
+  },
+  {
+    "id": "psicoterapia-e-medicamentos",
+    "title": "Psicoterapia e medicamentos: como conversar sobre o cuidado",
+    "excerpt": "As decisões sobre tratamento dependem de avaliação individual. Entenda como levar dúvidas sobre psicoterapia e medicação aos profissionais que acompanham você.",
+    "category": "Escolhas de cuidado",
+    "sections": [
+      {
+        "heading": "O plano depende da situação",
+        "text": "Não existe uma resposta única para todas as pessoas e condições. Na depressão, por exemplo, a OMS apresenta intervenções psicológicas e medicamentos como possibilidades de cuidado, cuja indicação varia conforme a avaliação. Esse exemplo não permite concluir o que seria indicado para você ou para outro diagnóstico."
+      },
+      {
+        "heading": "Cuidado compartilhado e funções diferentes",
+        "text": "A psicoterapia pode trabalhar experiências, sentimentos, relações e dificuldades do cotidiano. Questões sobre indicação, dose, troca ou retirada de medicamentos devem ser discutidas com o profissional médico responsável. Quando há mais de um profissional envolvido, vale perguntar como a comunicação pode ocorrer respeitando seu consentimento e sua privacidade."
+      },
+      {
+        "heading": "Perguntas que ajudam na consulta",
+        "text": "Você pode perguntar qual é o objetivo de cada intervenção, quais benefícios e efeitos indesejados devem ser acompanhados e quando o plano será reavaliado. Compartilhe dificuldades práticas e preferências. Sentir receio de um tratamento é um assunto legítimo para a consulta, não uma razão para se calar."
+      },
+      {
+        "heading": "Não altere medicamentos por conta própria",
+        "text": "Se percebeu melhora, desconforto ou dúvidas sobre a medicação, fale com quem prescreveu antes de interromper ou modificar o uso. Também não use uma postagem para escolher remédios. Este texto não prescreve, compara medicamentos nem substitui uma avaliação individual."
+      }
+    ],
+    "questions": [
+      {
+        "question": "Quem faz terapia sempre precisa de medicamento?",
+        "answer": "Não. A necessidade de medicação depende da avaliação clínica. Procurar psicoterapia não significa receber automaticamente uma indicação de medicamento."
+      },
+      {
+        "question": "Melhorei. Posso parar o remédio?",
+        "answer": "Converse antes com o profissional que prescreveu. A decisão e a forma de modificar o tratamento precisam ser acompanhadas individualmente."
+      }
+    ],
+    "sources": [
+      {
+        "title": "OMS: depressão, diagnóstico e tratamento",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/depression"
+      },
+      {
+        "title": "OMS: orientações para seguir e discutir o plano de tratamento",
+        "url": "https://www.emro.who.int/mnh/what-you-can-do/what-you-can-do.html"
+      }
+    ]
+  },
+  {
+    "id": "terapia-online-e-privacidade",
+    "title": "Terapia online e privacidade: o que combinar antes da sessão",
+    "excerpt": "O atendimento online exige avaliação da modalidade, cuidado com informações pessoais e acordos claros sobre a comunicação.",
+    "category": "Atendimento online",
+    "sections": [
+      {
+        "heading": "A modalidade precisa fazer sentido para você",
+        "text": "O atendimento mediado por tecnologias é regulamentado pela Resolução CFP nº 9/2024. Cabe à profissional avaliar a adequação ao caso e às condições disponíveis. Uma conexão de internet, sozinha, não resolve necessidades de privacidade, acesso à tecnologia ou organização do cuidado."
+      },
+      {
+        "heading": "Privacidade também envolve o ambiente",
+        "text": "Antes da sessão, observe se outras pessoas conseguem ouvir e se o dispositivo é compartilhado. Pergunte sobre a plataforma e as medidas de proteção adotadas. Fones de ouvido podem ajudar, mas não garantem privacidade por si só. Evite realizar a sessão em locais de circulação de pessoas."
+      },
+      {
+        "heading": "Combine o que acontece fora da chamada",
+        "text": "Esclareça quais canais serão usados para marcar sessões, como retomar o contato se a conexão cair e quais informações precisam ser enviadas. Pergunte sobre registros e eventual gravação. Não presuma que a sessão será gravada nem que qualquer aplicativo assegura confidencialidade absoluta."
+      },
+      {
+        "heading": "Verifique a identificação profissional",
+        "text": "O Cadastro Nacional de Profissionais de Psicologia permite consultar o registro e sua situação. O CRP12 informa que a exigência de cadastro e-Psi foi encerrada pela resolução de 2024. Conferir o registro é uma etapa importante, mas não substitui conversar sobre as condições e os limites do atendimento."
+      }
+    ],
+    "questions": [
+      {
+        "question": "O atendimento online serve para qualquer situação?",
+        "answer": "A adequação precisa ser avaliada pela profissional, considerando a demanda e as condições de atendimento. Pode ser necessário discutir outra modalidade ou encaminhamento."
+      },
+      {
+        "question": "Preciso contar minha história no primeiro contato pelo WhatsApp?",
+        "answer": "Para solicitar informações ou um horário, prefira compartilhar apenas o necessário. Combine com a profissional o momento e o canal apropriados para informações clínicas."
+      }
+    ],
+    "sources": [
+      {
+        "title": "CRP12: atendimento online e Resolução CFP nº 9/2024",
+        "url": "https://site.crpsc.org.br/perguntas-frequentes/atendimento-online/"
+      },
+      {
+        "title": "CRP12: como consultar o registro profissional",
+        "url": "https://site.crpsc.org.br/cadastro-nacional-de-psicologas/"
+      }
+    ]
+  }
+]

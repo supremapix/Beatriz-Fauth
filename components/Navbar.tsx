@@ -1,291 +1,99 @@
-
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Instagram, Facebook, Mail, Phone, ArrowRight, ChevronDown, MapPin } from 'lucide-react';
-import { CONTACT_INFO, NEIGHBORHOODS_DATA } from '../constants';
-
-const PsiLogo: React.FC<{ onClick?: () => void }> = ({ onClick }) => {
-  const [isClicked, setIsClicked] = useState(false);
-  const [showParticles, setShowParticles] = useState(false);
-
-  const handleClick = () => {
-    setIsClicked(true);
-    setShowParticles(true);
-    onClick?.();
-    setTimeout(() => setIsClicked(false), 800);
-    setTimeout(() => setShowParticles(false), 1000);
-  };
-
-  const particles = Array.from({ length: 8 }, (_, i) => {
-    const angle = (i / 8) * 360;
-    const tx = Math.cos((angle * Math.PI) / 180) * 40;
-    const ty = Math.sin((angle * Math.PI) / 180) * 40;
-    return { id: i, tx, ty };
-  });
-
-  return (
-    <div 
-      className="relative w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-gradient-to-br from-[#4A7C7E] to-[#5B8C8E] rounded-2xl cursor-pointer overflow-visible shadow-lg hover:shadow-xl transition-shadow"
-      onClick={handleClick}
-    >
-      <span className={`psi-symbol text-white text-3xl md:text-4xl font-bold ${isClicked ? 'clicked' : ''}`}>
-        Ψ
-      </span>
-      <div className={`psi-particles absolute inset-0 ${showParticles ? 'active' : ''}`}>
-        {particles.map((p) => (
-          <div
-            key={p.id}
-            className="psi-particle absolute top-1/2 left-1/2"
-            style={{ '--tx': `${p.tx}px`, '--ty': `${p.ty}px` } as React.CSSProperties}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+import React, { useEffect, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import { CONTACT_INFO } from "../constants";
+import { whatsapp } from "./UI";
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
   const location = useLocation();
-
+  const lastPath = useRef(location.pathname);
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setIsOpen(false);
-    if (!location.hash) {
-      window.scrollTo(0, 0);
+    setOpen(false);
+    if (location.hash) {
+      const timer = window.setTimeout(
+        () =>
+          document
+            .getElementById(decodeURIComponent(location.hash.slice(1)))
+            ?.scrollIntoView(),
+        40,
+      );
+      return () => clearTimeout(timer);
     }
+    window.scrollTo(0, 0);
+    if (lastPath.current !== location.pathname)
+      document.getElementById("conteudo")?.focus({ preventScroll: true });
+    lastPath.current = location.pathname;
   }, [location]);
-
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [isOpen]);
-
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Sobre Mim', path: '/sobre' },
-    { name: 'Terapias', path: '/servicos' },
-    { name: 'Bairros', path: '#', hasDropdown: true },
-    { name: 'Região', path: '/regiao' },
-    { name: 'Dúvidas', path: '/blog#duvidas' },
-    { name: 'Contato', path: '/contato' },
-  ];
-
-  const isActive = (path: string) => location.pathname + location.hash === path;
-
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
   return (
-    <header className="fixed w-full z-50 transition-all duration-500">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="header-glow"></div>
-      </div>
-      
-      <div className={`hidden lg:block transition-all duration-300 ${scrolled ? 'h-0 opacity-0 overflow-hidden' : 'bg-white/80 backdrop-blur-sm text-gray-600 py-2 border-b border-gray-100'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs font-medium">
-          <div className="flex items-center space-x-6">
-            <a href={`https://wa.me/${CONTACT_INFO.phoneRaw}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#4A7C7E] transition-colors">
-              <Phone size={14} className="text-[#4A7C7E]" /> {CONTACT_INFO.phone}
-            </a>
-            <span className="text-gray-300">|</span>
-            <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-2 hover:text-[#4A7C7E] transition-colors">
-              <Mail size={14} className="text-[#4A7C7E]" /> {CONTACT_INFO.email}
-            </a>
-          </div>
-          <div className="flex items-center space-x-5">
-            <span className="text-[#4A7C7E] font-semibold">{CONTACT_INFO.crp}</span>
-            <span className="text-gray-300">|</span>
-            <div className="flex items-center space-x-3">
-              <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#4A7C7E] transition-colors"><Instagram size={16} /></a>
-              <a href={CONTACT_INFO.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#4A7C7E] transition-colors"><Facebook size={16} /></a>
-            </div>
-          </div>
+    <header className="site-header">
+      <a href="#conteudo" className="skip-link">
+        Pular para o conteúdo
+      </a>
+      <div className="topline">
+        <div className="container">
+          <span>Psicologia & Psicanálise · Balneário Camboriú</span>
+          <span>{CONTACT_INFO.crp}</span>
         </div>
       </div>
-
-      <nav className={`transition-all duration-500 relative ${scrolled ? 'bg-white/95 backdrop-blur-md py-3 shadow-lg' : 'bg-white py-4 md:py-5'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
-            <Link to="/" className="flex items-center gap-4 group">
-              <PsiLogo />
-              <div className="flex flex-col">
-                <span className="text-xl md:text-2xl font-bold text-[#2C5364] group-hover:text-[#4A7C7E] transition-colors tracking-tight">
-                  Beatriz <span className="text-gold">Fauth</span>
-                </span>
-                <span className="text-[10px] md:text-xs text-[#4A7C7E] font-medium tracking-wide">
-                  Psicologia & Psicanálise
-                </span>
-              </div>
-            </Link>
-
-            <div className="hidden lg:flex items-center space-x-2">
-              {navLinks.map((link) => (
-                link.hasDropdown ? (
-                  <div
-                    key={link.name}
-                    className="relative"
-                    onMouseEnter={() => setDropdownOpen(true)}
-                    onMouseLeave={() => setDropdownOpen(false)}
-                  >
-                    <button
-                      className="menu-link relative px-4 py-2 text-sm font-medium transition-colors text-[#2C5364] hover:text-[#4A7C7E] flex items-center gap-1"
-                    >
-                      <span>{link.name}</span>
-                      <ChevronDown size={16} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
-                      <span className="menu-link-underline"></span>
-                    </button>
-                    {dropdownOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 py-3 z-50 max-h-96 overflow-y-auto">
-                        <div className="px-4 py-2 border-b border-gray-100">
-                          <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider">Atendimento por Bairro</p>
-                        </div>
-                        <div className="grid grid-cols-1 gap-1 p-2">
-                          {NEIGHBORHOODS_DATA.map((neighborhood) => (
-                            <Link
-                              key={neighborhood.slug}
-                              to={`/bairro/${neighborhood.slug}`}
-                              className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[rgba(91,140,142,0.1)] transition-colors group"
-                              onClick={() => setDropdownOpen(false)}
-                            >
-                              <MapPin size={14} className="text-[#4A7C7E] flex-shrink-0" />
-                              <span className="text-sm text-gray-700 group-hover:text-[#4A7C7E] transition-colors">{neighborhood.name}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    className={`menu-link relative px-4 py-2 text-sm font-medium transition-colors ${isActive(link.path) ? 'text-[#4A7C7E]' : 'text-[#2C5364] hover:text-[#4A7C7E]'}`}
-                  >
-                    <span>{link.name}</span>
-                    <span className={`menu-link-underline ${isActive(link.path) ? 'transform scale-x-100' : ''}`}></span>
-                  </Link>
-                )
-              ))}
-              <a 
-                href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=Olá! Gostaria de agendar uma consulta`} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="ml-4 inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#4A7C7E] to-[#5B8C8E] text-white text-sm font-semibold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-              >
-                Agendar Consulta
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </a>
-            </div>
-
-            <div className="lg:hidden flex items-center gap-3">
-              <a href={`https://wa.me/${CONTACT_INFO.phoneRaw}`} className="w-10 h-10 bg-gradient-to-r from-[#4A7C7E] to-[#5B8C8E] text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
-                <Phone size={18} />
-              </a>
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 text-[#2C5364] hover:text-[#4A7C7E] transition-colors relative w-10 h-10 flex flex-col items-center justify-center gap-1.5"
-                aria-label="Menu principal"
-              >
-                <span className={`w-6 h-0.5 bg-current rounded transition-all ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                <span className={`w-6 h-0.5 bg-current rounded transition-all ${isOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`w-6 h-0.5 bg-current rounded transition-all ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div 
-          className={`lg:hidden fixed inset-0 bg-black/50 z-40 transition-opacity duration-400 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-          onClick={() => setIsOpen(false)}
-        />
-        
-        <div className={`lg:hidden fixed top-0 right-0 w-[85%] max-w-sm h-full z-50 bg-white shadow-2xl transition-transform duration-400 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-          <div className="flex flex-col h-full px-8 py-8 overflow-y-auto">
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-6 right-6 p-2 text-gray-500 hover:text-[#4A7C7E] transition-colors"
-              aria-label="Fechar menu"
-            >
-              <X size={24} />
-            </button>
-            
-            <div className="flex items-center gap-4 mb-10 mt-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#4A7C7E] to-[#5B8C8E] rounded-xl flex items-center justify-center">
-                <span className="text-white text-2xl font-bold" style={{ fontFamily: 'Times New Roman, serif' }}>Ψ</span>
-              </div>
-              <span className="text-xl font-bold text-[#2C5364]">Beatriz Fauth</span>
-            </div>
-            
-            <div className="space-y-1">
-              {navLinks.map((link) => (
-                link.hasDropdown ? (
-                  <div key={link.name} className="space-y-1">
-                    <div className="text-lg font-medium py-4 px-4 text-[#2C5364]">
-                      {link.name}
-                    </div>
-                    <div className="pl-4 space-y-1">
-                      {NEIGHBORHOODS_DATA.slice(0, 8).map((neighborhood) => (
-                        <Link
-                          key={neighborhood.slug}
-                          to={`/bairro/${neighborhood.slug}`}
-                          className="flex items-center gap-2 text-sm font-medium py-2 px-4 rounded-lg text-gray-600 hover:bg-[rgba(91,140,142,0.05)] hover:text-[#4A7C7E] hover:translate-x-2 transition-all"
-                        >
-                          <MapPin size={14} className="text-[#4A7C7E]" />
-                          {neighborhood.name}
-                        </Link>
-                      ))}
-                      <Link
-                        to="/bairro/centro"
-                        className="text-sm text-[#4A7C7E] py-2 px-4 block hover:underline"
-                      >
-                        Ver todos os bairros →
-                      </Link>
-                    </div>
-                  </div>
-                ) : (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    className={`block text-lg font-medium py-4 px-4 rounded-xl transition-all ${isActive(link.path) ? 'bg-[rgba(91,140,142,0.1)] text-[#4A7C7E]' : 'text-[#2C5364] hover:bg-[rgba(91,140,142,0.05)] hover:text-[#4A7C7E] hover:translate-x-2'}`}
-                  >
-                    {link.name}
-                  </Link>
-                )
-              ))}
-            </div>
-            
-            <div className="mt-auto pt-8">
-              <a 
-                href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=Olá! Gostaria de agendar uma consulta`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center py-4 bg-gradient-to-r from-[#4A7C7E] to-[#5B8C8E] text-white font-semibold rounded-full shadow-lg mb-6"
-              >
-                Agendar Consulta
-              </a>
-              
-              <p className="text-sm text-gray-500 mb-4">Entre em contato</p>
-              <div className="flex space-x-4 text-gray-600 mb-6">
-                <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-[#4A7C7E] transition-colors"><Instagram size={24} /></a>
-                <a href={CONTACT_INFO.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-[#4A7C7E] transition-colors"><Facebook size={24} /></a>
-                <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-[#4A7C7E] transition-colors"><Mail size={24} /></a>
-              </div>
-              <p className="text-sm text-[#4A7C7E] font-semibold">{CONTACT_INFO.crp}</p>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <div className="container navbar">
+        <Link className="brand" to="/" aria-label="Beatriz Fauth, início">
+          <span className="brand-symbol" aria-hidden="true">
+            Ψ
+          </span>
+          <span>
+            <strong>Beatriz Fauth</strong>
+            <small>PSICOLOGIA & PSICANÁLISE</small>
+          </span>
+        </Link>
+        <button
+          ref={toggle}
+          className="menu-toggle"
+          aria-expanded={open}
+          aria-controls="main-navigation"
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
+        <nav
+          id="main-navigation"
+          className={open ? "main-nav is-open" : "main-nav"}
+          aria-label="Navegação principal"
+        >
+          {[
+            ["/", "Início"],
+            ["/sobre", "Sobre Beatriz"],
+            ["/servicos", "Atendimento"],
+            ["/regiao", "Localização"],
+            ["/blog", "Orientações"],
+            ["/contato", "Contato"],
+          ].map(([path, name]) => (
+            <NavLink key={path} to={path} end={path === "/"}>
+              {name}
+            </NavLink>
+          ))}
+          <a
+            className="nav-cta"
+            href={whatsapp()}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Agendar conversa <ArrowUpRight size={16} />
+          </a>
+        </nav>
+      </div>
     </header>
   );
-};
-
-export default Navbar;
+}

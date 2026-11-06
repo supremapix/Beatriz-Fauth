@@ -1,35 +1,11 @@
-# Conteúdo e presença local
+# SEO, GEO e AIO
 
-O site mantém a identidade visual existente e passa a gerar HTML completo por endereço. Não depende de créditos do Bolt.new para edição ou compilação pelo GitHub.
+O resumo atualizado da entrega está em `SUPREMA_ENTREGA.md`. O site contém 33 rotas pré-renderizadas e uma página 404, com 17 URLs indexáveis no sitemap. As páginas de bairros semelhantes permanecem com `noindex,follow`, exceto Centro.
 
-## Conteúdo
+Conteúdo e dados estruturados são iguais para pessoas e robôs. As fontes dos cinco guias estão visíveis em suas páginas. Não foram inventados depoimentos, avaliações, credenciais, filiais, estatísticas, horários disponíveis ou autoria de revisão clínica.
 
-- Página inicial identifica psicóloga, psicanalista, CRP e localização.
-- Página `/regiao` organiza endereço, deslocamento e modalidades para Balneário Camboriú e para quem vem de Camboriú, Itajaí e Itapema. Não anuncia filiais nessas cidades.
-- Três artigos de orientação sobre agendamento, casal e atendimento online, com links reais.
-- Perguntas frequentes com respostas disponíveis no HTML e controles acessíveis.
-- Removidas referências a psiquiatria, depoimentos de bairros sem comprovação e contadores de resultados/avaliações sem fonte.
-- Contato e CRP preservados do repositório. A proprietária deve confirmar se continuam atuais, assim como valores, horários e formação já publicados.
+Títulos, descrições, canonical, Open Graph e dados estruturados são gerados em `seo.ts`. Ícones, fontes e imagem social são locais. `llms.txt` é apenas um índice auxiliar, sem garantias de uso por sistemas de IA.
 
-## Indexação
+Google: os fundamentos de SEO seguem válidos em AI Overviews e AI Mode, sem marcação ou arquivo especial obrigatório: https://developers.google.com/search/docs/appearance/ai-features.
 
-- Títulos, descrições, canonical no domínio com `www`, Open Graph e cartões sociais por rota.
-- Dados estruturados de profissional, consultório, site, páginas, perguntas frequentes e artigos, sem avaliações ou credenciais inventadas.
-- Sitemap e robots gerados automaticamente no build.
-- URLs antigas de bairros continuam acessíveis. Fora do Centro, recebem `noindex,follow` por terem conteúdo muito semelhante. A página regional concentra as informações úteis.
-- Página 404 gerada; regras de hospedagem deixam de transformar qualquer URL inexistente na página inicial.
-- O navegador monta os componentes interativos sobre o HTML estático, usando o mesmo conteúdo. Não há diferenciação por robô.
-
-## Publicação pelo GitHub
-
-Execute `npm ci`, `npm run build`, `npm run typecheck` e `npm run check:seo`. Publique a pasta `dist`. Node.js 22 LTS é recomendado.
-
-Se o projeto no Netlify ou Vercel estiver conectado a este repositório e à branch `main`, a atualização da branch poderá disparar o deploy. A existência dos arquivos de configuração não comprova essa conexão. Se a hospedagem for manual, envie o conteúdo de `dist` pelo painel da hospedagem.
-
-Depois do deploy, confira `/`, `/regiao`, um artigo, `/sitemap.xml`, `/robots.txt` e uma URL inexistente (HTTP 404). A consulta de Search Console e Perfil da Empresa depende do acesso às contas correspondentes.
-
-## GEO e respostas com IA
-
-A estratégia usa conteúdo legível, dados coerentes e links internos. Não promete posição, indexação nem citação por IA. A documentação do Google informa que os fundamentos de SEO continuam válidos para AI Overviews e AI Mode, sem arquivo ou marcação especial obrigatória: https://developers.google.com/search/docs/appearance/ai-features.
-
-Próximos dados que dependem da proprietária: cidades prioritárias, contato/endereço atual, link do Perfil da Empresa no Google e hospedagem efetivamente conectada.
+Valide o domínio real, status HTTP e indexação após a publicação autorizada. Search Console e Perfil da Empresa dependem do acesso às contas correspondentes.

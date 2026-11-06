@@ -1,20 +1,35 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Beatriz Fauth — site institucional
 
-# Run and deploy your AI Studio app
+React, TypeScript e Vite, com HTML pré-renderizado para todas as rotas. Não precisa de chave de API, servidor de aplicação ou banco de dados em produção.
 
-This contains everything you need to run your app locally.
+## Desenvolvimento
 
-View your app in AI Studio: https://ai.studio/apps/drive/18cI8xBDXsOQSvmEK05le3Okx-rMjTaYQ
+Use Node.js 22 LTS ou compatível.
 
-## Run Locally
+```sh
+npm ci
+npm run dev
+```
 
-**Prerequisites:**  Node.js
+## Verificação e publicação
 
+```sh
+npm run check
+npm audit
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+A pasta `dist` contém o site pronto. Publique na hospedagem existente apenas com autorização. Consulte `DEPLOY_INSTRUCTIONS.md` e `SUPREMA_ENTREGA.md`.
+
+O formulário somente prepara uma mensagem e oferece um link para abrir o WhatsApp. Não confirma consultas, não recebe pagamentos e não envia dados automaticamente.
+
+## Conteúdo e identidade
+
+- `pages/Pages.tsx`: páginas institucionais e artigos de orientação.
+- `pages/Topics.tsx` e `topics-content.json`: temas em debate, FAQs e fontes.
+- `constants.ts`: contato, registro informado, perguntas e artigos.
+- `seo.ts`: títulos, canonical, schemas e rotas.
+- `components/FloatingActions.tsx`: seis redes e quinze textos de compartilhamento.
+- `styles.css`: identidade visual responsiva, fontes locais e movimento reduzido.
+- `scripts/generate-brand-assets.mjs`: gera OG e ícones a partir dos SVGs nativos. `npm run assets:brand` regenera os arquivos.
+
+A imagem `logo-beatriz.jpeg` é a fotografia existente da profissional. O arquivo antigo `beatriz-profile.jpg` continha um CRP divergente e não é usado. O registro de texto CRP 12/00649 foi mantido conforme orientação do responsável pelo projeto; não representa validação cadastral independente.
