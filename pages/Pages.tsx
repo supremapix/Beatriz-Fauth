@@ -9,12 +9,12 @@ import {
   Leaf,
   Users,
   UserRound,
+  Phone,
 } from "lucide-react";
 import { BLOG_POSTS, CONTACT_INFO, NEIGHBORHOODS_DATA } from "../constants";
 import {
   WhatsAppLink,
   PageIntro,
-  ContactBand,
   FAQ,
   ArticleCards,
   LocationCard,
@@ -27,7 +27,7 @@ const services = [
     label: "01",
     title: "Atendimento individual",
     text: "Um espaço para falar sobre sentimentos, relações, dúvidas e experiências que fazem parte da sua história.",
-    image: "/images/terapia-individual-large.jpg",
+    image: "/images/servicos/atendimento-individual-editorial-v2.webp",
     icon: UserRound,
   },
   {
@@ -35,7 +35,7 @@ const services = [
     label: "02",
     title: "Terapia de casal e familiar",
     text: "Escuta das relações, da convivência e das questões que o casal ou a família deseja trabalhar.",
-    image: "/images/terapia-casal-large.jpg",
+    image: "/images/servicos/terapia-casal-familiar-editorial-v2.webp",
     icon: Users,
   },
   {
@@ -43,7 +43,7 @@ const services = [
     label: "03",
     title: "Terapia de grupo",
     text: "Um espaço de escuta e troca, mediado pela profissional, para trabalhar questões e relações em grupo.",
-    image: "/images/terapia-grupo-large.jpg",
+    image: "/images/servicos/terapia-grupo-editorial-v2.webp",
     icon: MessageCircle,
   },
   {
@@ -51,7 +51,7 @@ const services = [
     label: "04",
     title: "Atendimento online",
     text: "Encontros por videoconferência, com adequação, privacidade e condições combinadas antes da consulta.",
-    image: "/images/terapia-online.jpg",
+    image: "/images/servicos/atendimento-online-editorial-v2.webp",
     icon: Monitor,
   },
 ];
@@ -60,12 +60,24 @@ function ServiceCards() {
     <div className="services-grid">
       {services.map((s) => (
         <article className="service-card" key={s.id}>
+          <img
+            className="service-card-image"
+            src={s.image}
+            alt={`Ilustração de ${s.title.toLowerCase()} com Beatriz Fauth. Telefone ${CONTACT_INFO.phone}.`}
+            width="1448"
+            height="1086"
+            loading="lazy"
+            decoding="async"
+          />
           <div className="service-top">
             <s.icon size={26} strokeWidth={1.3} aria-hidden="true" />
             <span>{s.label}</span>
           </div>
           <h3>{s.title}</h3>
           <p>{s.text}</p>
+          <a className="service-phone" href={`tel:+${CONTACT_INFO.phoneRaw}`}>
+            Ligar: {CONTACT_INFO.phone}
+          </a>
           <Link to={`/servicos#${s.id}`} className="text-link">
             Conhecer atendimento <ArrowUpRight size={17} />
             <span className="sr-only">: {s.title}</span>
@@ -86,31 +98,39 @@ export function Home() {
               Psicóloga em Balneário Camboriú
             </p>
             <h1>
-              Um espaço para
+              Psicologia com
               <br />
-              se escutar.
-              <br />
-              <em>No seu tempo.</em>
+              Beatriz Fauth.
             </h1>
             <p className="hero-description">
-              Psicologia e psicanálise com Beatriz Fauth. Uma escuta acolhedora
-              para suas questões, sua história e seu momento de vida.
+              Atendimento presencial no Centro de Balneário Camboriú e online,
+              sob consulta. Tire dúvidas sobre modalidades, valores e
+              agendamento.
             </p>
             <div className="hero-actions">
-              <WhatsAppLink>Solicitar uma conversa</WhatsAppLink>
-              <Link className="text-link" to="/sobre">
-                Conheça Beatriz <ArrowUpRight size={18} />
-              </Link>
+              <WhatsAppLink>Conversar no WhatsApp</WhatsAppLink>
+              <a
+                className="button button-light hero-phone"
+                href={`tel:+${CONTACT_INFO.phoneRaw}`}
+              >
+                <Phone size={22} aria-hidden="true" />
+                <span className="button-text">Ligar: {CONTACT_INFO.phone}</span>
+              </a>
             </div>
-            <div className="hero-facts">
-              <span>
-                <MapPin size={17} />
-                Presencial no Centro de BC
-              </span>
-              <span>
-                <Monitor size={17} />
-                Online, sob consulta
-              </span>
+            <div className="hero-essential">
+              <p>
+                <strong>Endereço do consultório</strong>
+                <br />
+                {CONTACT_INFO.address}
+              </p>
+              <Link className="text-link" to="/regiao">
+                <MapPin size={22} aria-hidden="true" /> Ver endereço e como
+                chegar
+              </Link>
+              <p className="small">
+                Consultas mediante agendamento. O horário é confirmado pela
+                profissional.
+              </p>
             </div>
           </div>
           <div className="hero-visual">
@@ -291,7 +311,6 @@ export function Home() {
         </div>
       </section>
       <FAQ />
-      <ContactBand />
     </>
   );
 }
@@ -369,7 +388,6 @@ export function About() {
           </div>
         </div>
       </section>
-      <ContactBand />
     </>
   );
 }
@@ -404,8 +422,8 @@ export function Services() {
             <img
               src={s.image}
               alt={`Imagem ilustrativa de ${s.title.toLowerCase()}`}
-              width="640"
-              height="480"
+              width="1448"
+              height="1086"
               loading="lazy"
               decoding="async"
             />
@@ -422,29 +440,56 @@ export function Services() {
                       ? "A composição, a disponibilidade e as condições de participação no grupo devem ser confirmadas com a profissional. Os acordos de convivência e de confidencialidade fazem parte da organização do trabalho."
                       : "Para participar, é necessário um ambiente reservado, conexão estável e um dispositivo com câmera e microfone. A plataforma, as condições de privacidade e a adequação da modalidade ao caso são avaliadas antes do atendimento."}
               </p>
+              <p className="service-image-note small">
+                Imagem ilustrativa. Não retrata pacientes ou o consultório
+                reais.
+              </p>
+              <a
+                className="service-phone"
+                href={`tel:+${CONTACT_INFO.phoneRaw}`}
+              >
+                Ligar: {CONTACT_INFO.phone}
+              </a>
               <WhatsAppLink>Consultar esta modalidade</WhatsAppLink>
             </div>
           </div>
         </section>
       ))}
       <section className="section" id="jovens">
-        <div className="container narrow">
-          <p className="eyebrow">Momentos da vida</p>
-          <h2>Atendimento a jovens.</h2>
-          <p>
-            Um espaço para conversar sobre relações, mudanças, identidade e
-            questões vividas na juventude. A participação dos responsáveis, os
-            limites do sigilo e as condições de atendimento são tratados de
-            acordo com cada situação e as normas profissionais.
-          </p>
-          <p>
-            Consulte diretamente a profissional sobre a faixa etária atendida e
-            a modalidade indicada. Valores, duração e disponibilidade também são
-            informados no contato inicial.
-          </p>
+        <div className="container about-grid">
+          <img
+            className="service-illustration"
+            src="/images/servicos/atendimento-jovens-editorial-v2.webp"
+            width="1448"
+            height="1086"
+            alt="Ilustração de atendimento a jovens com Beatriz Fauth. Telefone (47) 99985-8983."
+            loading="lazy"
+            decoding="async"
+          />
+          <div>
+            <p className="eyebrow">Momentos da vida</p>
+            <h2>Atendimento a jovens.</h2>
+            <p>
+              Um espaço para conversar sobre relações, mudanças, identidade e
+              questões vividas na juventude. A participação dos responsáveis, os
+              limites do sigilo e as condições de atendimento são tratados de
+              acordo com cada situação e as normas profissionais.
+            </p>
+            <p>
+              Consulte diretamente a profissional sobre a faixa etária atendida
+              e a modalidade indicada. Valores, duração e disponibilidade também
+              são informados no contato inicial.
+            </p>
+            <p className="service-image-note small">
+              Imagem ilustrativa. Não retrata pacientes ou o consultório reais.
+            </p>
+            <a className="service-phone" href={`tel:+${CONTACT_INFO.phoneRaw}`}>
+              Ligar: {CONTACT_INFO.phone}
+            </a>
+            <WhatsAppLink>Consultar atendimento a jovens</WhatsAppLink>
+          </div>
         </div>
       </section>
-      <ContactBand />
     </>
   );
 }
@@ -500,7 +545,6 @@ export function Blog() {
         </div>
       </section>
       <FAQ />
-      <ContactBand />
     </>
   );
 }
@@ -537,7 +581,6 @@ export function Article() {
           Ver outras orientações <ArrowUpRight size={18} />
         </Link>
       </article>
-      <ContactBand />
     </>
   );
 }
@@ -601,7 +644,6 @@ export function Region() {
           </Link>
         </div>
       </section>
-      <ContactBand />
     </>
   );
 }
@@ -640,7 +682,6 @@ export function Neighborhood() {
           </div>
         </div>
       </section>
-      <ContactBand />
     </>
   );
 }

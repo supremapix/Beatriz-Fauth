@@ -20,7 +20,7 @@ export function WhatsAppLink({
       rel="noopener noreferrer"
     >
       <MessageCircle size={19} aria-hidden="true" />
-      {children}
+      <span className="button-text">{children}</span>
       <ArrowUpRight size={18} aria-hidden="true" />
     </a>
   );
@@ -45,22 +45,6 @@ export function PageIntro({
         <p className="eyebrow">{label}</p>
         <h1>{title}</h1>
         <p className="lead">{text}</p>
-      </div>
-    </section>
-  );
-}
-export function ContactBand() {
-  return (
-    <section className="contact-band">
-      <div className="container contact-band-inner">
-        <div>
-          <p className="eyebrow">Um primeiro contato, no seu tempo</p>
-          <h2>Vamos conversar?</h2>
-          <p>
-            Consulte as modalidades, os valores e a disponibilidade de horários.
-          </p>
-        </div>
-        <WhatsAppLink light />
       </div>
     </section>
   );

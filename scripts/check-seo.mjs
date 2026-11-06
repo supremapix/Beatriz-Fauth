@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 import { readFile, access } from "node:fs/promises";
 import path from "node:path";
-const { allRoutes, getSeo, SHARE_TEXTS } = (await import("../dist-ssr/render.cjs")).default;
+const { allRoutes, getSeo, SHARE_TEXTS } = (
+  await import("../dist-ssr/render.cjs")
+).default;
 const htmlFor = (route) =>
   route === "/404" ? "dist/404.html" : path.join("dist", route, "index.html");
 const pages = new Map(
@@ -133,4 +135,117 @@ const privacy = pages.get("/privacidade");
 assert.ok(privacy.includes("banco de dados"));
 console.log(
   "Suprema checks passed: 15 rotating texts, 6 share services, credit on every page, icons, OG, contact privacy and professional identification.",
+);
+
+// Larger-text revision: every route exposes one contextual, accessible contact section.
+for (const [route, html] of pages) {
+  assert.equal(
+    (html.match(/class="page-contact"/g) || []).length,
+    1,
+    `${route}: one contextual contact section`,
+  );
+  assert.ok(
+    html.includes("/images/beatriz-contato.svg"),
+    `${route}: contact identity graphic`,
+  );
+  assert.ok(
+    html.includes('width="250" height="250"'),
+    `${route}: square 250px contact graphic`,
+  );
+  assert.ok(
+    html.includes('class="page-contact-phone" href="tel:+5547999858983"'),
+    `${route}: contact phone in HTML`,
+  );
+  assert.ok(
+    html.indexOf('class="footer-contact"') <
+      html.indexOf('class="footer-navigation"'),
+    `${route}: logical footer order`,
+  );
+}
+const serviceManifest = JSON.parse(
+  await readFile("SERVICOS_ARTES_V2_MANIFEST.json", "utf8"),
+);
+assert.equal(serviceManifest.assets.length, 5, "Five service illustrations");
+const servicesHtml = pages.get("/servicos");
+for (const asset of serviceManifest.assets) {
+  await access(asset.webp);
+  assert.ok(
+    servicesHtml.includes(asset.webp.replace("public", "")),
+    `${asset.key}: new service illustration`,
+  );
+}
+assert.equal(
+  (
+    servicesHtml.match(
+      /Imagem ilustrativa\. Não retrata pacientes ou o consultório reais\./g,
+    ) || []
+  ).length,
+  5,
+  "Illustration disclosure for all services",
+);
+const square = await readFile("public/images/beatriz-contato.svg", "utf8");
+assert.ok(
+  square.includes("(47) 99985-8983") &&
+    square.includes('width="250" height="250"'),
+);
+const rgb = (hex) =>
+  hex
+    .match(/[a-f0-9]{2}/gi)
+    .map((v) => parseInt(v, 16) / 255)
+    .map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+const luminance = (hex) =>
+  rgb(hex).reduce((n, v, i) => n + v * [0.2126, 0.7152, 0.0722][i], 0);
+const contrast = (a, b) => {
+  const x = luminance(a),
+    y = luminance(b);
+  return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
+};
+for (const [label, fg, bg, min] of [
+  ["body text", "#344b45", "#fbf9f4", 7],
+  ["footer text", "#344b45", "#d6e3d7", 7],
+  ["hover link", "#785322", "#fbf9f4", 4.5],
+  ["service number", "#52624c", "#fffdf8", 4.5],
+  ["button text", "#ffffff", "#245b56", 4.5],
+  ["field border", "#71816c", "#ffffff", 3],
+])
+  assert.ok(
+    contrast(fg, bg) >= min,
+    `${label}: contrast ${contrast(fg, bg).toFixed(2)}`,
+  );
+console.log(
+  "Readability checks passed: contextual contact on all routes, five service illustrations, footer order and key color contrasts.",
+);
+
+await assert.rejects(
+  access("dist/qa-accessibility.html"),
+  "Local QA harness must not ship",
+);
+
+for (const [route, html] of pages) {
+  assert.ok(
+    html.includes('class="footer-grid"><div class="footer-contact"'),
+    `${route}: contact first in footer`,
+  );
+}
+const home = pages.get("/");
+assert.ok(
+  home.indexOf("hero-phone") < home.indexOf("hero-visual"),
+  "Home phone before portrait",
+);
+assert.ok(
+  home.indexOf("hero-essential") < home.indexOf("hero-visual"),
+  "Home address before portrait",
+);
+for (const [name, fg, bg] of [
+  ["italic on sage", "#245b56", "#dce5d4"],
+  ["section label", "#245b56", "#dfe9df"],
+  ["section body", "#344b45", "#dfe9df"],
+  ["white on dark strip", "#ffffff", "#163f3d"],
+])
+  assert.ok(
+    contrast(fg, bg) >= 4.5,
+    `${name}: contrast ${contrast(fg, bg).toFixed(2)}`,
+  );
+console.log(
+  "Senior hierarchy checks passed: phone/address near start, contact-first footer, contrasting section text.",
 );

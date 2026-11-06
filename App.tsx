@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Seo from "./components/Seo";
 import FloatingActions from "./components/FloatingActions";
+import PageContactSection from "./components/PageContactSection";
 import {
   Home,
   About,
@@ -37,6 +38,7 @@ export function AppContent() {
           <Route path="/privacidade" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <PageContactSection />
       </main>
       <Footer />
       <FloatingActions />

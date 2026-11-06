@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 250 250" role="img" aria-labelledby="title description">
+  <title id="title">Beatriz Fauth — Psicologia e Psicanálise</title>
+  <desc id="description">Identidade gráfica com o símbolo Psi. Telefone profissional: (47) 99985-8983. CRP 12/00649.</desc>
+  <rect width="250" height="250" rx="16" fill="#163f3d"/>
+  <rect x="10" y="10" width="230" height="230" rx="10" fill="none" stroke="#ccd8c5"/>
+  <g text-anchor="middle" fill="#fbf9f4">
+    <text x="125" y="71" font-family="Georgia, serif" font-size="56">Ψ</text>
+    <text x="125" y="108" font-family="Georgia, serif" font-size="30">Beatriz Fauth</text>
+    <text x="125" y="137" font-family="Arial, sans-serif" font-size="17">Psicologia e Psicanálise</text>
+    <path d="M40 153h170" stroke="#ccd8c5"/>
+    <text x="125" y="184" font-family="Arial, sans-serif" font-size="24" font-weight="700">(47) 99985-8983</text>
+    <text x="125" y="215" font-family="Arial, sans-serif" font-size="17">CRP 12/00649</text>
+  </g>
+</svg>

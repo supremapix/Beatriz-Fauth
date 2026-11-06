@@ -1,13 +1,62 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Heart, Instagram, Facebook, ArrowUpRight } from "lucide-react";
+import {
+  Heart,
+  Instagram,
+  Facebook,
+  ArrowUpRight,
+  Phone,
+  MessageCircle,
+} from "lucide-react";
 import { CONTACT_INFO } from "../constants";
+import { whatsapp } from "./UI";
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="container">
         <div className="footer-grid">
-          <div>
+          <div className="footer-contact">
+            <h2>Entre em contato</h2>
+            <a
+              className="footer-contact-action"
+              href={`tel:+${CONTACT_INFO.phoneRaw}`}
+            >
+              <Phone size={22} aria-hidden="true" />{" "}
+              <span>Ligar: {CONTACT_INFO.phone}</span>
+            </a>
+            <a
+              className="footer-contact-action"
+              href={whatsapp()}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle size={22} aria-hidden="true" />{" "}
+              <span>Conversar no WhatsApp</span>
+            </a>
+            <p className="footer-address">
+              <strong>Endereço do consultório</strong>
+              <br />
+              {CONTACT_INFO.address}
+            </p>
+            <Link className="footer-location-link" to="/regiao">
+              Ver endereço e como chegar{" "}
+              <ArrowUpRight size={20} aria-hidden="true" />
+            </Link>
+            <p className="small">Consultas mediante agendamento.</p>
+            <a className="email-link" href={`mailto:${CONTACT_INFO.email}`}>
+              {CONTACT_INFO.email}
+            </a>
+          </div>
+          <div className="footer-navigation">
+            <h2>Informações importantes</h2>
+            <Link to="/sobre">Sobre Beatriz</Link>
+            <Link to="/servicos">Modalidades de atendimento</Link>
+            <Link to="/regiao">Balneário Camboriú e região</Link>
+            <Link to="/blog">Orientações e dúvidas</Link>
+            <Link to="/temas">Temas em debate</Link>
+            <Link to="/privacidade">Privacidade</Link>
+          </div>
+          <div className="footer-intro">
             <Link className="brand" to="/">
               <span className="brand-symbol" aria-hidden="true">
                 Ψ
@@ -29,7 +78,8 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Instagram size={20} />
+                <Instagram size={22} aria-hidden="true" />
+                <span>Instagram</span>
               </a>
               <a
                 aria-label="Facebook de Beatriz Fauth"
@@ -37,27 +87,10 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Facebook size={20} />
+                <Facebook size={22} aria-hidden="true" />
+                <span>Facebook</span>
               </a>
             </div>
-          </div>
-          <div>
-            <h2>Navegue</h2>
-            <Link to="/sobre">Sobre Beatriz</Link>
-            <Link to="/servicos">Modalidades de atendimento</Link>
-            <Link to="/regiao">Balneário Camboriú e região</Link>
-            <Link to="/blog">Orientações e dúvidas</Link>
-            <Link to="/temas">Temas em debate</Link>
-            <Link to="/privacidade">Privacidade</Link>
-          </div>
-          <div>
-            <h2>Entre em contato</h2>
-            <a href={`tel:+${CONTACT_INFO.phoneRaw}`}>{CONTACT_INFO.phone}</a>
-            <a className="email-link" href={`mailto:${CONTACT_INFO.email}`}>
-              {CONTACT_INFO.email}
-            </a>
-            <p>{CONTACT_INFO.address}</p>
-            <p className="small">Consultas mediante agendamento.</p>
           </div>
         </div>
         <div className="footer-note">

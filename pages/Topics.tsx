@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import topics from "../topics-content.json";
-import { PageIntro, ContactBand } from "../components/UI";
+import { PageIntro } from "../components/UI";
 import { NotFound } from "./Pages";
 export function TopicCards() {
   return (
@@ -43,7 +43,6 @@ export function Topics() {
           </aside>
         </div>
       </section>
-      <ContactBand />
     </>
   );
 }
@@ -115,7 +114,6 @@ export function Topic() {
           Todos os temas em debate <ArrowUpRight size={18} />
         </Link>
       </article>
-      <ContactBand />
     </>
   );
 }
